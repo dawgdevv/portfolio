@@ -27,8 +27,7 @@ export const EXPERIENCES = [
 export const PROJECTS = [];
 
 export const CONTACT = {
-  address:
-    "Plot No. 56, Ganpati Nagar Nangal Jaisa Bohra Niwaru road, Jaipur, Rajasthan, India",
+  address: "Jaipur, Rajasthan, India",
   phoneNo: "+91 6376438732",
   email: "nishantrajcs26@gmail.com",
   eduemail: "nishantraj@jklu.edu.in",

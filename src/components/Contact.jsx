@@ -9,13 +9,13 @@ import { CONTACT } from "../constants/index"
 
 function Contact() {
 
-  const [formdata ,setFormData] = useState({
+  const [formdata, setFormData] = useState({
     email: "",
     message: ""
-  })  
+  })
 
   const handleChange = (e) => {
-    const {id,value} = e.target
+    const { id, value } = e.target
     setFormData((prevData) => ({
       ...prevData,
       [id]: value
@@ -30,19 +30,19 @@ function Contact() {
       message: formdata.message
     };
 
-    emailjs.send('service_xwzw7ac', 'template_am62r7h', templateParams,'vYvha6S6B9d_1wKSP')
-    .then((response)=>{
-      console.log('SUCCESS!', response.status, response.text);
-      alert("Message Sent Successfully")
-      setFormData({
-        email: "",
-        message: ""
-      })
-    }).catch((error)=>{
-      console.log('FAILED...', error);
-      alert("Message Sending Failed")
-    });
-    
+    emailjs.send('service_xwzw7ac', 'template_am62r7h', templateParams, 'vYvha6S6B9d_1wKSP')
+      .then((response) => {
+        console.log('SUCCESS!', response.status, response.text);
+        alert("Message Sent Successfully")
+        setFormData({
+          email: "",
+          message: ""
+        })
+      }).catch((error) => {
+        console.log('FAILED...', error);
+        alert("Message Sending Failed")
+      });
+
   }
 
   return (
@@ -91,10 +91,7 @@ function Contact() {
           <div className="space-y-4">
             <div className="flex items-start space-x-3">
               <MapPin className="w-5 h-5 mt-1 text-muted-foreground" />
-              <p><a href="https://maps.app.goo.gl/1pwUKh3R3bkmpRRZ6"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-500 underline">{CONTACT.address}</a></p>
+              <p>{CONTACT.address}</p>
             </div>
             <div className="flex items-center space-x-3">
               <Phone className="w-5 h-5 text-muted-foreground" />
@@ -109,7 +106,7 @@ function Contact() {
               <p>{CONTACT.eduemail}</p>
             </div>
           </div>
-        
+
         </div>
       </div>
     </div>
