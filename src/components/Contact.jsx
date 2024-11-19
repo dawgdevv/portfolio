@@ -1,49 +1,53 @@
-import { useState } from 'react';
-import emailjs from '@emailjs/browser';
-import { Button } from "../components/ui/button"
-import { Input } from "../components/ui/input"
-import { Textarea } from "../components/ui/textarea"
-import { MapPin, Phone, Mail } from "lucide-react"
-import { CONTACT } from "../constants/index"
-
+import { useState } from "react";
+import emailjs from "@emailjs/browser";
+import { Button } from "../components/ui/button";
+import { Input } from "../components/ui/input";
+import { Textarea } from "../components/ui/textarea";
+import { MapPin, Phone, Mail } from "lucide-react";
+import { CONTACT } from "../constants/index";
 
 function Contact() {
-
   const [formdata, setFormData] = useState({
     email: "",
-    message: ""
-  })
+    message: "",
+  });
 
   const handleChange = (e) => {
-    const { id, value } = e.target
+    const { id, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
-      [id]: value
+      [id]: value,
     }));
-  }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const templateParams = {
       email: formdata.email,
-      message: formdata.message
+      message: formdata.message,
     };
 
-    emailjs.send('service_xwzw7ac', 'template_am62r7h', templateParams, 'vYvha6S6B9d_1wKSP')
+    emailjs
+      .send(
+        "service_xwzw7ac",
+        "template_am62r7h",
+        templateParams,
+        "vYvha6S6B9d_1wKSP"
+      )
       .then((response) => {
-        console.log('SUCCESS!', response.status, response.text);
-        alert("Message Sent Successfully")
+        console.log("SUCCESS!", response.status, response.text);
+        alert("Message Sent Successfully");
         setFormData({
           email: "",
-          message: ""
-        })
-      }).catch((error) => {
-        console.log('FAILED...', error);
-        alert("Message Sending Failed")
+          message: "",
+        });
+      })
+      .catch((error) => {
+        console.log("FAILED...", error);
+        alert("Message Sending Failed");
       });
-
-  }
+  };
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-12 ">
@@ -51,7 +55,8 @@ function Contact() {
       <div className="grid md:grid-cols-2 gap-12">
         <div className="space-y-6">
           <p className="text-lg text-muted-foreground">
-            Have a question or want to get in touch i am just one click away? Shoot me a message!
+            Have a question or want to get in touch i am just one click away?
+            Shoot me a message!
           </p>
           <form className="space-y-4" onSubmit={handleSubmit}>
             <div>
@@ -69,14 +74,17 @@ function Contact() {
               />
             </div>
             <div>
-              <label htmlFor="message" className="block text-sm font-medium mb-1">
+              <label
+                htmlFor="message"
+                className="block text-sm font-medium mb-1"
+              >
                 Message
               </label>
               <Textarea
                 id="message"
                 placeholder="Your message here..."
                 required
-                className="w-full min-h-[150px]"
+                className="w-full "
                 value={formdata.message}
                 onChange={handleChange}
               />
@@ -106,10 +114,9 @@ function Contact() {
               <p>{CONTACT.eduemail}</p>
             </div>
           </div>
-
         </div>
       </div>
     </div>
-  )
+  );
 }
 export default Contact;
