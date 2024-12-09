@@ -1,10 +1,10 @@
 import { useState } from "react";
-import emailjs from "@emailjs/browser";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
 import { Textarea } from "../components/ui/textarea";
 import { MapPin, Phone, Mail } from "lucide-react";
 import { CONTACT } from "../constants/index";
+import axios from "axios";
 
 function Contact() {
   const [formdata, setFormData] = useState({
@@ -28,24 +28,22 @@ function Contact() {
       message: formdata.message,
     };
 
-    emailjs
-      .send(
-        "service_xwzw7ac",
-        "template_am62r7h",
-        templateParams,
-        "vYvha6S6B9d_1wKSP"
+    axios
+      .post(
+        "https://backend-portfolio-1-3x6d.onrender.com/send",
+        templateParams
       )
-      .then((response) => {
-        console.log("SUCCESS!", response.status, response.text);
-        alert("Message Sent Successfully");
+      .then((res) => {
+        console.log(res);
+        alert("Email sent successfully");
         setFormData({
           email: "",
           message: "",
         });
       })
-      .catch((error) => {
-        console.log("FAILED...", error);
-        alert("Message Sending Failed");
+      .catch((err) => {
+        console.log(err);
+        alert("Error sending email");
       });
   };
 
@@ -55,7 +53,7 @@ function Contact() {
       <div className="grid md:grid-cols-2 gap-12">
         <div className="space-y-6">
           <p className="text-lg text-muted-foreground">
-            Have a question or want to get in touch i am just one click away?
+            Have a question or want to get in touch? I am just one click away!
             Shoot me a message!
           </p>
           <form className="space-y-4" onSubmit={handleSubmit}>
@@ -68,7 +66,7 @@ function Contact() {
                 id="email"
                 placeholder="your@email.com"
                 required
-                className="w-full"
+                className="w-full text-black"
                 value={formdata.email}
                 onChange={handleChange}
               />
@@ -84,7 +82,7 @@ function Contact() {
                 id="message"
                 placeholder="Your message here..."
                 required
-                className="w-full "
+                className="w-full text-black"
                 value={formdata.message}
                 onChange={handleChange}
               />
@@ -119,4 +117,5 @@ function Contact() {
     </div>
   );
 }
+
 export default Contact;

@@ -1,11 +1,12 @@
 export const HERO_CONTENT = `I am a 3rd year student with a knack for crafting robust and scalable applications. I have worked on front-end technologies like React and Next.js, as well as back-end technologies like Node.js, MySQL, PostgreSQL, and MongoDB.I am currently learning and exploring new technologies to enhance my skills and knowledge in Software development.`;
 
-export const ABOUT_TEXT = `Hi,I'm a passionate Computer Science Student based in Jaipur.
+export const ABOUT_TEXT = `Hey, I’m Nishant Raj—a full-stack developer with a growing passion for Web3 technologies. I enjoy building functional, user-friendly applications, from designing frontends with tools like Node.js, Express.js, and EJS to diving into decentralized solutions using Solidity and IPFS.
 
-What started as a casual Sunday project has evolved into a dedicated journey in web development, where I aim to create efficient and user-friendly applications. I thrive on tackling challenges, learning new technologies, and continuously improving my craft.
+I focus on writing clean, efficient code to solve real-world problems. Whether it’s creating smart contracts, implementing decentralized identity systems, or working on a Linux-based setup, I approach every challenge with curiosity and a drive to improve.
 
-I enjoy working in collaborative environments where I can contribute to solving complex problems and delivering high-quality solutions. In addition to coding, I stay active by exploring blockchain technologies and contributing to open-source projects.`;
+Outside of coding, I’m honing my skills in data structures, algorithms, and networking, always eager to learn and adapt to new technologies.
 
+If you’re looking for a developer to contribute to your Web3 or full-stack projects, let’s connect and create something meaningful.`;
 export const EXPERIENCES = [
   {
     year: "2024",

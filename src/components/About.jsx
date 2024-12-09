@@ -17,7 +17,7 @@ function About() {
         </div>
         <div className="w-full lg:w-1/2">
           <div>
-            <p className="text-lg font-normal leading-relaxed text-gray-700 dark:text-gray-300">
+            <p className="text-lg font-normal leading-9 text-gray-700 dark:text-gray-300">
               {ABOUT_TEXT}
             </p>
           </div>
