@@ -48,17 +48,17 @@ function Contact() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-12 ">
-      <h1 className="text-4xl font-bold text-center mb-12">Contact Me</h1>
-      <div className="grid md:grid-cols-2 gap-12">
-        <div className="space-y-6">
-          <p className="text-lg text-muted-foreground">
+    <div className="max-w-4xl mx-auto px-4 py-12 h-full flex flex-col justify-center text-white">
+      <h1 className="text-2xl font-bold text-center mb-4">Contact Me</h1>
+      <div className="grid md:grid-cols-2 gap-4">
+        <div className="space-y-4">
+          <p className="text-sm text-muted-foreground">
             Have a question or want to get in touch? I am just one click away!
             Shoot me a message!
           </p>
-          <form className="space-y-4" onSubmit={handleSubmit}>
+          <form className="space-y-2" onSubmit={handleSubmit}>
             <div>
-              <label htmlFor="email" className="block text-sm font-medium mb-1">
+              <label htmlFor="email" className="block text-xs font-medium mb-1">
                 Email
               </label>
               <Input
@@ -74,7 +74,7 @@ function Contact() {
             <div>
               <label
                 htmlFor="message"
-                className="block text-sm font-medium mb-1"
+                className="block text-xs font-medium mb-1"
               >
                 Message
               </label>
@@ -92,24 +92,24 @@ function Contact() {
             </Button>
           </form>
         </div>
-        <div className="space-y-6">
-          <h2 className="text-2xl font-semibold">Contact Information</h2>
-          <div className="space-y-4">
-            <div className="flex items-start space-x-3">
-              <MapPin className="w-5 h-5 mt-1 text-muted-foreground" />
-              <p>{CONTACT.address}</p>
+        <div className="space-y-4">
+          <h2 className="text-lg font-semibold">Contact Information</h2>
+          <div className="space-y-2">
+            <div className="flex items-start space-x-2">
+              <MapPin className="w-4 h-4 mt-1 text-muted-foreground" />
+              <p className="text-xs">{CONTACT.address}</p>
             </div>
-            <div className="flex items-center space-x-3">
-              <Phone className="w-5 h-5 text-muted-foreground" />
-              <p>{CONTACT.phoneNo}</p>
+            <div className="flex items-center space-x-2">
+              <Phone className="w-4 h-4 text-muted-foreground" />
+              <p className="text-xs">{CONTACT.phoneNo}</p>
             </div>
-            <div className="flex items-center space-x-3">
-              <Mail className="w-5 h-5 text-muted-foreground" />
-              <p>{CONTACT.email}</p>
+            <div className="flex items-center space-x-2">
+              <Mail className="w-4 h-4 text-muted-foreground" />
+              <p className="text-xs">{CONTACT.email}</p>
             </div>
-            <div className="flex items-center space-x-3">
-              <Mail className="w-5 h-5 text-muted-foreground" />
-              <p>{CONTACT.eduemail}</p>
+            <div className="flex items-center space-x-2">
+              <Mail className="w-4 h-4 text-muted-foreground" />
+              <p className="text-xs">{CONTACT.eduemail}</p>
             </div>
           </div>
         </div>

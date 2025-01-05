@@ -19,17 +19,17 @@ const TechIcon = ({ Icon, color }) => (
   <motion.div
     whileHover={{ scale: 1.2, rotate: 90 }}
     whileTap={{ scale: 0.8, rotate: -90, borderRadius: "100%" }}
-    className="rounded-2xl border-4 border-neutral-800 p-4"
+    className="rounded-2xl border-4 border-neutral-800 p-2"
   >
-    <Icon className={`text-7xl ${color}`} />
+    <Icon className={`text-4xl ${color}`} />
   </motion.div>
 );
 
 function Tech() {
   return (
-    <div className="pb-24">
-      <h1 className="my-20 text-center text-4xl font-bold">Technologies</h1>
-      <div className="flex flex-wrap items-center justify-center gap-4">
+    <div className="pb-4 h-full flex flex-col justify-center">
+      <h1 className="my-4 text-center text-2xl font-bold">Technologies</h1>
+      <div className="flex flex-wrap items-center justify-center gap-2">
         {techStack.map((tech, index) => (
           <TechIcon key={index} Icon={tech.Icon} color={tech.color} />
         ))}
