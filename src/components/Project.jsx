@@ -1,8 +1,9 @@
 import { Hammer, Sparkles } from "lucide-react";
-
+import SnowfallBackground from "./SnowfallBackground.jsx";
 function Project() {
   return (
     <section className="container mx-auto px-4 py-16 h-full flex flex-col justify-center">
+      <SnowfallBackground />
       <h2 className="mb-4 text-center text-2xl font-bold">Projects</h2>
       <div className="rounded-lg p-4 text-center shadow-md">
         <div className="mb-4 flex justify-center">

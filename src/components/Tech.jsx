@@ -4,7 +4,7 @@ import { TbBrandNextjs } from "react-icons/tb";
 import { SiTailwindcss, SiMongodb, SiPostgresql } from "react-icons/si";
 import { DiNodejs, DiJavascript1 } from "react-icons/di";
 import PropTypes from "prop-types";
-
+import SnowfallBackground from "./SnowfallBackground.jsx";
 const techStack = [
   { Icon: DiJavascript1, color: "text-yellow-300" },
   { Icon: RiReactjsLine, color: "text-cyan-600" },
@@ -28,6 +28,7 @@ const TechIcon = ({ Icon, color }) => (
 function Tech() {
   return (
     <div className="pb-4 h-full flex flex-col justify-center">
+      <SnowfallBackground />
       <h1 className="my-4 text-center text-2xl font-bold">Technologies</h1>
       <div className="flex flex-wrap items-center justify-center gap-2">
         {techStack.map((tech, index) => (

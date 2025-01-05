@@ -1,8 +1,10 @@
 import { EXPERIENCES } from "../constants/index.js";
+import SnowfallBackground from "./SnowfallBackground.jsx";
 
 function Experience() {
   return (
     <section className="container mx-auto px-4 py-16 h-full flex flex-col justify-center">
+      <SnowfallBackground />
       <h2 className="mb-4 text-center text-2xl font-bold">Experience</h2>
       <div className="space-y-4">
         {EXPERIENCES.map((experience, index) => (

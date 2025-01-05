@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import PropTypes from "prop-types";
 import { HERO_CONTENT } from "../constants/index.js";
+import SnowfallBackground from "./SnowfallBackground.jsx";
 
 const AnimatedText = ({ text, className, delay = 0 }) => {
   const container = {
@@ -30,6 +31,7 @@ const AnimatedText = ({ text, className, delay = 0 }) => {
 function Hero() {
   return (
     <div className="relative h-full flex items-center justify-center bg-gradient-to-r">
+      <SnowfallBackground />
       <div className="absolute inset-0 opacity-50"></div>
       <div className="relative z-10 flex flex-col items-center lg:items-start text-center lg:text-left p-4">
         <AnimatedText
