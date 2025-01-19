@@ -30,7 +30,7 @@ const AnimatedText = ({ text, className, delay = 0 }) => {
 
 function Hero() {
   return (
-    <div className="relative h-full flex items-center justify-center bg-gradient-to-r">
+    <div className="relative h-full mt-48 flex items-center justify-center bg-gradient-to-r">
       <SnowfallBackground />
       <div className="absolute inset-0 opacity-50"></div>
       <div className="relative z-10 flex flex-col items-center lg:items-start text-center lg:text-left p-4">

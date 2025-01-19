@@ -25,7 +25,24 @@ export const EXPERIENCES = [
   },
 ];
 
-export const PROJECTS = [];
+export const PROJECTS = [
+  {
+    name: "Portfolio Website",
+    description:
+      "A personal portfolio website to showcase my projects, skills, and experiences. Built with React and Next.js for a fast and responsive user experience.",
+    liveLink: "https://your-portfolio-link.com",
+    githubLink: "https://github.com/yourusername/portfolio-website",
+    videoLink: "https://your-video-link.com",
+  },
+  {
+    name: "E-commerce Platform",
+    description:
+      "A full-featured e-commerce platform with user authentication, product listings, and a shopping cart. Developed using Node.js, Express.js, and MongoDB.",
+    liveLink: "https://your-ecommerce-link.com",
+    githubLink: "https://github.com/yourusername/ecommerce-platform",
+    videoLink: "https://your-video-link.com",
+  },
+];
 
 export const CONTACT = {
   address: "Jaipur, Rajasthan, India",

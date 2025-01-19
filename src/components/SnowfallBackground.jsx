@@ -15,7 +15,7 @@ const SnowfallBackground = () => {
     };
 
     const createSnowflakes = () => {
-      const numberOfSnowflakes = 150; // Fewer snowflakes for a calm effect
+      const numberOfSnowflakes = 300; // Fewer snowflakes for a calm effect
       snowflakes = [];
       for (let i = 0; i < numberOfSnowflakes; i++) {
         snowflakes.push({
@@ -41,7 +41,7 @@ const SnowfallBackground = () => {
 
     const moveSnowflakes = () => {
       for (let flake of snowflakes) {
-        flake.y += Math.pow(flake.density, 2) * 0.5 + 0.5; // Slow falling
+        flake.y += Math.pow(flake.density, 2) * 0.5 + 1; // Slow falling
         flake.x += flake.drift; // Gentle horizontal movement
 
         // Reset position if the flake moves out of view

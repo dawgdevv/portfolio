@@ -5,7 +5,7 @@ function Experience() {
   return (
     <section className="container mx-auto px-4 py-16 h-full flex flex-col justify-center">
       <SnowfallBackground />
-      <h2 className="mb-4 text-center text-2xl font-bold">Experience</h2>
+      <h2 className="mb-4 text-center text-3xl font-bold">Experience</h2>
       <div className="space-y-4">
         {EXPERIENCES.map((experience, index) => (
           <div
@@ -14,16 +14,16 @@ function Experience() {
           >
             <div className="flex flex-col md:flex-row md:items-center md:justify-between">
               <div className="mb-2 md:mb-0">
-                <h3 className="text-lg font-semibold">{experience.role}</h3>
-                <p className="text-xs text-gray-600">
+                <h3 className="text-xl font-semibold">{experience.role}</h3>
+                <p className="text-xs text-gray-400">
                   {experience.company} • {experience.location}
                 </p>
               </div>
-              <p className="text-xs font-medium text-white">
+              <p className="text-lg font-medium text-white">
                 {experience.year}
               </p>
             </div>
-            <p className="mt-2 text-white text-sm">{experience.description}</p>
+            <p className="mt-2 text-white text-lg">{experience.description}</p>
             <div className="mt-2 flex flex-wrap gap-1">
               {experience.technologies.map((tech, techIndex) => (
                 <span

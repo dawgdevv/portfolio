@@ -5,9 +5,12 @@ import Tech from "./components/Tech";
 import Experience from "./components/Experience";
 import Project from "./components/Project";
 import Contact from "./components/Contact";
+import SnowfallBackground from "./components/SnowfallBackground";
 import { Contact as ContactIcon } from "lucide-react";
+import { FaLinkedin, FaGithub, FaSquareXTwitter } from "react-icons/fa6";
 import "react-grid-layout/css/styles.css";
 import "react-resizable/css/styles.css";
+import { motion } from "framer-motion";
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
@@ -17,7 +20,7 @@ function App() {
 
   const sections = useMemo(
     () => [
-      { id: "hero", component: <Hero />, label: "Hero" },
+      { id: "hero", component: <Hero />, label: "Introduction" },
       { id: "tech", component: <Tech />, label: "Technologies" },
       { id: "experience", component: <Experience />, label: "Experience" },
       { id: "projects", component: <Project />, label: "Projects" },
@@ -67,7 +70,7 @@ function App() {
 
   return (
     <div className="relative overflow-hidden text-neutral-300 antialiased selection:bg-cyan-300 selection:text-cyan-900 h-screen">
-      <div className="absolute top-0 z-[-2] h-full w-full bg-black bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
+      <div className="absolute top-0 z-[-2] h-full w-full bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
 
       <ResponsiveGridLayout
         className="layout h-screen"
@@ -78,7 +81,7 @@ function App() {
         width={window.innerWidth}
         compactType={null}
         preventCollision={true}
-        margin={[4, 4]} // Increased margin for visibility
+        margin={[6, 6]} // Increased margin for visibility
         containerPadding={[6, 6]} // Increased padding for visibility
         isDraggable={false}
         isResizable={false}
@@ -86,7 +89,7 @@ function App() {
         {sections.map((section) => (
           <div
             key={section.id}
-            className={`border-2 border-cyan-500 rounded-lg cursor-pointer transition-all duration-300 ease-in-out overflow-auto ${
+            className={`border-2 border-gray-400 rounded-lg cursor-pointer transition-all duration-300 ease-in-out overflow-auto ${
               focusedSection === section.id
                 ? "fixed inset-0 z-50 p-8"
                 : "h-full" // Ensure full height when not focused
@@ -104,16 +107,63 @@ function App() {
             role="button"
             aria-expanded={focusedSection === section.id}
           >
-            {section.component}
+            <SnowfallBackground />
+            {focusedSection !== section.id && (
+              <motion.h2
+                className="text-center text-green-400 mt-52 text-3xl font-bold"
+                whileHover={{ scale: 1.2 }}
+                whileTap={{ scale: 0.8 }}
+              >
+                {section.label}
+              </motion.h2>
+            )}
+            {focusedSection === section.id && (
+              <div className="mt-4">{section.component}</div>
+            )}
           </div>
         ))}
       </ResponsiveGridLayout>
 
-      <ContactIcon
-        className="fixed bottom-4 right-4 text-white p-2  shadow-lg cursor-pointer"
-        size={48}
-        onClick={() => setIsContactModalOpen(true)}
-      />
+      <div className="fixed bottom-4 right-4 flex space-x-4 z-50">
+        <motion.div
+          whileHover={{ scale: 1.2 }}
+          whileTap={{ scale: 0.8 }}
+          className="cursor-pointer"
+          onClick={() => setIsContactModalOpen(true)}
+        >
+          <ContactIcon className="text-white p-2 shadow-lg" size={48} />
+        </motion.div>
+        <motion.a
+          whileHover={{ scale: 1.2 }}
+          whileTap={{ scale: 0.8 }}
+          href="https://www.linkedin.com/in/nraj24/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="cursor-pointer"
+        >
+          <FaLinkedin className="text-white p-2 shadow-lg" size={48} />
+        </motion.a>
+        <motion.a
+          whileHover={{ scale: 1.2 }}
+          whileTap={{ scale: 0.8 }}
+          href="https://github.com/dawgdevv"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="cursor-pointer"
+        >
+          <FaGithub className="text-white p-2 shadow-lg" size={48} />
+        </motion.a>
+        <motion.a
+          whileHover={{ scale: 1.2 }}
+          whileTap={{ scale: 0.8 }}
+          href="https://x.com/sfunish"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="cursor-pointer"
+        >
+          <FaSquareXTwitter className="text-white p-2 shadow-lg" size={48} />
+        </motion.a>
+      </div>
 
       {isContactModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
