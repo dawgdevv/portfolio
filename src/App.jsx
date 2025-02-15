@@ -160,18 +160,6 @@ function App() {
         </motion.a>
       </div>
 
-      {/* Made by line */}
-      <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-40">
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
-          className="text-sm text-gray-400/80 font-medium"
-        >
-          Made with 💜 by Nishant Raj
-        </motion.p>
-      </div>
-
       {isContactModalOpen && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center">
           <Contact onClose={handleCloseModal} />
