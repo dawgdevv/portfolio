@@ -43,7 +43,7 @@ const Contact = ({ onClose }) => {
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.9 }}
-      className="bg-gray-900/90 backdrop-blur-md rounded-2xl border border-gray-800 p-8 w-full max-w-4xl mx-4 relative"
+      className="bg-black backdrop-blur-md rounded-2xl border border-gray-800 p-8 w-full max-w-4xl mx-4 relative"
     >
       <button
         onClick={onClose}
