@@ -76,7 +76,7 @@ function Hero() {
             className="relative group"
           >
             {/* Moon-like outer glow effect */}
-            <div className="absolute -inset-8 bg-yellow-200/20 rounded-full blur-xl opacity-0 group-hover:opacity-70 transition-all duration-500"></div>
+            <div className="absolute -inset-8 bg-white/30 rounded-full blur-xl opacity-0 group-hover:opacity-70 transition-all duration-500"></div>
             <div className="absolute -inset-12 bg-yellow-50/10 rounded-full blur-2xl group-hover:animate-pulse opacity-0 group-hover:opacity-60 transition-all duration-500"></div>
 
             {/* Inner border gradient */}
