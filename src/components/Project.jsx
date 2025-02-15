@@ -1,85 +1,86 @@
-// import SnowfallBackground from "./SnowfallBackground.jsx";
-// import { PROJECTS } from "../constants/index.js";
+import { motion } from "framer-motion";
+import { PROJECTS } from "../constants/index.js";
+import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
+import DTIX from "../assets/DTIX.png";
 
-// function Project() {
-//   return (
-//     <section className="container mx-auto px-4 py-16 h-full flex flex-col justify-center relative">
-//       <SnowfallBackground />
-//       <h2 className="mb-8 text-center text-4xl font-bold text-white">
-//         Projects
-//       </h2>
-//       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-//         {PROJECTS.map((project, index) => (
-//           <div
-//             key={index}
-//             className="bg-gray-800 rounded-lg p-6 shadow-lg transform transition duration-500 hover:scale-105"
-//           >
-//             <div className="mb-4 flex justify-center"></div>
-//             <h3 className="mb-2 text-xl font-semibold text-white">
-//               {project.name}
-//             </h3>
-//             <p className="text-sm text-gray-700 dark:text-gray-300 mb-4">
-//               {project.description}
-//             </p>
-//             <video
-//               className="mx-auto mb-4 rounded-lg"
-//               width="320"
-//               height="240"
-//               controls
-//               src={project.videoLink}
-//             >
-//               Your browser does not support the video tag.
-//             </video>
-//             <div className="flex justify-center space-x-4">
-//               <a
-//                 href={project.liveLink}
-//                 className="text-green-500 hover:underline"
-//                 target="_blank"
-//                 rel="noopener noreferrer"
-//               >
-//                 Live Link
-//               </a>
-//               <a
-//                 href={project.githubLink}
-//                 className="text-green-500 hover:underline"
-//                 target="_blank"
-//                 rel="noopener noreferrer"
-//               >
-//                 GitHub Repo
-//               </a>
-//             </div>
-//           </div>
-//         ))}
-//       </div>
-//     </section>
-//   );
-// }
-
-// export default Project;
-
-import { Hammer, Sparkles } from "lucide-react";
-import SnowfallBackground from "./SnowfallBackground.jsx";
-function Project() {
+export default function Project() {
   return (
-    <section className="container mx-auto px-4 py-16 h-full flex flex-col justify-center">
-      <SnowfallBackground />
-      <h2 className="mb-4 text-center text-2xl font-bold">Projects</h2>
-      <div className="rounded-lg p-4 text-center shadow-md">
-        <div className="mb-4 flex justify-center">
-          <Hammer className="mr-2 h-6 w-6 text-primary" />
-          <Sparkles className="h-6 w-6 text-primary" />
-        </div>
-        <h3 className="mb-2 text-lg font-semibold">Building the Foundation</h3>
-        <p className="text-sm text-gray-700 dark:text-gray-300">
-          I&apos;m currently working on some exciting foundation projects. New
-          and innovative projects are on the horizon!
-        </p>
-        <p className="mt-2 text-xs text-gray-500 dark:text-gray-400">
-          Check back soon for updates on my latest work.
-        </p>
+    <section className="container mx-auto px-4 py-16 max-w-5xl">
+      <motion.h2
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="mb-16 text-4xl font-bold bg-gradient-to-r text-center from-gray-100 to-gray-300 bg-clip-text text-transparent"
+      >
+        Projects
+      </motion.h2>
+      <div className="grid md:grid-cols-2 gap-8">
+        {PROJECTS.map((project, index) => (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.2 }}
+            key={index}
+            className="bg-black backdrop-blur-sm rounded-xl overflow-hidden border border-white hover:border-gray-700 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-purple-500/10"
+          >
+            <div className="relative group">
+              <img
+                src={DTIX}
+                alt={project.name}
+                className="w-full h-56 object-cover brightness-90 group-hover:brightness-100 transition-all duration-300"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-70" />
+            </div>
+
+            <div className="p-6">
+              <h3 className="font-bold text-xl mb-3 text-white/90 group-hover:text-white transition-colors">
+                {project.name}
+              </h3>
+              <p className="text-gray-400 mb-6 text-sm leading-relaxed">
+                {project.description}
+              </p>
+
+              <div className="flex gap-4 justify-start">
+                {project.liveLink && (
+                  <motion.a
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    href={project.liveLink}
+                    className="flex items-center gap-2 px-4 py-2 text-sm rounded-full bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/20 hover:border-purple-500/30"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FaExternalLinkAlt className="text-xs" /> Demo
+                  </motion.a>
+                )}
+                {project.githubLink && (
+                  <motion.a
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    href={project.githubLink}
+                    className="flex items-center gap-2 px-4 py-2 text-sm rounded-full bg-gray-800/50 hover:bg-gray-700/50 border border-gray-700/50"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FaGithub className="text-xs" /> Code
+                  </motion.a>
+                )}
+                {project.videoLink && (
+                  <motion.a
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    href={project.videoLink}
+                    className="flex items-center gap-2 px-4 py-2 text-sm rounded-full bg-green-800/50 hover:bg-gray-700/50 border border-gray-700/50"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FaExternalLinkAlt className="text-xs" /> Video
+                  </motion.a>
+                )}
+              </div>
+            </div>
+          </motion.div>
+        ))}
       </div>
     </section>
   );
 }
-
-export default Project;

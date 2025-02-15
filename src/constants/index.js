@@ -27,20 +27,12 @@ export const EXPERIENCES = [
 
 export const PROJECTS = [
   {
-    name: "Portfolio Website",
+    name: "DTIX",
     description:
-      "A personal portfolio website to showcase my projects, skills, and experiences. Built with React and Next.js for a fast and responsive user experience.",
-    liveLink: "https://your-portfolio-link.com",
-    githubLink: "https://github.com/yourusername/portfolio-website",
-    videoLink: "https://your-video-link.com",
-  },
-  {
-    name: "E-commerce Platform",
-    description:
-      "A full-featured e-commerce platform with user authentication, product listings, and a shopping cart. Developed using Node.js, Express.js, and MongoDB.",
-    liveLink: "https://your-ecommerce-link.com",
-    githubLink: "https://github.com/yourusername/ecommerce-platform",
-    videoLink: "https://your-video-link.com",
+      "The DTIX is a user-friendly platform for booking tickets to various events. It offers features like user authentication, event browsing, seat selection, secure payments, and booking history. Built with React, Node.js, Express, and MongoDB, it ensures a seamless ticket booking experience. ",
+    liveLink: "https://ticket-booking-app-c64o.vercel.app/",
+    githubLink: "https://github.com/dawgdevv/Ticket_Booking_app",
+    videoLink: "https://youtu.be/sD0PZ-AFGTo",
   },
 ];
 

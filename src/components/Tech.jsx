@@ -70,21 +70,46 @@ TechIcon.propTypes = {
 
 function Tech() {
   return (
-    <div className="pb-4 h-full flex flex-col justify-center relative">
+    <div className="min-h-screen flex flex-col justify-center items-center relative px-4">
       <SnowfallBackground />
-      <h1 className="my-4 text-center text-3xl mt-48 font-bold">
+      <motion.h2
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="mb-16 text-4xl font-bold bg-gradient-to-r from-gray-100 to-gray-300 bg-clip-text text-transparent"
+      >
         Technologies
-      </h1>
-      <div className="flex flex-wrap items-center mt-8 justify-center gap-4">
+      </motion.h2>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.2 }}
+        className="grid grid-cols-2 md:grid-cols-4 gap-10 max-w-4xl mx-auto"
+      >
         {techStack.map((tech, index) => (
-          <TechIcon
+          <motion.div
             key={index}
-            Icon={tech.Icon}
-            color={tech.color}
-            url={tech.url}
-          />
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: index * 0.1 }}
+            whileHover={{
+              scale: 1.1,
+              rotate: 5,
+              transition: { duration: 0.2 },
+            }}
+            className="flex justify-center"
+          >
+            <a
+              href={tech.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-6 rounded-xl bg-black backdrop-blur-sm border border-white  hover:border-gray-700 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-purple-500/10"
+            >
+              <tech.Icon className={`text-5xl ${tech.color}`} />
+            </a>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 }

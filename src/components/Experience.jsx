@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { EXPERIENCES } from "../constants/index.js";
 import SnowfallBackground from "./SnowfallBackground.jsx";
 
@@ -5,36 +6,62 @@ function Experience() {
   return (
     <section className="container mx-auto px-4 py-16 h-full flex flex-col justify-center">
       <SnowfallBackground />
-      <h2 className="mb-4 text-center text-3xl font-bold">Experience</h2>
-      <div className="space-y-4">
+      <motion.h2
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="mb-16 text-4xl font-bold text-center bg-gradient-to-r from-gray-100 to-gray-300 bg-clip-text text-transparent"
+      >
+        Experience
+      </motion.h2>
+      <div className="space-y-8 max-w-4xl mx-auto">
         {EXPERIENCES.map((experience, index) => (
-          <div
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: index * 0.2 }}
             key={index}
-            className="border-b border-gray-200 pb-4 last:border-b-0"
+            className="bg-black backdrop-blur-sm rounded-xl p-6 border border-white hover:border-gray-700 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-purple-500/10"
           >
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-              <div className="mb-2 md:mb-0">
-                <h3 className="text-xl font-semibold">{experience.role}</h3>
-                <p className="text-xs text-gray-400">
-                  {experience.company} • {experience.location}
-                </p>
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+              <div className="space-y-1">
+                <motion.h3
+                  className="text-xl font-bold text-white"
+                  whileHover={{ x: 10 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  {experience.role}
+                </motion.h3>
+                <div className="flex items-center gap-2 text-gray-400">
+                  <span className="text-sm font-medium">
+                    {experience.company}
+                  </span>
+                  <span className="text-gray-600">•</span>
+                  <span className="text-sm">{experience.location}</span>
+                </div>
               </div>
-              <p className="text-lg font-medium text-white">
-                {experience.year}
-              </p>
+              <div className="flex items-center gap-2">
+                <span className="px-3 py-1 text-sm text-purple-300 bg-purple-500/10 rounded-full border border-purple-500/20">
+                  {experience.year}
+                </span>
+              </div>
             </div>
-            <p className="mt-2 text-white text-lg">{experience.description}</p>
-            <div className="mt-2 flex flex-wrap gap-1">
+
+            <p className="mt-4 text-gray-300 text-base leading-relaxed">
+              {experience.description}
+            </p>
+
+            <div className="mt-6 flex flex-wrap gap-2">
               {experience.technologies.map((tech, techIndex) => (
-                <span
+                <motion.span
                   key={techIndex}
-                  className="rounded-full bg-gray-100 px-2 py-1 text-xs font-medium text-gray-800"
+                  whileHover={{ scale: 1.05 }}
+                  className="px-3 py-1 text-xs font-medium text-gray-300 bg-gray-800/50 rounded-full border border-gray-700/50 hover:border-gray-600/50 transition-colors"
                 >
                   {tech}
-                </span>
+                </motion.span>
               ))}
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>
