@@ -34,6 +34,7 @@ function Hero() {
   return (
     <div className="relative min-h-screen w-full flex items-center justify-center overflow-hidden">
       <SnowfallBackground />
+
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/50"></div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-8 py-16 lg:py-24">
@@ -70,14 +71,16 @@ function Hero() {
           <motion.div
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
+            whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
             transition={{ delay: 0.4, duration: 0.5 }}
             className="relative group"
           >
-            {/* Outer glow effect */}
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-gray-600 to-gray-300 rounded-full opacity-20 group-hover:opacity-30 blur-md transition-all duration-500"></div>
+            {/* Moon-like outer glow effect */}
+            <div className="absolute -inset-8 bg-yellow-200/20 rounded-full blur-xl opacity-0 group-hover:opacity-70 transition-all duration-500"></div>
+            <div className="absolute -inset-12 bg-yellow-50/10 rounded-full blur-2xl group-hover:animate-pulse opacity-0 group-hover:opacity-60 transition-all duration-500"></div>
 
             {/* Inner border gradient */}
-            <div className="absolute -inset-[2px] bg-gradient-to-r from-gray-500 via-gray-100 to-gray-500 rounded-full opacity-20 group-hover:opacity-40 transition-all duration-500"></div>
+            <div className="absolute -inset-[2px] bg-gradient-to-r from-yellow-200/50 via-purple-400/50 to-yellow-200/50 rounded-full opacity-20 group-hover:opacity-60 transition-all duration-500"></div>
 
             {/* Main container */}
             <div className="relative bg-gray-900 rounded-full p-[2px]">
