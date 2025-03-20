@@ -39,7 +39,6 @@ function App() {
   };
 
   useEffect(() => {
-    // Set initial active section to "hero"
     setActiveSection("hero");
 
     const handleScroll = () => {
@@ -50,7 +49,6 @@ function App() {
         const element = document.getElementById(id);
         if (element) {
           const { offsetTop, offsetHeight } = element;
-          // Adjust the scroll detection threshold
           if (
             scrollPosition >= offsetTop - windowHeight / 2 &&
             scrollPosition < offsetTop + offsetHeight - windowHeight / 2
@@ -63,7 +61,6 @@ function App() {
 
     window.addEventListener("scroll", handleScroll);
 
-    // Ensure page starts at top on initial load
     window.scrollTo(0, 0);
 
     return () => window.removeEventListener("scroll", handleScroll);
@@ -85,31 +82,31 @@ function App() {
 
       <Navbar activeSection={activeSection} onNavClick={scrollToSection} />
 
-      <main className="relative z-10 container mx-auto px-4 pt-20 flex flex-col items-center">
+      <main className="relative z-10 container mx-auto px-2 pt-12 flex flex-col items-center">
         <section
           id="hero"
-          className="min-h-screen w-full flex justify-center items-center"
+          className="min-h-[70vh] w-full flex justify-center items-center"
         >
           <Hero />
         </section>
 
         <section
           id="tech"
-          className="min-h-screen w-full flex justify-center items-center"
+          className="min-h-[70vh] w-full flex justify-center items-center"
         >
           <Tech />
         </section>
 
         <section
           id="experience"
-          className="min-h-screen w-full flex justify-center items-center"
+          className="min-h-[70vh] w-full flex justify-center items-center"
         >
           <Experience />
         </section>
 
         <section
           id="projects"
-          className="min-h-screen w-full flex justify-center items-center"
+          className="min-h-[70vh] w-full flex justify-center items-center"
         >
           <Project />
         </section>

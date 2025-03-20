@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import PropTypes from "prop-types";
+import ReactMarkdown from "react-markdown";
 import { HERO_CONTENT } from "../constants/index.js";
 import myphoto from "../assets/my_photo.jpg";
 import SnowfallBackground from "./SnowfallBackground.jsx";
@@ -55,16 +56,19 @@ function Hero() {
             </div>
 
             <AnimatedText
-              text="3rd Year Student at JK Lakshmipat University"
+              text="Learning, building, and growing"
               className="text-xl lg:text-2xl font-semibold bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 bg-clip-text text-transparent"
               delay={0.2}
             />
 
-            <AnimatedText
-              text={HERO_CONTENT}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.5, ease: "easeOut" }}
               className="text-base lg:text-lg text-gray-300/90 max-w-2xl leading-relaxed text-center lg:text-left"
-              delay={0.3}
-            />
+            >
+              <ReactMarkdown>{HERO_CONTENT}</ReactMarkdown>
+            </motion.div>
           </div>
 
           {/* Profile Photo - Right Side */}

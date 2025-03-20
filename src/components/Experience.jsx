@@ -18,6 +18,7 @@ function Experience() {
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
+            whileHover={{ scale: 1.05 }}
             transition={{ delay: index * 0.2 }}
             key={index}
             className="bg-black backdrop-blur-sm rounded-xl p-6 border border-white hover:border-gray-700 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-purple-500/10"

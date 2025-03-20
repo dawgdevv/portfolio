@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { PROJECTS } from "../constants/index.js";
 import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
-import DTIX from "../assets/DTIX.png";
 
 export default function Project() {
   return (
@@ -18,15 +17,16 @@ export default function Project() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
+            whileHover={{ scale: 1.05 }}
             transition={{ delay: index * 0.2 }}
             key={index}
             className="bg-black backdrop-blur-sm rounded-xl overflow-hidden border border-white hover:border-gray-700 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-purple-500/10"
           >
             <div className="relative group">
               <img
-                src={DTIX}
+                src={project.image}
                 alt={project.name}
-                className="w-full h-56 object-cover brightness-90 group-hover:brightness-100 transition-all duration-300"
+                className="w-full h-60 brightness-90 group-hover:brightness-100 transition-all duration-300"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-70" />
             </div>
@@ -49,7 +49,7 @@ export default function Project() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <FaExternalLinkAlt className="text-xs" /> Demo
+                    <FaExternalLinkAlt className="text-xs" /> Live
                   </motion.a>
                 )}
                 {project.githubLink && (
