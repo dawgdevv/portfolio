@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import PropTypes from "prop-types";
 
-function Navbar() {
+function Navbar({ activeSection, onNavClick }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
@@ -11,33 +12,27 @@ function Navbar() {
     { id: "projects", label: "Projects" },
   ];
 
-  const handleNavClick = (id) => {
-    const element = document.getElementById(id);
-    if (element) {
-      const navHeight = 80;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - navHeight;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
-    }
-    setIsOpen(false);
-  };
-
   return (
     <div className="fixed top-4 left-0 right-0 z-50 flex justify-center">
-      <nav className=" backdrop-blur-md px-6 py-3 rounded-full border border-white shadow-lg">
+      <motion.nav
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ type: "spring", stiffness: 200, damping: 20 }}
+        className="backdrop-blur-md px-6 py-3 rounded-full border border-white/20 shadow-lg"
+      >
         <div className="container mx-auto">
           <div className="flex items-center justify-center">
             {/* Desktop menu */}
-            <div className="hidden md:flex space-x-6">
+            <div className="hidden md:flex space-x-6 relative">
               {navItems.map((item) => (
                 <motion.button
                   key={item.id}
-                  onClick={() => handleNavClick(item.id)}
-                  className="text-gray-300 hover:text-emerald-400 px-3 py-1.5 rounded-full text-sm font-medium transition-colors"
+                  onClick={() => onNavClick(item.id)}
+                  className={`relative z-10 px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
+                    activeSection === item.id
+                      ? "text-white"
+                      : "text-gray-400 hover:text-white"
+                  }`}
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -87,26 +82,42 @@ function Navbar() {
         </div>
 
         {/* Mobile menu dropdown */}
-        {isOpen && (
-          <div className="md:hidden absolute top-full left-0 right-0 mt-2 bg-gray-900/90 backdrop-blur-md rounded-2xl border border-gray-800 shadow-lg">
-            <div className="px-2 pt-2 pb-3 space-y-1">
-              {navItems.map((item) => (
-                <motion.button
-                  key={item.id}
-                  onClick={() => handleNavClick(item.id)}
-                  className="text-gray-300 hover:text-emerald-400 block px-3 py-2 rounded-lg text-sm font-medium w-full text-center transition-colors"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  {item.label}
-                </motion.button>
-              ))}
-            </div>
-          </div>
-        )}
-      </nav>
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className="md:hidden absolute top-full left-0 right-0 mt-2 bg-gray-900/90 backdrop-blur-md rounded-2xl border border-gray-800 shadow-lg"
+            >
+              <div className="px-2 pt-2 pb-3 space-y-1">
+                {navItems.map((item) => (
+                  <motion.button
+                    key={item.id}
+                    onClick={() => onNavClick(item.id)}
+                    className={`text-left block px-3 py-2 rounded-lg text-sm font-medium w-full transition-colors ${
+                      activeSection === item.id
+                        ? "bg-purple-600/20 text-white"
+                        : "text-gray-300 hover:text-white"
+                    }`}
+                    whileHover={{ scale: 1.05, x: 5 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    {item.label}
+                  </motion.button>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.nav>
     </div>
   );
 }
+
+Navbar.propTypes = {
+  activeSection: PropTypes.string.isRequired,
+  onNavClick: PropTypes.func.isRequired,
+};
 
 export default Navbar;

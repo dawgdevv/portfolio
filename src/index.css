@@ -5,4 +5,60 @@
 
 :root {
   font-family: "Inter", sans-serif;
+  --bg-primary: #030712;
+  --text-primary: #f7fafc;
+  --accent-color: #9f7aea;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.light-theme {
+  --bg-primary: #f5f7fa;
+  --text-primary: #1a202c;
+  --accent-color: #6b46c1;
+}
+
+/* Add these smooth transitions for theme switching */
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.light-theme .bg-\[\#030712\] {
+  background-color: var(--bg-primary) !important;
+}
+
+.light-theme .text-white {
+  color: var(--text-primary) !important;
+}
+
+.light-theme .from-\[\#030712\] {
+  --tw-gradient-from: #f5f7fa !important;
+}
+
+.light-theme .to-\[\#1f2937\] {
+  --tw-gradient-to: #e2e8f0 !important;
+}
+
+/* Add this class to use for your interactive elements */
+.interactive {
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+.interactive:hover {
+  transform: translateY(-5px);
 }
