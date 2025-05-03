@@ -3,17 +3,7 @@ import UberClone from "../assets/uber.png";
 import DecentralizedDrive from "../assets/drive.png";
 import ReditAnalysis from "../assets/reddit.png";
 export const HERO_CONTENT = `
-I’m a **Software developer** who enjoys building scalable web applications and exploring decentralized technologies. My day-to-day work revolves around writing clean and efficient code, solving algorithmic challenges, and improving system performance. I believe in continuous learning and spend most of my time coding, debugging, or reading up on new technologies. Whether it's building applications or optimizing backend logic, I’m always looking for ways to improve and refine my approach.
-`;
-
-export const ABOUT_TEXT = `
-Hey, I’m Nishant Raj—a full-stack developer with a growing passion for Web3 technologies. I enjoy building functional, user-friendly applications, from designing frontends with tools like Node.js, Express.js, and EJS to diving into decentralized solutions using Solidity and IPFS.
-
-I focus on writing clean, efficient code to solve real-world problems. Whether it’s creating smart contracts, implementing decentralized identity systems, or working on a Linux-based setup, I approach every challenge with curiosity and a drive to improve.
-
-Outside of coding, I’m honing my skills in data structures, algorithms, and networking, always eager to learn and adapt to new technologies.
-
-If you’re looking for a developer to contribute to your Web3 or full-stack projects, let’s connect and create something meaningful.
+Highly motivated **Software Developer** specializing in building **scalable web applications** and exploring **decentralized systems** and **Data Enginnering*. Proficient across the **MERN stack (MongoDB, Express.js, React, Node.js)**, with hands-on experience in **Java, Python, Javascript, Apache Kafka, Spark, and Ethereum smart contracts**. My work involves architecting robust solutions, writing **clean, efficient code**, and optimizing system performance, demonstrated through different projects. I thrive on solving complex Problems and am dedicated to continuous learning to deliver high-impact results.
 `;
 
 export const EXPERIENCES = [

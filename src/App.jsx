@@ -5,15 +5,17 @@ import Tech from "./components/Tech";
 import Experience from "./components/Experience";
 import Project from "./components/Project";
 import Contact from "./components/Contact";
+import ResumeViewer from "./components/ResumeViewer"; // Import the ResumeViewer component
 import SnowfallBackground from "./components/SnowfallBackground";
 import AnimatedCursor from "./components/AnimatedCursor";
-import { Contact as ContactIcon } from "lucide-react";
+import { Contact as ContactIcon, FileText } from "lucide-react"; // Import FileText icon
 import { FaLinkedin, FaGithub, FaSquareXTwitter } from "react-icons/fa6";
 import { motion, AnimatePresence } from "framer-motion";
 
 function App() {
   const [activeSection, setActiveSection] = useState("hero");
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const [isResumeModalOpen, setIsResumeModalOpen] = useState(false); // Add state for resume modal
   const [scrollProgress, setScrollProgress] = useState(0);
 
   const sections = useMemo(
@@ -82,6 +84,14 @@ function App() {
     setIsContactModalOpen(false);
   };
 
+  const handleResumeClick = () => {
+    setIsResumeModalOpen(true);
+  };
+
+  const handleCloseResumeModal = () => {
+    setIsResumeModalOpen(false);
+  };
+
   return (
     <div className="min-h-screen bg-[#030712] text-white overflow-x-hidden relative">
       <AnimatedCursor />
@@ -131,6 +141,17 @@ function App() {
 
       {/* Social Icons Section with hover effects */}
       <div className="fixed bottom-8 right-8 flex items-center gap-4 z-50">
+        <motion.button
+          whileHover={{ scale: 1.1, backgroundColor: "rgba(255,255,255,0.1)" }}
+          whileTap={{ scale: 0.9 }}
+          onClick={handleResumeClick}
+          className="bg-transparent border-none cursor-pointer p-2 rounded-full hover:bg-gray-800/50 flex items-center justify-center transition-all duration-300"
+          aria-label="View Resume"
+        >
+          <FileText className="w-6 h-6 text-white" />
+          <span className="text-sm text-white hidden md:inline">Resume</span>
+        </motion.button>
+
         <motion.button
           whileHover={{ scale: 1.1, backgroundColor: "rgba(255,255,255,0.1)" }}
           whileTap={{ scale: 0.9 }}
@@ -190,6 +211,19 @@ function App() {
             >
               <Contact onClose={handleCloseModal} />
             </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {isResumeModalOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center"
+          >
+            <ResumeViewer onClose={handleCloseResumeModal} />
           </motion.div>
         )}
       </AnimatePresence>
