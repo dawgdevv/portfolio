@@ -6,8 +6,13 @@ import {
   SiMongodb,
   SiPostgresql,
   SiUbuntu,
+  SiSolidity,
 } from "react-icons/si";
-import { DiNodejs, DiJavascript1 } from "react-icons/di";
+
+import { FaGitAlt } from "react-icons/fa";
+import { FaGolang } from "react-icons/fa6";
+import { DiNodejs, DiJavascript1, DiDocker } from "react-icons/di";
+
 import PropTypes from "prop-types";
 import SnowfallBackground from "./SnowfallBackground.jsx";
 
@@ -47,6 +52,26 @@ const techStack = [
     Icon: SiUbuntu,
     color: "text-orange-600",
     url: "https://ubuntu.com/",
+  },
+  {
+    Icon: FaGolang,
+    color: "text-blue-500",
+    url: "https://golang.org/doc/",
+  },
+  {
+    Icon: DiDocker,
+    color: "text-blue-500",
+    url: "https://docs.docker.com/",
+  },
+  {
+    Icon: FaGitAlt,
+    color: "text-red-500",
+    url: "https://git-scm.com/doc",
+  },
+  {
+    Icon: SiSolidity,
+    color: "text-blue-500",
+    url: "https://docs.soliditylang.org/",
   },
 ];
 
