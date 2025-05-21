@@ -2,6 +2,8 @@ import DTIX from "../assets/DTIX.png";
 import UberClone from "../assets/uber.png";
 import DecentralizedDrive from "../assets/drive.png";
 import ReditAnalysis from "../assets/reddit.png";
+import BACIP from "../assets/bacip.png";
+import BlogApp from "../assets/blog.png";
 export const HERO_CONTENT = `
 Highly motivated **Software Developer** specializing in building **scalable web applications** and exploring **decentralized systems** and **Data Enginnering*. Proficient across the **MERN stack (MongoDB, Express.js, React, Node.js)**, with hands-on experience in **Java, Python, Javascript, Apache Kafka, Spark, and Ethereum smart contracts**. My work involves architecting robust solutions, writing **clean, efficient code**, and optimizing system performance, demonstrated through different projects. I thrive on solving complex Problems and am dedicated to continuous learning to deliver high-impact results.
 `;
@@ -23,11 +25,11 @@ export const EXPERIENCES = [
     ],
   },
   {
-    year: "March 2025 - Present",
+    year: "March 2025 - May 2025",
     role: "Full Stack Development Intern",
     company: "Frantiger Business Consulting (P) Ltd.",
     location: "Bangalore, Karnataka, India",
-    description: `Currently working on a Project where i am assiting founder to build web tools for simplyfying their workflow.`,
+    description: `I worked in team of three on revamping a core website for them using the MERN stack. My responsibilities included developing a user-friendly interface, implementing secure authentication, and ensuring seamless data flow between the front-end and back-end. I also integrated third-party APIs for enhanced functionality and optimized the application for performance and scalability.`,
     technologies: [
       "JavaScript",
       "Node.js",
@@ -76,6 +78,25 @@ export const PROJECTS = [
     githubLink: "https://github.com/dawgdevv/Real_time_reddit_analysis",
     videoLink: "",
     image: ReditAnalysis,
+  },
+  {
+    name: "BACIP",
+    description:
+      "Blockchain Academic Credential Interoperability Protocol - A full-stack application for issuing, verifying, and managing academic credentials on the blockchain. Features include degree issuance by institutions, instant verification by employers, credential management by students, and tamper-proof record keeping on Polygon blockchain.",
+    liveLink: "", // Add your deployment URL if available
+    githubLink: "https://github.com/dawgdevv/BACIP", // Update with correct GitHub path
+    videoLink: "", // Add demo video link if available
+    image: BACIP, // Update with your image reference
+  },
+  {
+    name: "BlogSphere",
+    description:
+      "A full-stack blog application built with MERN stack that enables seamless content creation and sharing. Features include secure user authentication, intuitive blog post management, public and private content controls, commenting system, responsive design, and real-time updates. The platform offers content creators an easy-to-use interface for publishing, while readers can discover, engage with, and follow their favorite content.",
+    liveLink: "https://blog-application-seven-theta.vercel.app/",
+    githubLink: "https://github.com/dawgdevv/Blog_application",
+    videoLink:
+      "https://www.loom.com/share/a889cfc10a4e445c81fba75477929e6e?sid=7bff82e8-37c1-4bfd-8e22-5b38a779095f",
+    image: BlogApp,
   },
 ];
 
