@@ -124,7 +124,7 @@ function App() {
         />
       </div>
       <Navbar activeSection={activeSection} onNavClick={scrollToSection} />
-      <main className="relative z-10 container mx-auto px-4 pt-24 lg:pt-28 flex flex-col items-center">
+      <main className="relative z-10 container mx-auto px-4 pt-12 lg:pt-2 flex flex-col items-center">
         {" "}
         {/* Increased pt */}
         <section
