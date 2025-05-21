@@ -6,7 +6,6 @@ import Experience from "./components/Experience";
 import Project from "./components/Project";
 import Contact from "./components/Contact";
 import ResumeViewer from "./components/ResumeViewer"; // Import the ResumeViewer component
-import SnowfallBackground from "./components/SnowfallBackground";
 import AnimatedCursor from "./components/AnimatedCursor";
 import { Contact as ContactIcon, FileText } from "lucide-react"; // Import FileText icon
 import { FaLinkedin, FaGithub, FaSquareXTwitter } from "react-icons/fa6";
@@ -15,7 +14,7 @@ import { motion, AnimatePresence } from "framer-motion";
 function App() {
   const [activeSection, setActiveSection] = useState("hero");
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
-  const [isResumeModalOpen, setIsResumeModalOpen] = useState(false); // Add state for resume modal
+  const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
 
   const sections = useMemo(
@@ -31,11 +30,12 @@ function App() {
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
-      const navHeight = 80;
-      const elementPosition = element.offsetTop;
+      const navHeight = document.querySelector("nav")?.offsetHeight || 80; // Dynamically get nav height
+      const elementPosition =
+        element.getBoundingClientRect().top + window.scrollY;
 
       window.scrollTo({
-        top: elementPosition - navHeight,
+        top: elementPosition - navHeight - 20, // Added extra offset
         behavior: "smooth",
       });
       setActiveSection(id);
@@ -46,32 +46,37 @@ function App() {
     setActiveSection("hero");
 
     const handleScroll = () => {
-      // Track active section
       const scrollPosition = window.scrollY;
       const windowHeight = window.innerHeight;
+      const navHeight = document.querySelector("nav")?.offsetHeight || 80;
 
+      let currentSection = "hero";
       sections.forEach(({ id }) => {
         const element = document.getElementById(id);
         if (element) {
           const { offsetTop, offsetHeight } = element;
+          // Adjust detection point to be slightly below navbar
           if (
-            scrollPosition >= offsetTop - windowHeight / 2 &&
-            scrollPosition < offsetTop + offsetHeight - windowHeight / 2
+            scrollPosition >= offsetTop - navHeight - windowHeight / 2 &&
+            scrollPosition <
+              offsetTop + offsetHeight - navHeight - windowHeight / 2
           ) {
-            setActiveSection(id);
+            currentSection = id;
           }
         }
       });
+      setActiveSection(currentSection);
 
-      // Update scroll progress
       const scrollTotal =
         document.documentElement.scrollHeight - window.innerHeight;
-      const scrolled = (scrollPosition / scrollTotal) * 100;
+      const scrolled = (scrollPosition / Math.max(scrollTotal, 1)) * 100; // Avoid division by zero
       setScrollProgress(scrolled);
     };
 
-    window.addEventListener("scroll", handleScroll);
-    window.scrollTo(0, 0);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    // Initial call to set correct section if page loads scrolled
+    handleScroll();
+    // Removed window.scrollTo(0,0) to respect refresh scroll position
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, [sections]);
@@ -93,136 +98,155 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#030712] text-white overflow-x-hidden relative">
+    <div className="min-h-screen bg-[#030712] text-gray-100 overflow-x-hidden relative selection:bg-purple-500/30">
       <AnimatedCursor />
-      <SnowfallBackground />
-
-      <div className="fixed inset-0 -z-10 bg-gradient-to-b from-[#030712] to-[#1f2937] opacity-90" />
-
+      {/* <SnowfallBackground /> */}{" "}
+      {/* Consider making this optional or more subtle if performance is a concern */}
+      {/* More dynamic background */}
+      <div className="fixed inset-0 -z-10">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#030712] via-[#0a0d1f] to-[#111827] opacity-95"></div>
+        {/* Subtle animated noise */}
+        <div
+          className="absolute inset-0 opacity-[0.02]"
+          style={{
+            backgroundImage:
+              "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E\")",
+          }}
+        ></div>
+      </div>
       {/* Scroll progress indicator */}
-      <div className="fixed top-0 left-0 w-full h-1 z-50">
+      <div className="fixed top-0 left-0 w-full h-1 z-[60]">
+        {" "}
+        {/* Ensure it's above navbar */}
         <motion.div
-          className="h-full bg-gradient-to-r from-purple-500 via-blue-500 to-purple-500"
+          className="h-full bg-gradient-to-r from-purple-600 via-pink-500 to-purple-400 shadow-lg shadow-purple-500/30"
           style={{ width: `${scrollProgress}%` }}
         />
       </div>
-
       <Navbar activeSection={activeSection} onNavClick={scrollToSection} />
-
-      <main className="relative z-10 container mx-auto px-2 pt-12 flex flex-col items-center">
+      <main className="relative z-10 container mx-auto px-4 pt-24 lg:pt-28 flex flex-col items-center">
+        {" "}
+        {/* Increased pt */}
         <section
           id="hero"
-          className="min-h-[70vh] w-full flex justify-center items-center"
+          className="min-h-[calc(100vh-6rem)] w-full flex justify-center items-center py-10" // Adjusted min-height
         >
           <Hero />
         </section>
-
         <section
           id="tech"
-          className="min-h-[70vh] w-full flex justify-center items-center"
+          className="min-h-[70vh] w-full flex justify-center items-center py-16 lg:py-24"
         >
           <Tech />
         </section>
-
         <section
           id="experience"
-          className="min-h-[70vh] w-full flex justify-center items-center"
+          className="min-h-[70vh] w-full flex justify-center items-center py-16 lg:py-24"
         >
           <Experience />
         </section>
-
         <section
           id="projects"
-          className="min-h-[70vh] w-full flex justify-center items-center"
+          className="min-h-[70vh] w-full flex justify-center items-center py-16 lg:py-24"
         >
           <Project />
         </section>
       </main>
-
-      {/* Social Icons Section with hover effects */}
-      <div className="fixed bottom-8 right-8 flex items-center gap-4 z-50">
-        <motion.button
-          whileHover={{ scale: 1.1, backgroundColor: "rgba(255,255,255,0.1)" }}
-          whileTap={{ scale: 0.9 }}
-          onClick={handleResumeClick}
-          className="bg-transparent border-none cursor-pointer p-2 rounded-full hover:bg-gray-800/50 flex items-center justify-center transition-all duration-300"
-          aria-label="View Resume"
-        >
-          <FileText className="w-6 h-6 text-white" />
-          <span className="text-sm text-white hidden md:inline">Resume</span>
-        </motion.button>
-
-        <motion.button
-          whileHover={{ scale: 1.1, backgroundColor: "rgba(255,255,255,0.1)" }}
-          whileTap={{ scale: 0.9 }}
-          onClick={handleContactClick}
-          className="bg-transparent border-none cursor-pointer p-2 rounded-full hover:bg-gray-800/50 flex items-center justify-center transition-all duration-300"
-        >
-          <ContactIcon className="w-6 h-6 text-white" />
-        </motion.button>
-
-        <motion.a
-          whileHover={{ scale: 1.1, backgroundColor: "rgba(255,255,255,0.1)" }}
-          whileTap={{ scale: 0.9 }}
-          href="https://www.linkedin.com/in/nraj24/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="p-2 rounded-full hover:bg-gray-800/50 flex items-center justify-center transition-all duration-300"
-        >
-          <FaLinkedin className="w-6 h-6 text-white" />
-        </motion.a>
-
-        <motion.a
-          whileHover={{ scale: 1.1, backgroundColor: "rgba(255,255,255,0.1)" }}
-          whileTap={{ scale: 0.9 }}
-          href="https://github.com/dawgdevv"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="p-2 rounded-full hover:bg-gray-800/50 flex items-center justify-center transition-all duration-300"
-        >
-          <FaGithub className="w-6 h-6 text-white" />
-        </motion.a>
-
-        <motion.a
-          whileHover={{ scale: 1.1, backgroundColor: "rgba(255,255,255,0.1)" }}
-          whileTap={{ scale: 0.9 }}
-          href="https://x.com/sfunish"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="p-2 rounded-full hover:bg-gray-800/50 flex items-center justify-center transition-all duration-300"
-        >
-          <FaSquareXTwitter className="w-6 h-6 text-white" />
-        </motion.a>
-      </div>
-
+      {/* Floating Action Buttons / Social Icons Group */}
+      <motion.div
+        className="fixed bottom-6 right-6 flex flex-col items-end gap-3 z-50"
+        initial={{ opacity: 0, x: 50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.5, type: "spring", stiffness: 100 }}
+      >
+        {[
+          {
+            label: "Resume",
+            icon: <FileText className="w-5 h-5" />,
+            action: handleResumeClick,
+            href: null,
+          },
+          {
+            label: "Contact",
+            icon: <ContactIcon className="w-5 h-5" />,
+            action: handleContactClick,
+            href: null,
+          },
+          {
+            label: "LinkedIn",
+            icon: <FaLinkedin className="w-5 h-5" />,
+            href: "https://www.linkedin.com/in/nraj24/",
+            action: null,
+          },
+          {
+            label: "GitHub",
+            icon: <FaGithub className="w-5 h-5" />,
+            href: "https://github.com/dawgdevv",
+            action: null,
+          },
+          {
+            label: "Twitter",
+            icon: <FaSquareXTwitter className="w-5 h-5" />,
+            href: "https://x.com/sfunish",
+            action: null,
+          },
+        ].map((item, index) => (
+          <motion.button
+            key={item.label}
+            whileHover={{ scale: 1.1, x: -5 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={
+              item.action ? item.action : () => window.open(item.href, "_blank")
+            }
+            className="group bg-black/40 backdrop-blur-md border border-white/10 shadow-lg hover:border-purple-500/50 text-gray-300 hover:text-white p-3 rounded-full flex items-center gap-2 transition-all duration-300"
+            aria-label={item.label}
+            custom={index}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              delay: 0.6 + index * 0.1,
+              type: "spring",
+              stiffness: 120,
+            }}
+          >
+            {item.icon}
+            <span className="hidden group-hover:inline-block text-xs font-mono pr-1">
+              {item.label}
+            </span>
+          </motion.button>
+        ))}
+      </motion.div>
       <AnimatePresence>
         {isContactModalOpen && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center"
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 bg-black/70 backdrop-blur-md z-[70] flex items-center justify-center p-4"
           >
             <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              transition={{ type: "spring", bounce: 0.3 }}
+              initial={{ scale: 0.9, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.9, opacity: 0, y: 20 }}
+              transition={{ type: "spring", stiffness: 300, damping: 25 }}
+              className="w-full max-w-lg"
             >
               <Contact onClose={handleCloseModal} />
             </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
-
       <AnimatePresence>
         {isResumeModalOpen && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center"
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 bg-black/70 backdrop-blur-md z-[70] flex items-center justify-center p-4"
           >
+            {/* ResumeViewer might need its own motion.div for entry/exit if it's not self-contained */}
             <ResumeViewer onClose={handleCloseResumeModal} />
           </motion.div>
         )}
