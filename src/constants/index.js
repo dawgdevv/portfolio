@@ -5,12 +5,28 @@ import ReditAnalysis from "../assets/reddit.png";
 import BACIP from "../assets/bacip.png";
 import BlogApp from "../assets/blog.png";
 export const HERO_CONTENT = `
-Highly motivated **Software Developer** specializing in building **scalable web applications** and exploring **decentralized systems** and **Data Enginnering*. Proficient across the **MERN stack (MongoDB, Express.js, React, Node.js)**, with hands-on experience in **Java, Python, Javascript, Apache Kafka, Spark, and Ethereum smart contracts**. My work involves architecting robust solutions, writing **clean, efficient code**, and optimizing system performance, demonstrated through different projects. I thrive on solving complex Problems and am dedicated to continuous learning to deliver high-impact results.
+Highly motivated **Software Developer** specializing in building **scalable web applications** and exploring **decentralized systems** and **Data Enginnering**. Proficient across the **MERN stack (MongoDB, Express.js, React, Node.js)**, with hands-on experience in **Java, Python, Javascript, Apache Kafka, Spark, and Ethereum smart contracts**. My work involves architecting robust solutions, writing **clean, efficient code**, and optimizing system performance, demonstrated through different projects. I thrive on solving complex Problems and am dedicated to continuous learning to deliver high-impact results.
 `;
 
 export const EXPERIENCES = [
   {
-    year: "2024",
+    year: "March 2025 - May 2025",
+    role: "Full Stack Development Intern",
+    company: "Frantiger Business Consulting",
+    location: "Bangalore, Karnataka, India",
+    description: `I worked in team of three on revamping a core website for them using the MERN stack. My responsibilities included developing a user-friendly interface, implementing secure authentication, and ensuring seamless data flow between the front-end and back-end. I also integrated third-party APIs for enhanced functionality and optimized the application for performance and scalability.`,
+    technologies: [
+      "JavaScript",
+      "Node.js",
+      "Express.js",
+      "React.js",
+      "MongoDB",
+      "tailwind CSS",
+      "PostgreSQL",
+    ],
+  },
+  {
+    year: "May 2024-July 2024",
     role: "Software Development Intern",
     company: "Aunwesha Knowledge Technologies Private Limited",
     location: "Kolkata, India",
@@ -22,22 +38,6 @@ export const EXPERIENCES = [
       "Aspose.CAD",
       "Cloud OCR",
       "Excel",
-    ],
-  },
-  {
-    year: "March 2025 - May 2025",
-    role: "Full Stack Development Intern",
-    company: "Frantiger Business Consulting (P) Ltd.",
-    location: "Bangalore, Karnataka, India",
-    description: `I worked in team of three on revamping a core website for them using the MERN stack. My responsibilities included developing a user-friendly interface, implementing secure authentication, and ensuring seamless data flow between the front-end and back-end. I also integrated third-party APIs for enhanced functionality and optimized the application for performance and scalability.`,
-    technologies: [
-      "JavaScript",
-      "Node.js",
-      "Express.js",
-      "React.js",
-      "MongoDB",
-      "tailwind CSS",
-      "vite",
     ],
   },
 ];

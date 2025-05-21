@@ -13,12 +13,12 @@ function Navbar({ activeSection, onNavClick }) {
   ];
 
   return (
-    <div className="fixed top-4 left-0 right-0 z-50 flex justify-center">
+    <div className="fixed top-4 left-0 right-0 z-50 flex justify-center ">
       <motion.nav
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ type: "spring", stiffness: 200, damping: 20 }}
-        className="backdrop-blur-md px-6 py-3 rounded-full border border-white/20 shadow-lg"
+        className="backdrop-blur-md bg-white/10 border border-white/20 shadow-lg rounded-2xl "
       >
         <div className="container mx-auto">
           <div className="flex items-center justify-center">
