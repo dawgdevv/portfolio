@@ -4,6 +4,7 @@ import DecentralizedDrive from "../assets/drive.png";
 import ReditAnalysis from "../assets/reddit.png";
 import BACIP from "../assets/bacip.png";
 import BlogApp from "../assets/blog.png";
+import GoalFlowApp from "../assets/goalflow.png";
 export const HERO_CONTENT = `
 Highly motivated **Software Developer** specializing in building **scalable web applications** and exploring **decentralized systems** and **Data Enginnering**. Proficient across the **MERN stack (MongoDB, Express.js, React, Node.js)**, with hands-on experience in **Java, Python, Javascript, Apache Kafka, Spark, and Ethereum smart contracts**. My work involves architecting robust solutions, writing **clean, efficient code**, and optimizing system performance, demonstrated through different projects. I thrive on solving complex Problems and am dedicated to continuous learning to deliver high-impact results.
 `;
@@ -91,12 +92,22 @@ export const PROJECTS = [
   {
     name: "BlogSphere",
     description:
-      "A full-stack blog application built with MERN stack that enables seamless content creation and sharing. Features include secure user authentication, intuitive blog post management, public and private content controls, commenting system, responsive design, and real-time updates. The platform offers content creators an easy-to-use interface for publishing, while readers can discover, engage with, and follow their favorite content.",
-    liveLink: "https://blog-application-seven-theta.vercel.app/",
-    githubLink: "https://github.com/dawgdevv/Blog_application",
+      "A modern full-stack blogging platform where users can create, read, update, and delete blog posts, comment, and interact with others. Features include JWT authentication, AI-powered writing assistant (grammar, enhancement, tone), a gamified streak and level system with badges, a streak dashboard with activity heatmap, and a responsive, minimal UI. Built with React, Node.js, Express, and MongoDB.",
+    liveLink: "https://blog-app-henna-three.vercel.app/",
+    githubLink: "https://github.com/dawgdevv/Blog_app",
     videoLink:
-      "https://www.loom.com/share/a889cfc10a4e445c81fba75477929e6e?sid=7bff82e8-37c1-4bfd-8e22-5b38a779095f",
+      "https://www.loom.com/share/ee2bef4333c343d984cf6917c8c8d7d0?sid=cfc7e595-0132-45d6-ac32-6d8c37d5c2e6",
     image: BlogApp,
+  },
+  {
+    name: "GoalFlow",
+    description:
+      "A comprehensive full-stack goal achievement platform that transforms dreams into reality through systematic goal setting, action planning, and progress tracking. Features include goal management with priority levels and deadlines, action plan creation with task breakdown, interactive horizontal scrolling task selector, real-time progress visualization, comprehensive dashboard with statistics, JWT authentication with protected routes, and a modern dark UI optimized for productivity. Built with React 18, Node.js, Express, MongoDB, and Tailwind CSS.",
+    liveLink: "https://taskapp-blue.vercel.app/",
+    githubLink: "https://github.com/dawgdevv/Task_board",
+    videoLink:
+      "https://www.loom.com/share/1127c4cf417344c684a496ffdc381ad6?sid=d4337315-99e0-40c7-9a8a-dbfc68a3c3b4",
+    image: GoalFlowApp, // You'll need to add this image import
   },
 ];
 

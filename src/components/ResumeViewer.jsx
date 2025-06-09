@@ -11,7 +11,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 import PropTypes from "prop-types";
-import resumePdf from "../assets/Nishant_resu_may.pdf"; // Adjust path if needed
+import resumePdf from "../assets/Nishant_resu_latest.pdf"; // Adjust path if needed
 
 // Match worker version to API version used by react-pdf
 pdfjs.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@4.8.69/build/pdf.worker.min.mjs`;
