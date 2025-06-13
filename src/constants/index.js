@@ -53,15 +53,7 @@ export const PROJECTS = [
     videoLink: "https://youtu.be/sD0PZ-AFGTo",
     image: DTIX,
   },
-  {
-    name: "Uber Clone",
-    description:
-      "A comprehensive ride-hailing application with features for both users and captains, including registration, login, profile management, ride booking, fare calculation, live tracking, and ride management.",
-    liveLink: "https://full-stack-uber.vercel.app/",
-    githubLink: "https://github.com/dawgdevv/Full_stack_uber",
-    videoLink: "",
-    image: UberClone,
-  },
+
   {
     name: "Decentralized Drive",
     description:
@@ -108,6 +100,15 @@ export const PROJECTS = [
     videoLink:
       "https://www.loom.com/share/1127c4cf417344c684a496ffdc381ad6?sid=d4337315-99e0-40c7-9a8a-dbfc68a3c3b4",
     image: GoalFlowApp, // You'll need to add this image import
+  },
+  {
+    name: "Uber Clone",
+    description:
+      "A comprehensive ride-hailing application with features for both users and captains, including registration, login, profile management, ride booking, fare calculation, live tracking, and ride management.",
+    liveLink: "https://full-stack-uber.vercel.app/",
+    githubLink: "https://github.com/dawgdevv/Full_stack_uber",
+    videoLink: "",
+    image: UberClone,
   },
 ];
 
