@@ -26,21 +26,6 @@ export const EXPERIENCES = [
       "PostgreSQL",
     ],
   },
-  {
-    year: "May 2024-July 2024",
-    role: "Software Development Intern",
-    company: "Aunwesha Knowledge Technologies Private Limited",
-    location: "Kolkata, India",
-    description: `Focused on creating low-cost techniques for data extraction and analysis from CAD files. Responsibilities included extracting data from AutoCAD files using various OCR tools, developing a Java application for document search using Apache Lucene, solving data extraction issues, exporting data to Excel for integration, and designing a user-friendly GUI for easier data extraction from DWG files.`,
-    technologies: [
-      "Java",
-      "Apache Lucene",
-      "OCR.space",
-      "Aspose.CAD",
-      "Cloud OCR",
-      "Excel",
-    ],
-  },
 ];
 
 export const PROJECTS = [
