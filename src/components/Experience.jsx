@@ -4,16 +4,16 @@ import SnowfallBackground from "./SnowfallBackground.jsx";
 
 function Experience() {
   return (
-    <section className="container mx-auto px-4 py-16 h-full flex flex-col justify-center">
+    <section className="container mx-auto px-4 py-8 h-full flex flex-col justify-center">
       <SnowfallBackground />
       <motion.h2
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="mb-16 text-4xl font-bold text-center bg-gradient-to-r from-gray-100 to-gray-300 bg-clip-text text-transparent"
+        className="mb-8 text-4xl font-bold text-center bg-gradient-to-r from-gray-100 to-gray-300 bg-clip-text text-transparent"
       >
         Experience
       </motion.h2>
-      <div className="space-y-8 max-w-4xl mx-auto">
+      <div className="space-y-6 max-w-4xl mx-auto">
         {EXPERIENCES.map((experience, index) => (
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -21,9 +21,9 @@ function Experience() {
             whileHover={{ scale: 1.05 }}
             transition={{ delay: index * 0.2 }}
             key={index}
-            className="bg-black backdrop-blur-sm rounded-xl p-6 border border-white hover:border-gray-700 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-purple-500/10"
+            className="bg-black backdrop-blur-sm rounded-xl p-4 border border-white hover:border-gray-700 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-purple-500/10"
           >
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
               <div className="space-y-1">
                 <motion.h3
                   className="text-xl font-bold text-white"
@@ -47,11 +47,11 @@ function Experience() {
               </div>
             </div>
 
-            <p className="mt-4 text-gray-300 text-base leading-relaxed">
+            <p className="mt-3 text-gray-300 text-base leading-relaxed">
               {experience.description}
             </p>
 
-            <div className="mt-6 flex flex-wrap gap-2">
+            <div className="mt-4 flex flex-wrap gap-2">
               {experience.technologies.map((tech, techIndex) => (
                 <motion.span
                   key={techIndex}

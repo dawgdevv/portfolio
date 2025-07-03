@@ -59,7 +59,7 @@ const ResumeViewer = ({ onClose }) => {
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.9 }}
-      className="bg-gray-900/80 backdrop-blur-md rounded-lg border border-gray-700 shadow-xl w-[90vw] h-[90vh] max-w-4xl flex flex-col overflow-hidden"
+      className="bg-black/80 backdrop-blur-md rounded-lg border border-gray-700 shadow-xl w-[90vw] h-[90vh] max-w-4xl flex flex-col overflow-hidden"
     >
       {/* Header Controls */}
       <div className="flex items-center justify-between p-3 bg-gray-800/50 border-b border-gray-700 text-white">
@@ -128,7 +128,7 @@ const ResumeViewer = ({ onClose }) => {
       </div>
 
       {/* PDF Content Area */}
-      <div className="flex-grow overflow-auto p-4 bg-gray-800/30 flex justify-center items-start">
+      <div className="flex-grow overflow-auto p-4 bg-black/30 flex justify-center items-start">
         {isLoading && (
           <div className="text-gray-400 flex flex-col items-center justify-center h-full">
             <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500 mb-4"></div>

@@ -43,18 +43,18 @@ const Contact = ({ onClose }) => {
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.9 }}
-      className="bg-black backdrop-blur-md rounded-2xl border border-gray-800 p-8 w-full max-w-4xl mx-4 relative"
+      className="bg-black backdrop-blur-md rounded-2xl border border-gray-800 p-6 w-full max-w-4xl mx-4 relative"
     >
       <button
         onClick={onClose}
-        className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors"
+        className="absolute top-3 right-3 text-gray-400 hover:text-white transition-colors"
       >
         <X className="h-6 w-6" />
       </button>
 
-      <div className="grid md:grid-cols-2 gap-8">
+      <div className="grid md:grid-cols-2 gap-6">
         {/* Contact Form */}
-        <div className="space-y-6">
+        <div className="space-y-4">
           <div>
             <h2 className="text-2xl font-bold text-emerald-400 mb-2">
               Get in Touch
@@ -64,7 +64,7 @@ const Contact = ({ onClose }) => {
             </p>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-3">
             <div>
               <label className="block text-sm font-medium text-gray-300 mb-1">
                 Email
@@ -128,7 +128,7 @@ const Contact = ({ onClose }) => {
         </div>
 
         {/* Contact Information */}
-        <div className="space-y-6">
+        <div className="space-y-4">
           <div>
             <h2 className="text-2xl font-bold text-emerald-400 mb-2">
               Contact Info
@@ -138,7 +138,7 @@ const Contact = ({ onClose }) => {
             </p>
           </div>
 
-          <div className="space-y-4">
+          <div className="space-y-3">
             <motion.div
               whileHover={{ x: 5 }}
               className="flex items-center space-x-3 text-gray-300"

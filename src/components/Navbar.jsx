@@ -23,7 +23,7 @@ function Navbar({ activeSection, onNavClick }) {
         <div className="container mx-auto">
           <div className="flex items-center justify-center">
             {/* Desktop menu */}
-            <div className="hidden md:flex space-x-6 relative">
+            <div className="hidden md:flex space-x-4 relative">
               {navItems.map((item) => (
                 <motion.button
                   key={item.id}
@@ -88,9 +88,9 @@ function Navbar({ activeSection, onNavClick }) {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              className="md:hidden absolute top-full left-0 right-0 mt-2 bg-gray-900/90 backdrop-blur-md rounded-2xl border border-gray-800 shadow-lg"
+              className="md:hidden absolute top-full left-0 right-0 mt-1 bg-gray-900/90 backdrop-blur-md rounded-2xl border border-gray-800 shadow-lg"
             >
-              <div className="px-2 pt-2 pb-3 space-y-1">
+              <div className="px-2 pt-2 pb-2 space-y-1">
                 {navItems.map((item) => (
                   <motion.button
                     key={item.id}

@@ -124,30 +124,28 @@ function App() {
         />
       </div>
       <Navbar activeSection={activeSection} onNavClick={scrollToSection} />
-      <main className="relative z-10 container mx-auto px-4 pt-12 lg:pt-2 flex flex-col items-center">
-        {" "}
-        {/* Increased pt */}
+      <main className="relative z-10 container mx-auto px-4 pt-8 lg:pt-2 flex flex-col items-center">
         <section
           id="hero"
-          className="min-h-[calc(100vh-6rem)] w-full flex justify-center items-center py-10" // Adjusted min-height
+          className="min-h-[calc(100vh-6rem)] w-full flex justify-center items-center py-6"
         >
           <Hero />
         </section>
         <section
           id="tech"
-          className="min-h-[70vh] w-full flex justify-center items-center py-16 lg:py-24"
+          className="min-h-[70vh] w-full flex justify-center items-center py-8 lg:py-12"
         >
           <Tech />
         </section>
         <section
           id="experience"
-          className="min-h-[70vh] w-full flex justify-center items-center py-16 lg:py-24"
+          className="min-h-[70vh] w-full flex justify-center items-center py-8 lg:py-12"
         >
           <Experience />
         </section>
         <section
           id="projects"
-          className="min-h-[70vh] w-full flex justify-center items-center py-16 lg:py-24"
+          className="min-h-[70vh] w-full flex justify-center items-center py-8 lg:py-12"
         >
           <Project />
         </section>

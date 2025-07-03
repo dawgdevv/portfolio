@@ -38,38 +38,32 @@ function Hero() {
 
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/50"></div>
 
-      <div className="relative z-10 max-w-6xl mx-auto px-8 py-16 lg:py-24">
-        <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-16 lg:gap-20">
-          {" "}
-          {/* Increased gap */}
+      <div className="relative z-10 max-w-6xl mx-auto px-8 py-8 lg:py-12">
+        <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-8 lg:gap-12">
           {/* Text Content - Left Side */}
-          <div className="flex flex-col items-center lg:items-start space-y-10">
-            {" "}
-            {/* Increased space-y */}
-            <div className="space-y-4">
-              {" "}
-              {/* Adjusted space-y for name block */}
+          <div className="flex flex-col items-center lg:items-start space-y-6">
+            <div className="space-y-3">
               <AnimatedText
                 text="Hi there 👋"
-                className="text-3xl lg:text-4xl font-medium text-purple-400/90 tracking-wide" // Increased font size
+                className="text-3xl lg:text-4xl font-medium text-purple-400/90 tracking-wide"
                 delay={0}
               />
               <AnimatedText
                 text="I'm Nishant Raj"
-                className="text-6xl lg:text-8xl font-bold text-white tracking-tight" // Increased font size
+                className="text-6xl lg:text-8xl font-bold text-white tracking-tight"
                 delay={0.1}
               />
             </div>
             <AnimatedText
               text="Learning, building, and growing"
-              className="text-2xl lg:text-3xl font-semibold bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 bg-clip-text text-transparent" // Increased font size
+              className="text-2xl lg:text-3xl font-semibold bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 bg-clip-text text-transparent"
               delay={0.2}
             />
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.5, ease: "easeOut" }}
-              className="text-lg lg:text-xl text-gray-300/90 max-w-3xl leading-relaxed text-center lg:text-left" // Increased font size and max-width
+              className="text-lg lg:text-xl text-gray-300/90 max-w-3xl leading-relaxed text-center lg:text-left"
             >
               <ReactMarkdown>{HERO_CONTENT}</ReactMarkdown>
             </motion.div>
@@ -95,7 +89,7 @@ function Hero() {
                 <img
                   src={myphoto}
                   alt="Nishant Raj"
-                  className="w-56 h-56 lg:w-80 lg:h-80 rounded-full object-cover grayscale-[0.2] group-hover:grayscale-0 transition-all duration-500" // Increased image size
+                  className="w-56 h-56 lg:w-80 lg:h-80 rounded-full object-cover grayscale-[0.2] group-hover:grayscale-0 transition-all duration-500"
                 />
                 {/* Subtle overlay */}
                 <div className="absolute inset-0 rounded-full bg-gradient-to-b from-transparent to-black/40 opacity-40 group-hover:opacity-0 transition-all duration-500"></div>
