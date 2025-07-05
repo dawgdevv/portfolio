@@ -6,7 +6,11 @@ import BACIP from "../assets/bacip.png";
 import BlogApp from "../assets/blog.png";
 import GoalFlowApp from "../assets/goalflow.png";
 export const HERO_CONTENT = `
-Highly motivated **Software Developer** specializing in building **scalable web applications** and exploring **decentralized systems** and **Data Enginnering**. Proficient across the **MERN stack (MongoDB, Express.js, React, Node.js)**, with hands-on experience in **Java, Python, Javascript, Apache Kafka, Spark, and Ethereum smart contracts**. My work involves architecting robust solutions, writing **clean, efficient code**, and optimizing system performance, demonstrated through different projects. I thrive on solving complex Problems and am dedicated to continuous learning to deliver high-impact results.
+I mostly work with JavaScript, Node.js, React, and all the tools that go into building modern full-stack applications. I'm particularly interested in everything related to tech I genuinely enjoy building websites, systems, and tinkering with new technologies.
+
+I adapt quickly to different stacks, but I have a soft spot for web3 and am a big fan of decentralization. I'm also a Linux enthusiast and use Ubuntu as my daily driver.
+
+Most of my days revolve around solving LeetCode problems, building things from scratch, and constantly thinking about how little I know. That’s really it I just love building stuff. Nothing more to it.
 `;
 
 export const EXPERIENCES = [

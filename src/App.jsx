@@ -149,42 +149,43 @@ function App() {
         >
           <Project />
         </section>
+        <p className="mb-8">Made by Nishant Raj </p>
       </main>
       {/* Floating Action Buttons / Social Icons Group */}
       <motion.div
-        className="fixed bottom-6 right-6 flex flex-col items-end gap-3 z-50"
+        className="fixed bottom-6 right-6 flex flex-col items-end gap-5 z-50"
         initial={{ opacity: 0, x: 50 }}
         animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 0.5, type: "spring", stiffness: 100 }}
+        transition={{ delay: 0, stiffness: 100 }}
       >
         {[
           {
             label: "Resume",
-            icon: <FileText className="w-5 h-5" />,
+            icon: <FileText className="w-8 h-8" />,
             action: handleResumeClick,
             href: null,
           },
           {
             label: "Contact",
-            icon: <ContactIcon className="w-5 h-5" />,
+            icon: <ContactIcon className="w-8 h-8" />,
             action: handleContactClick,
             href: null,
           },
           {
             label: "LinkedIn",
-            icon: <FaLinkedin className="w-5 h-5" />,
+            icon: <FaLinkedin className="w-8 h-8" />,
             href: "https://www.linkedin.com/in/nraj24/",
             action: null,
           },
           {
             label: "GitHub",
-            icon: <FaGithub className="w-5 h-5" />,
+            icon: <FaGithub className="w-8 h-8" />,
             href: "https://github.com/dawgdevv",
             action: null,
           },
           {
             label: "Twitter",
-            icon: <FaSquareXTwitter className="w-5 h-5" />,
+            icon: <FaSquareXTwitter className="w-8 h-8" />,
             href: "https://x.com/sfunish",
             action: null,
           },

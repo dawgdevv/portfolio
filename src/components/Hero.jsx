@@ -45,7 +45,7 @@ function Hero() {
             <div className="space-y-3">
               <AnimatedText
                 text="Hi there 👋"
-                className="text-3xl lg:text-4xl font-medium text-purple-400/90 tracking-wide"
+                className="text-3xl lg:text-6xl font-medium text-purple-400/90 tracking-wide"
                 delay={0}
               />
               <AnimatedText
@@ -54,8 +54,9 @@ function Hero() {
                 delay={0.1}
               />
             </div>
+
             <AnimatedText
-              text="Learning, building, and growing"
+              text="Full Stack Developer that Builds Stuff  "
               className="text-2xl lg:text-3xl font-semibold bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 bg-clip-text text-transparent"
               delay={0.2}
             />
@@ -63,7 +64,7 @@ function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.5, ease: "easeOut" }}
-              className="text-lg lg:text-xl text-gray-300/90 max-w-3xl leading-relaxed text-center lg:text-left"
+              className="text-lg lg:text-2xl text-gray-300/90 max-w-3xl leading-relaxed text-center lg:text-left"
             >
               <ReactMarkdown>{HERO_CONTENT}</ReactMarkdown>
             </motion.div>
@@ -74,7 +75,7 @@ function Hero() {
             animate={{ opacity: 1, scale: 1 }}
             whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
             transition={{ delay: 0.4, duration: 0.5 }}
-            className="relative group"
+            className="relative group bottom-32"
           >
             {/* Moon-like outer glow effect */}
             <div className="absolute -inset-8 bg-white/30 rounded-full blur-xl opacity-0 group-hover:opacity-70 transition-all duration-500"></div>
@@ -89,7 +90,7 @@ function Hero() {
                 <img
                   src={myphoto}
                   alt="Nishant Raj"
-                  className="w-56 h-56 lg:w-80 lg:h-80 rounded-full object-cover grayscale-[0.2] group-hover:grayscale-0 transition-all duration-500"
+                  className="w-52 h-52 lg:w-64 lg:h-64 rounded-full object-cover grayscale-[0.2] group-hover:grayscale-0 transition-all duration-500"
                 />
                 {/* Subtle overlay */}
                 <div className="absolute inset-0 rounded-full bg-gradient-to-b from-transparent to-black/40 opacity-40 group-hover:opacity-0 transition-all duration-500"></div>
