@@ -5,10 +5,12 @@ import Tech from "./components/Tech";
 import Experience from "./components/Experience";
 import Project from "./components/Project";
 import Contact from "./components/Contact";
+import GitHub from "./components/Github";
 import ResumeViewer from "./components/ResumeViewer"; // Import the ResumeViewer component
 import AnimatedCursor from "./components/AnimatedCursor";
 import { Contact as ContactIcon, FileText } from "lucide-react"; // Import FileText icon
 import { FaLinkedin, FaGithub, FaSquareXTwitter } from "react-icons/fa6";
+import { SiPeerlist } from "react-icons/si";
 import { motion, AnimatePresence } from "framer-motion";
 
 function App() {
@@ -23,6 +25,7 @@ function App() {
       { id: "tech", label: "Technologies" },
       { id: "experience", label: "Experience" },
       { id: "projects", label: "Projects" },
+      { id: "github", label: "GitHub" },
     ],
     []
   );
@@ -30,12 +33,12 @@ function App() {
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
-      const navHeight = document.querySelector("nav")?.offsetHeight || 80; // Dynamically get nav height
+      const navHeight = document.querySelector("nav")?.offsetHeight || 80;
       const elementPosition =
         element.getBoundingClientRect().top + window.scrollY;
 
       window.scrollTo({
-        top: elementPosition - navHeight - 20, // Added extra offset
+        top: elementPosition - navHeight - 20,
         behavior: "smooth",
       });
       setActiveSection(id);
@@ -133,7 +136,7 @@ function App() {
         </section>
         <section
           id="tech"
-          className="min-h-[70vh] w-full flex justify-center items-center py-8 lg:py-12"
+          className="min-h-[70vh] w-full flex justify-center items-center py-8 lg:py-4"
         >
           <Tech />
         </section>
@@ -149,6 +152,12 @@ function App() {
         >
           <Project />
         </section>
+        <section
+          id="github"
+          className="min-h-[70vh] w-full flex justify-center items-center py-8 lg:py-12"
+        >
+          <GitHub />
+        </section>
         <p className="mb-8">Made by Nishant Raj </p>
       </main>
       {/* Floating Action Buttons / Social Icons Group */}
@@ -161,33 +170,39 @@ function App() {
         {[
           {
             label: "Resume",
-            icon: <FileText className="w-8 h-8" />,
+            icon: <FileText className="text-red-600 w-6 h-6" />,
             action: handleResumeClick,
             href: null,
           },
           {
-            label: "Contact",
-            icon: <ContactIcon className="w-8 h-8" />,
-            action: handleContactClick,
-            href: null,
-          },
-          {
             label: "LinkedIn",
-            icon: <FaLinkedin className="w-8 h-8" />,
+            icon: <FaLinkedin className="text-blue-600 w-6 h-6" />,
             href: "https://www.linkedin.com/in/nraj24/",
             action: null,
           },
           {
             label: "GitHub",
-            icon: <FaGithub className="w-8 h-8" />,
+            icon: <FaGithub className="text-white w-6 h-6" />,
             href: "https://github.com/dawgdevv",
             action: null,
           },
           {
             label: "Twitter",
-            icon: <FaSquareXTwitter className="w-8 h-8" />,
+            icon: <FaSquareXTwitter className="w-6 h-6" />,
             href: "https://x.com/sfunish",
             action: null,
+          },
+          {
+            label: "Peerlist",
+            icon: <SiPeerlist className="text-green-500 w-6 h-6" />,
+            href: "https://x.com/sfunish",
+            action: null,
+          },
+          {
+            label: "Contact",
+            icon: <ContactIcon className="w-6 h-6" />,
+            action: handleContactClick,
+            href: null,
           },
         ].map((item, index) => (
           <motion.button

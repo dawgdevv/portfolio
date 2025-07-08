@@ -18,7 +18,7 @@ function Navbar({ activeSection, onNavClick }) {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ type: "spring", stiffness: 200, damping: 20 }}
-        className="backdrop-blur-md bg-white/10 border border-white/20 shadow-lg rounded-2xl "
+        className="backdrop-blur-md bg-white/10 border border-white/60 shadow-lg rounded-2xl "
       >
         <div className="container mx-auto">
           <div className="flex items-center justify-center">
@@ -28,7 +28,7 @@ function Navbar({ activeSection, onNavClick }) {
                 <motion.button
                   key={item.id}
                   onClick={() => onNavClick(item.id)}
-                  className={`relative z-10 px-3 py-1.5 rounded-full text-xl font-medium transition-colors ${
+                  className={`relative z-10 px-3 py-1.5 rounded-full text-lg font-semibold transition-colors ${
                     activeSection === item.id
                       ? "text-white"
                       : "text-gray-400 hover:text-white"
