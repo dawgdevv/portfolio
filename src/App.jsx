@@ -195,7 +195,7 @@ function App() {
           {
             label: "Peerlist",
             icon: <SiPeerlist className="text-green-500 w-6 h-6" />,
-            href: "https://x.com/sfunish",
+            href: "https://peerlist.io/nishantraj",
             action: null,
           },
           {
