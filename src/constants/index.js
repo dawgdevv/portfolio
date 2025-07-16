@@ -15,8 +15,24 @@ Most of my days revolve around solving LeetCode problems, building things from s
 
 export const EXPERIENCES = [
   {
+    year: "July 2025 - Present",
+    role: "Full Stack Developer(Internship)",
+    company: "Bitwrap Technologies",
+    location: "Ambala Haryana, India",
+    description: `Developing and integrating end-to-end features for business use cases, driving both frontend and backend development and Ensuring system performance and security through adherence to best practices and robust architectural design.`,
+    technologies: [
+      "JavaScript",
+      "Node.js",
+      "Express.js",
+      "React.js",
+      "MongoDB",
+      "tailwind CSS",
+      "PostgreSQL",
+    ],
+  },
+  {
     year: "March 2025 - May 2025",
-    role: "Full Stack Development Intern",
+    role: "Full Stack Development(Intership)",
     company: "Frantiger Business Consulting",
     location: "Bangalore, Karnataka, India",
     description: `I worked in team of three on revamping a core website for them using the MERN stack. My responsibilities included developing a user-friendly interface, implementing secure authentication, and ensuring seamless data flow between the front-end and back-end. I also integrated third-party APIs for enhanced functionality and optimized the application for performance and scalability.`,
@@ -173,7 +189,7 @@ export const PROJECTS = [
   },
 
   {
-    name: "GoalFlow",
+    name: "Taskly",
     description:
       "A comprehensive full-stack goal achievement platform with systematic goal setting, action planning, and progress tracking.",
     longDescription:
