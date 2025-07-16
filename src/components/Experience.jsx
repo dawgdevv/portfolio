@@ -4,7 +4,7 @@ import SnowfallBackground from "./SnowfallBackground.jsx";
 
 function Experience() {
   return (
-    <section className="container mx-auto px-4 py-8 h-full flex flex-col justify-center">
+    <section className="container mx-auto px-4 py-16 flex flex-col justify-center">
       <SnowfallBackground />
       <motion.h2
         initial={{ opacity: 0, y: -20 }}

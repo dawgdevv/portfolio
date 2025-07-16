@@ -33,12 +33,12 @@ const AnimatedText = ({ text, className, delay = 0 }) => {
 
 function Hero() {
   return (
-    <div className="relative min-h-screen w-full flex items-center justify-center overflow-hidden">
+    <div className="relative w-full flex items-center justify-center overflow-hidden">
       <SnowfallBackground />
 
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/50"></div>
 
-      <div className="relative z-10 max-w-6xl mx-auto px-8 py-8 lg:py-12">
+      <div className="relative z-10 max-w-6xl mx-auto px-8 py-16 lg:py-24">
         <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-8 lg:gap-12">
           {/* Text Content - Left Side */}
           <div className="flex flex-col items-center lg:items-start space-y-6">

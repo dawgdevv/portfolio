@@ -1,17 +1,23 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, lazy, Suspense } from "react";
 import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import Tech from "./components/Tech";
-import Experience from "./components/Experience";
-import Project from "./components/Project";
-import Contact from "./components/Contact";
-import GitHub from "./components/Github";
-import ResumeViewer from "./components/ResumeViewer"; // Import the ResumeViewer component
+const Hero = lazy(() => import("./components/Hero"));
+const Tech = lazy(() => import("./components/Tech"));
+const Experience = lazy(() => import("./components/Experience"));
+const Project = lazy(() => import("./components/Project"));
+const Contact = lazy(() => import("./components/Contact"));
+const GitHub = lazy(() => import("./components/Github"));
+const ResumeViewer = lazy(() => import("./components/ResumeViewer"));
 import AnimatedCursor from "./components/AnimatedCursor";
-import { Contact as ContactIcon, FileText } from "lucide-react"; // Import FileText icon
+import { Contact as ContactIcon, FileText } from "lucide-react";
 import { FaLinkedin, FaGithub, FaSquareXTwitter } from "react-icons/fa6";
 import { SiPeerlist } from "react-icons/si";
 import { motion, AnimatePresence } from "framer-motion";
+
+const LoadingSpinner = () => (
+  <div className="flex justify-center items-center h-screen">
+    <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-purple-500"></div>
+  </div>
+);
 
 function App() {
   const [activeSection, setActiveSection] = useState("hero");
@@ -58,7 +64,6 @@ function App() {
         const element = document.getElementById(id);
         if (element) {
           const { offsetTop, offsetHeight } = element;
-          // Adjust detection point to be slightly below navbar
           if (
             scrollPosition >= offsetTop - navHeight - windowHeight / 2 &&
             scrollPosition <
@@ -72,14 +77,12 @@ function App() {
 
       const scrollTotal =
         document.documentElement.scrollHeight - window.innerHeight;
-      const scrolled = (scrollPosition / Math.max(scrollTotal, 1)) * 100; // Avoid division by zero
+      const scrolled = (scrollPosition / Math.max(scrollTotal, 1)) * 100;
       setScrollProgress(scrolled);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    // Initial call to set correct section if page loads scrolled
     handleScroll();
-    // Removed window.scrollTo(0,0) to respect refresh scroll position
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, [sections]);
@@ -103,12 +106,8 @@ function App() {
   return (
     <div className="min-h-screen bg-[#030712] text-gray-100 overflow-x-hidden relative selection:bg-purple-500/30">
       <AnimatedCursor />
-      {/* <SnowfallBackground /> */}{" "}
-      {/* Consider making this optional or more subtle if performance is a concern */}
-      {/* More dynamic background */}
       <div className="fixed inset-0 -z-10">
         <div className="absolute inset-0 bg-gradient-to-br from-[#030712] via-[#0a0d1f] to-[#111827] opacity-95"></div>
-        {/* Subtle animated noise */}
         <div
           className="absolute inset-0 opacity-[0.02]"
           style={{
@@ -117,10 +116,7 @@ function App() {
           }}
         ></div>
       </div>
-      {/* Scroll progress indicator */}
       <div className="fixed top-0 left-0 w-full h-1 z-[60]">
-        {" "}
-        {/* Ensure it's above navbar */}
         <motion.div
           className="h-full bg-gradient-to-r from-purple-600 via-pink-500 to-purple-400 shadow-lg shadow-purple-500/30"
           style={{ width: `${scrollProgress}%` }}
@@ -128,39 +124,40 @@ function App() {
       </div>
       <Navbar activeSection={activeSection} onNavClick={scrollToSection} />
       <main className="relative z-10 container mx-auto px-4 pt-8 lg:pt-2 flex flex-col items-center">
-        <section
-          id="hero"
-          className="min-h-[calc(100vh-6rem)] w-full flex justify-center items-center py-6"
-        >
-          <Hero />
-        </section>
-        <section
-          id="tech"
-          className="min-h-[70vh] w-full flex justify-center items-center py-8 lg:py-4"
-        >
-          <Tech />
-        </section>
-        <section
-          id="experience"
-          className="min-h-[70vh] w-full flex justify-center items-center py-8 lg:py-12"
-        >
-          <Experience />
-        </section>
-        <section
-          id="projects"
-          className="min-h-[70vh] w-full flex justify-center items-center py-8 lg:py-12"
-        >
-          <Project />
-        </section>
-        <section
-          id="github"
-          className="min-h-[70vh] w-full flex justify-center items-center py-8 lg:py-12"
-        >
-          <GitHub />
-        </section>
+        <Suspense fallback={<LoadingSpinner />}>
+          <section
+            id="hero"
+            className="min-h-[calc(100vh-6rem)] w-full flex justify-center items-center py-6"
+          >
+            <Hero />
+          </section>
+          <section
+            id="tech"
+            className="w-full flex justify-center items-center py-16"
+          >
+            <Tech />
+          </section>
+          <section
+            id="experience"
+            className="w-full flex justify-center items-center py-16"
+          >
+            <Experience />
+          </section>
+          <section
+            id="projects"
+            className="w-full flex justify-center items-center py-16"
+          >
+            <Project />
+          </section>
+          <section
+            id="github"
+            className="w-full flex justify-center items-center py-16"
+          >
+            <GitHub />
+          </section>
+        </Suspense>
         <p className="mb-8">Made by Nishant Raj </p>
       </main>
-      {/* Floating Action Buttons / Social Icons Group */}
       <motion.div
         className="fixed bottom-6 right-6 flex flex-col items-end gap-5 z-50"
         initial={{ opacity: 0, x: 50 }}
@@ -246,7 +243,9 @@ function App() {
               transition={{ type: "spring", stiffness: 300, damping: 25 }}
               className="w-full max-w-lg"
             >
-              <Contact onClose={handleCloseModal} />
+              <Suspense fallback={<LoadingSpinner />}>
+                <Contact onClose={handleCloseModal} />
+              </Suspense>
             </motion.div>
           </motion.div>
         )}
@@ -260,8 +259,9 @@ function App() {
             transition={{ duration: 0.3 }}
             className="fixed inset-0 bg-black/70 backdrop-blur-md z-[70] flex items-center justify-center p-4"
           >
-            {/* ResumeViewer might need its own motion.div for entry/exit if it's not self-contained */}
-            <ResumeViewer onClose={handleCloseResumeModal} />
+            <Suspense fallback={<LoadingSpinner />}>
+              <ResumeViewer onClose={handleCloseResumeModal} />
+            </Suspense>
           </motion.div>
         )}
       </AnimatePresence>
