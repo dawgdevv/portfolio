@@ -1,5 +1,5 @@
 const e="/assets/DTIX-PBm3kPM4.png",t="/assets/uber-D1RGaTbI.png",a="/assets/drive-tJMXGs9c.png",i="/assets/reddit-qtatAVxa.png",n="/assets/bacip-BkWOklab.png",s="/assets/blog-D136A1q4.png",o="/assets/goalflow-DgbPmHJw.png",r=`
-I mostly work with JavaScript, Node.js, React, and all the tools that go into building modern full-stack applications. I'm particularly interested in everything related to tech I genuinely enjoy building websites, systems, and tinkering with new technologies.
+I mostly work with JavaScript, Node.js, React, Go and all the tools that go into building modern full-stack applications. I'm particularly interested in everything related to tech I genuinely enjoy building websites, systems, and tinkering with new technologies.
 
 I adapt quickly to different stacks, but I have a soft spot for web3 and am a big fan of decentralization. I'm also a Linux enthusiast and use Ubuntu as my daily driver.
 
