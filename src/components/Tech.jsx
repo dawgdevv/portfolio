@@ -128,7 +128,7 @@ function Tech() {
               href={tech.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 rounded-xl bg-black backdrop-blur-sm border border-white  hover:border-gray-700 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-purple-500/10"
+              className="p-3 rounded-xl bg-black backdrop-blur-sm border border-white  hover:border-gray-700 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-orange-500/10"
             >
               <tech.Icon className={`text-7xl ${tech.color}`} />
             </a>

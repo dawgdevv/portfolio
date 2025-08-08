@@ -97,7 +97,7 @@ function Navbar({ activeSection, onNavClick }) {
                     onClick={() => onNavClick(item.id)}
                     className={`text-left block px-3 py-2 rounded-lg text-sm font-medium w-full transition-colors ${
                       activeSection === item.id
-                        ? "bg-purple-600/20 text-white"
+                        ? "bg-orange-600/20 text-white"
                         : "text-gray-300 hover:text-white"
                     }`}
                     whileHover={{ scale: 1.05, x: 5 }}

@@ -68,7 +68,7 @@ const GitHub = () => {
     return (
       <section id="github" className="container mx-auto px-4 py-12 max-w-6xl">
         <div className="flex justify-center items-center h-64">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-500"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-500"></div>
         </div>
       </section>
     );
@@ -102,7 +102,7 @@ const GitHub = () => {
         className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8"
       >
         <div className="bg-black/50 backdrop-blur-sm border border-gray-800 rounded-lg p-4 text-center">
-          <FaCode className="text-purple-500 text-2xl mx-auto mb-2" />
+          <FaCode className="text-orange-500 text-2xl mx-auto mb-2" />
           <div className="text-2xl font-bold text-white">
             {githubStats?.public_repos || 0}
           </div>
@@ -139,7 +139,7 @@ const GitHub = () => {
         className="bg-black/50 backdrop-blur-sm border border-gray-800 rounded-lg p-6 mb-8"
       >
         <h3 className="text-xl font-semibold text-white mb-4 flex items-center gap-2">
-          <FaGithub className="text-purple-500" />
+          <FaGithub className="text-orange-500" />
           Contribution Activity
         </h3>
         <div className="overflow-x-auto">
@@ -147,7 +147,7 @@ const GitHub = () => {
             username={GITHUB_USERNAME}
             colorScheme="dark"
             fontSize={15}
-            blockSize={15}
+            blockSize={17}
             maxlevel={{
               level0: "#161b22",
               level1: "#0e4429",
@@ -166,7 +166,7 @@ const GitHub = () => {
         transition={{ delay: 0.6 }}
       >
         <h3 className="text-2xl font-semibold text-white mb-6 flex items-center gap-2">
-          <FaCode className="text-purple-500" />
+          <FaCode className="text-orange-500" />
           Recent Repositories
         </h3>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -177,7 +177,7 @@ const GitHub = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8 + index * 0.1 }}
               whileHover={{ scale: 1.02 }}
-              className="bg-black/50 backdrop-blur-sm border border-gray-800 rounded-lg p-6 hover:border-purple-500/50 transition-all duration-300"
+              className="bg-black/50 backdrop-blur-sm border border-gray-800 rounded-lg p-6 hover:border-orange-500/50 transition-all duration-300"
             >
               <div className="flex justify-between items-start mb-3">
                 <h4 className="text-lg font-semibold text-white truncate">
@@ -187,7 +187,7 @@ const GitHub = () => {
                   href={repo.html_url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-purple-400 transition-colors"
+                  className="text-gray-400 hover:text-orange-400 transition-colors"
                 >
                   <HiOutlineExternalLink size={18} />
                 </a>
@@ -201,7 +201,7 @@ const GitHub = () => {
                 <div className="flex items-center gap-4">
                   {repo.language && (
                     <span className="flex items-center gap-1">
-                      <div className="w-2 h-2 rounded-full bg-purple-500"></div>
+                      <div className="w-2 h-2 rounded-full bg-orange-500"></div>
                       {repo.language}
                     </span>
                   )}
@@ -232,7 +232,7 @@ const GitHub = () => {
           href={`https://github.com/${GITHUB_USERNAME}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors"
+          className="inline-flex items-center gap-2 px-6 py-3 bg-orange-600 hover:bg-orange-700 text-white rounded-lg transition-colors"
         >
           <FaGithub />
           View All Repositories

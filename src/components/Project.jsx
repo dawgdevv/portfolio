@@ -40,7 +40,7 @@ export default function Project() {
             whileHover={{ scale: 1.05 }}
             transition={{ delay: index * 0.2 }}
             key={index}
-            className="bg-black backdrop-blur-sm rounded-xl overflow-hidden border border-white hover:border-gray-700 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-purple-500/10"
+            className="bg-black backdrop-blur-sm rounded-xl overflow-hidden border border-white hover:border-gray-700 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-orange-500/10"
           >
             <div className="relative group">
               <img
@@ -53,7 +53,7 @@ export default function Project() {
               {/* Info button to open modal */}
               <button
                 onClick={() => openModal(project)}
-                className="absolute bottom-2 right-2 bg-black/60 hover:bg-purple-500 p-2 rounded-full text-white transition-colors duration-300"
+                className="absolute bottom-2 right-2 bg-black/60 hover:bg-orange-500 p-2 rounded-full text-white transition-colors duration-300"
                 aria-label={`View details for ${project.name}`}
               >
                 <FaInfoCircle />
@@ -74,7 +74,7 @@ export default function Project() {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     href={project.liveLink}
-                    className="flex items-center gap-1 px-3 py-1.5 text-xs rounded-full bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/20 hover:border-purple-500/30"
+                    className="flex items-center gap-1 px-3 py-1.5 text-xs rounded-full bg-orange-500/10 hover:bg-orange-500/20 border border-orange-500/20 hover:border-orange-500/30"
                     target="_blank"
                     rel="noopener noreferrer"
                   >

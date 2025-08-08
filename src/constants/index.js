@@ -6,7 +6,7 @@ import BACIP from "../assets/bacip.png";
 import BlogApp from "../assets/blog.png";
 import GoalFlowApp from "../assets/goalflow.png";
 export const HERO_CONTENT = `
-I mostly work with JavaScript, Node.js, React, and all the tools that go into building modern full-stack applications. I'm particularly interested in everything related to tech I genuinely enjoy building websites, systems, and tinkering with new technologies.
+I mostly work with JavaScript, Node.js, React, Go and all the tools that go into building modern full-stack applications. I'm particularly interested in everything related to tech I genuinely enjoy building websites, systems, and tinkering with new technologies.
 
 I adapt quickly to different stacks, but I have a soft spot for web3 and am a big fan of decentralization. I'm also a Linux enthusiast and use Ubuntu as my daily driver.
 
@@ -16,7 +16,7 @@ Most of my days revolve around solving LeetCode problems, building things from s
 export const EXPERIENCES = [
   {
     year: "July 2025 - Present",
-    role: "Full Stack Developer(Internship)",
+    role: "Full Stack Developer - (Internship)",
     company: "Bitwrap Technologies",
     location: "Ambala Haryana, India",
     description: `Developing and integrating end-to-end features for business use cases, driving both frontend and backend development and Ensuring system performance and security through adherence to best practices and robust architectural design.`,
@@ -32,7 +32,7 @@ export const EXPERIENCES = [
   },
   {
     year: "March 2025 - May 2025",
-    role: "Full Stack Development(Intership)",
+    role: "Full Stack Developer - (Intership)",
     company: "Frantiger Business Consulting",
     location: "Bangalore, Karnataka, India",
     description: `I worked in team of three on revamping a core website for them using the MERN stack. My responsibilities included developing a user-friendly interface, implementing secure authentication, and ensuring seamless data flow between the front-end and back-end. I also integrated third-party APIs for enhanced functionality and optimized the application for performance and scalability.`,

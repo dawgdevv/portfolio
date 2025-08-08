@@ -21,7 +21,7 @@ function Experience() {
             whileHover={{ scale: 1.05 }}
             transition={{ delay: index * 0.2 }}
             key={index}
-            className="bg-black backdrop-blur-sm rounded-xl p-4 border border-white hover:border-gray-700 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-purple-500/10"
+            className="bg-black backdrop-blur-sm rounded-xl p-4 border border-white hover:border-gray-700 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-orange-500/10"
           >
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
               <div className="space-y-1">
@@ -41,7 +41,7 @@ function Experience() {
                 </div>
               </div>
               <div className="flex items-center gap-2">
-                <span className="px-3 py-1 text-sm text-purple-300 bg-purple-500/10 rounded-full border border-purple-500/20">
+                <span className="px-3 py-1 text-sm text-orange-300 bg-orange-500/10 rounded-full border border-orange-500/20">
                   {experience.year}
                 </span>
               </div>

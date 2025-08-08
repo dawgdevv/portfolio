@@ -15,7 +15,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const LoadingSpinner = () => (
   <div className="flex justify-center items-center h-screen">
-    <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-purple-500"></div>
+    <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-orange-500"></div>
   </div>
 );
 
@@ -104,7 +104,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#030712] text-gray-100 overflow-x-hidden relative selection:bg-purple-500/30">
+    <div className="min-h-screen bg-[#030712] text-gray-100 overflow-x-hidden relative selection:bg-orange-500/30">
       <AnimatedCursor />
       <div className="fixed inset-0 -z-10">
         <div className="absolute inset-0 bg-gradient-to-br from-[#030712] via-[#0a0d1f] to-[#111827] opacity-95"></div>
@@ -118,7 +118,7 @@ function App() {
       </div>
       <div className="fixed top-0 left-0 w-full h-1 z-[60]">
         <motion.div
-          className="h-full bg-gradient-to-r from-purple-600 via-pink-500 to-purple-400 shadow-lg shadow-purple-500/30"
+          className="h-full bg-gradient-to-r from-orange-600 via-pink-500 to-orange-400 shadow-lg shadow-orange-500/30"
           style={{ width: `${scrollProgress}%` }}
         />
       </div>
@@ -209,7 +209,7 @@ function App() {
             onClick={
               item.action ? item.action : () => window.open(item.href, "_blank")
             }
-            className="group bg-black/40 backdrop-blur-md border border-white/10 shadow-lg hover:border-purple-500/50 text-gray-300 hover:text-white p-3 rounded-full flex items-center gap-2 transition-all duration-300"
+            className="group bg-black/40 backdrop-blur-md border border-white/10 shadow-lg hover:border-orange-500/50 text-gray-300 hover:text-white p-3 rounded-full flex items-center gap-2 transition-all duration-300"
             aria-label={item.label}
             custom={index}
             initial={{ opacity: 0, y: 20 }}

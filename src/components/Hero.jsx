@@ -45,7 +45,7 @@ function Hero() {
             <div className="space-y-3">
               <AnimatedText
                 text="Hi there 👋"
-                className="text-3xl lg:text-6xl font-medium text-purple-400/90 tracking-wide"
+                className="text-3xl lg:text-6xl font-medium text-orange-400/90 tracking-wide"
                 delay={0}
               />
               <AnimatedText
@@ -56,8 +56,8 @@ function Hero() {
             </div>
 
             <AnimatedText
-              text="Full Stack Developer that Builds Stuff  "
-              className="text-2xl lg:text-3xl font-semibold bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 bg-clip-text text-transparent"
+              text="Engineer That's Deep Into Building Stuff "
+              className="text-2xl lg:text-3xl font-semibold bg-gradient-to-r from-orange-500 via-pink-400 to-green-400 bg-clip-text text-transparent"
               delay={0.2}
             />
             <motion.div
@@ -82,7 +82,7 @@ function Hero() {
             <div className="absolute -inset-12 bg-yellow-50/10 rounded-full blur-2xl group-hover:animate-pulse opacity-0 group-hover:opacity-60 transition-all duration-500"></div>
 
             {/* Inner border gradient */}
-            <div className="absolute -inset-[2px] bg-gradient-to-r from-yellow-200/50 via-purple-400/50 to-yellow-200/50 rounded-full opacity-20 group-hover:opacity-60 transition-all duration-500"></div>
+            <div className="absolute -inset-[2px] bg-gradient-to-r from-yellow-200/50 via-orange-400/50 to-yellow-200/50 rounded-full opacity-20 group-hover:opacity-60 transition-all duration-500"></div>
 
             {/* Main container */}
             <div className="relative bg-gray-900 rounded-full p-[2px]">
