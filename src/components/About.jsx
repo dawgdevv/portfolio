@@ -3,7 +3,7 @@ import { ABOUT_TEXT } from "../constants/index";
 
 function About() {
   return (
-    <section className="container mx-auto px-4 py-16 h-full flex flex-col justify-center">
+    <section className="container mx-auto px-4 py-10 h-full flex flex-col justify-center">
       <h2 className="mb-4 text-center text-2xl font-bold">About Me</h2>
       <div className="flex flex-col items-center gap-4 lg:flex-row lg:items-start">
         <div className="w-full max-w-xs lg:w-1/2">

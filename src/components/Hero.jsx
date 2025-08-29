@@ -38,33 +38,33 @@ function Hero() {
 
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/50"></div>
 
-      <div className="relative z-10 max-w-6xl mx-auto px-8 py-16 lg:py-24">
-        <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-8 lg:gap-12">
+      <div className="relative z-10 max-w-6xl mx-auto px-6 py-12 lg:py-16">
+        <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-10 lg:gap-14">
           {/* Text Content - Left Side */}
-          <div className="flex flex-col items-center lg:items-start space-y-6">
-            <div className="space-y-3">
+          <div className="flex flex-col items-center lg:items-start space-y-8">
+            <div className="space-y-4 text-center lg:text-left">
               <AnimatedText
                 text="Hi there 👋"
-                className="text-3xl lg:text-6xl font-medium text-orange-400/90 tracking-wide"
+                className="text-4xl lg:text-6xl font-semibold text-orange-400/90 tracking-wide leading-tight"
                 delay={0}
               />
               <AnimatedText
                 text="I'm Nishant Raj"
-                className="text-6xl lg:text-8xl font-bold text-white tracking-tight"
+                className="text-6xl lg:text-8xl font-extrabold text-white tracking-tight leading-[1.1]"
                 delay={0.1}
               />
             </div>
 
             <AnimatedText
               text="Engineer That's Deep Into Building Stuff "
-              className="text-2xl lg:text-3xl font-semibold bg-gradient-to-r from-orange-500 via-pink-400 to-green-400 bg-clip-text text-transparent"
+              className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-orange-500 via-pink-400 to-green-400 bg-clip-text text-transparent text-center lg:text-left leading-tight"
               delay={0.2}
             />
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.5, ease: "easeOut" }}
-              className="text-lg lg:text-2xl text-gray-300/90 max-w-3xl leading-relaxed text-center lg:text-left"
+              className="text-xl lg:text-2xl text-gray-100 max-w-3xl text-center lg:text-left leading-8 lg:leading-9 tracking-[0.01em] [&_p]:mb-4 [&_p]:leading-8 lg:[&_p]:leading-9"
             >
               <ReactMarkdown>{HERO_CONTENT}</ReactMarkdown>
             </motion.div>
@@ -75,7 +75,7 @@ function Hero() {
             animate={{ opacity: 1, scale: 1 }}
             whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
             transition={{ delay: 0.4, duration: 0.5 }}
-            className="relative group bottom-32"
+            className="relative group"
           >
             {/* Moon-like outer glow effect */}
             <div className="absolute -inset-8 bg-white/30 rounded-full blur-xl opacity-0 group-hover:opacity-70 transition-all duration-500"></div>

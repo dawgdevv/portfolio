@@ -127,7 +127,7 @@ function App() {
         <Suspense fallback={<LoadingSpinner />}>
           <section
             id="hero"
-            className="min-h-[calc(100vh-6rem)] w-full flex justify-center items-center py-6"
+            className="min-h-[calc(100vh-6rem)] w-full flex justify-center items-center py-24"
           >
             <Hero />
           </section>
@@ -156,7 +156,7 @@ function App() {
             <GitHub />
           </section>
         </Suspense>
-        <p className="mb-8">Made by Nishant Raj </p>
+        <p className="mb-8 font-bold"> That crazy if you scrolled down 🤝</p>
       </main>
       <motion.div
         className="fixed bottom-6 right-6 flex flex-col items-end gap-5 z-50"

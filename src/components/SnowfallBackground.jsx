@@ -15,15 +15,15 @@ const SnowfallBackground = () => {
     };
 
     const createSnowflakes = () => {
-      const numberOfSnowflakes = 300; // Fewer snowflakes for a calm effect
+      const numberOfSnowflakes = 350; // Fewer snowflakes for a calm effect
       snowflakes = [];
       for (let i = 0; i < numberOfSnowflakes; i++) {
         snowflakes.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          radius: Math.random() * 3 + 1, // Smaller snowflakes for a subtle look
-          density: Math.random(),
-          drift: Math.random() * 1 - 0.5, // Gentle horizontal drift
+          radius: Math.random() * 1.8 + 0.6, // Smaller snowflakes for a subtle look
+          density: Math.random() * 2,
+          drift: Math.random() * 1 - 0.3, // Gentle horizontal drift
         });
       }
     };
@@ -41,7 +41,7 @@ const SnowfallBackground = () => {
 
     const moveSnowflakes = () => {
       for (let flake of snowflakes) {
-        flake.y += Math.pow(flake.density, 2) * 0.5 + 1; // Slow falling
+        flake.y += Math.pow(flake.density, 2) * 0.5 + 1.5; // Slow falling
         flake.x += flake.drift; // Gentle horizontal movement
 
         // Reset position if the flake moves out of view

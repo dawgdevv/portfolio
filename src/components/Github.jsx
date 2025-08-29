@@ -85,11 +85,11 @@ const GitHub = () => {
   }
 
   return (
-    <section id="github" className="container mx-auto px-4 py-16 max-w-6xl">
+    <section id="github" className="container mx-auto px-4 py-10 max-w-6xl">
       <motion.h2
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="mb-10 text-4xl font-bold bg-gradient-to-r text-center from-gray-100 to-gray-300 bg-clip-text text-transparent"
+        className="mb-6 text-3xl md:text-4xl font-bold bg-gradient-to-r text-center from-gray-100 to-gray-300 bg-clip-text text-transparent"
       >
         GitHub Activity
       </motion.h2>
@@ -99,7 +99,7 @@ const GitHub = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
-        className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8"
+        className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-6"
       >
         <div className="bg-black/50 backdrop-blur-sm border border-gray-800 rounded-lg p-4 text-center">
           <FaCode className="text-orange-500 text-2xl mx-auto mb-2" />
@@ -136,7 +136,7 @@ const GitHub = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4 }}
-        className="bg-black/50 backdrop-blur-sm border border-gray-800 rounded-lg p-6 mb-8"
+        className="bg-black/50 backdrop-blur-sm border border-gray-800 rounded-lg p-4 md:p-6 mb-6"
       >
         <h3 className="text-xl font-semibold text-white mb-4 flex items-center gap-2">
           <FaGithub className="text-orange-500" />
@@ -165,11 +165,11 @@ const GitHub = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.6 }}
       >
-        <h3 className="text-2xl font-semibold text-white mb-6 flex items-center gap-2">
+        <h3 className="text-2xl font-semibold text-white mb-4 flex items-center gap-2">
           <FaCode className="text-orange-500" />
           Recent Repositories
         </h3>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {repositories.map((repo, index) => (
             <motion.div
               key={repo.id}
@@ -177,7 +177,7 @@ const GitHub = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8 + index * 0.1 }}
               whileHover={{ scale: 1.02 }}
-              className="bg-black/50 backdrop-blur-sm border border-gray-800 rounded-lg p-6 hover:border-orange-500/50 transition-all duration-300"
+              className="bg-black/50 backdrop-blur-sm border border-gray-800 rounded-lg p-5 hover:border-orange-500/50 transition-all duration-300"
             >
               <div className="flex justify-between items-start mb-3">
                 <h4 className="text-lg font-semibold text-white truncate">

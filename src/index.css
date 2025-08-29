@@ -123,9 +123,20 @@ body {
 /* Add these to your existing index.css file */
 .line-clamp-2 {
   display: -webkit-box;
-  -line-clamp: 2;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  line-clamp: 2;
   overflow: hidden;
+}
+
+/* Compact section spacing utilities */
+.section-compact {
+  padding-top: 2.5rem; /* 10 */
+  padding-bottom: 2.5rem;
+}
+.section-compact-lg {
+  padding-top: 3rem; /* 12 */
+  padding-bottom: 3rem;
 }
 
 body.modal-open {
