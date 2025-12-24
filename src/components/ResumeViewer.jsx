@@ -60,18 +60,18 @@ const ResumeViewer = ({ onClose }) => {
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.9 }}
-      className="bg-zinc-900 border-4 border-black shadow-neo-lg w-[95vw] h-[95vh] max-w-5xl flex flex-col overflow-hidden"
+      className="bg-zinc-900 border-4 border-white hover:border-black shadow-neo-lg w-[95vw] h-[95vh] max-w-5xl flex flex-col overflow-hidden"
     >
       {/* Header Controls */}
-      <div className="flex items-center justify-between p-4 bg-white border-b-4 border-black text-black">
+      <div className="flex items-center justify-between p-4 bg-white border-b-4 border-white hover:border-black text-black">
         <span className="font-black text-lg uppercase tracking-tight">Nishant Raj - Resume</span>
         <div className="flex items-center gap-3">
           {/* Zoom Controls */}
-          <div className="flex items-center border-2 border-black bg-white">
+          <div className="flex items-center border-2 border-white hover:border-black bg-white">
             <button
               onClick={zoomOut}
               disabled={scale <= 0.5}
-              className="p-2 hover:bg-gray-200 disabled:opacity-50 border-r-2 border-black"
+              className="p-2 hover:bg-gray-200 disabled:opacity-50 border-r-2 border-white hover:border-black"
             >
               <ZoomOut size={20} />
             </button>
@@ -81,7 +81,7 @@ const ResumeViewer = ({ onClose }) => {
             <button
               onClick={zoomIn}
               disabled={scale >= 3.0}
-              className="p-2 hover:bg-gray-200 disabled:opacity-50 border-l-2 border-black"
+              className="p-2 hover:bg-gray-200 disabled:opacity-50 border-l-2 border-white hover:border-black"
             >
               <ZoomIn size={20} />
             </button>
@@ -89,11 +89,11 @@ const ResumeViewer = ({ onClose }) => {
 
           {/* Page Navigation */}
           {numPages && numPages > 1 && (
-            <div className="flex items-center border-2 border-black bg-white">
+            <div className="flex items-center border-2 border-white hover:border-black bg-white">
               <button
                 onClick={goToPrevPage}
                 disabled={pageNumber <= 1}
-                className="p-2 hover:bg-gray-200 disabled:opacity-50 border-r-2 border-black"
+                className="p-2 hover:bg-gray-200 disabled:opacity-50 border-r-2 border-white hover:border-black"
               >
                 <ChevronLeft size={20} />
               </button>
@@ -103,7 +103,7 @@ const ResumeViewer = ({ onClose }) => {
               <button
                 onClick={goToNextPage}
                 disabled={pageNumber >= numPages}
-                className="p-2 hover:bg-gray-200 disabled:opacity-50 border-l-2 border-black"
+                className="p-2 hover:bg-gray-200 disabled:opacity-50 border-l-2 border-white hover:border-black"
               >
                 <ChevronRight size={20} />
               </button>
@@ -114,7 +114,7 @@ const ResumeViewer = ({ onClose }) => {
           <a
             href={resumePdf}
             download="Nishant_Raj_Resume.pdf"
-            className="p-2 bg-accent-color text-white border-2 border-black shadow-neo-sm hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all ml-2"
+            className="p-2 bg-accent-color text-white border-2 border-white hover:border-black shadow-neo-sm hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all ml-2"
             title="Download Resume"
           >
             <Download size={20} />
@@ -123,7 +123,7 @@ const ResumeViewer = ({ onClose }) => {
           {/* Close Button */}
           <button
             onClick={onClose}
-            className="p-2 bg-red-500 text-white border-2 border-black shadow-neo-sm hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all ml-2"
+            className="p-2 bg-red-500 text-white border-2 border-white hover:border-black shadow-neo-sm hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all ml-2"
           >
             <X size={20} />
           </button>
@@ -134,7 +134,7 @@ const ResumeViewer = ({ onClose }) => {
       <div className="flex-grow overflow-auto p-8 bg-gray-100 dark:bg-zinc-800 flex justify-center items-start">
         {isLoading && (
           <div className="text-black dark:text-gray-400 flex flex-col items-center justify-center h-full">
-            <div className="animate-spin h-12 w-12 border-4 border-black border-t-accent-color mb-4 bg-white/50"></div>
+            <div className="animate-spin h-12 w-12 border-4 border-white hover:border-black border-t-accent-color mb-4 bg-white/50"></div>
             <p className="font-bold uppercase">Loading resume...</p>
           </div>
         )}

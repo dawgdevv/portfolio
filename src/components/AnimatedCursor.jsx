@@ -15,7 +15,7 @@ export default function AnimatedCursor() {
     const handleLinkHover = () => setCursorVariant("link");
     const handleLinkExit = () => setCursorVariant("default");
 
-    const links = document.querySelectorAll("a, button");
+    const links = document.querySelectorAll("a, button, input, textarea, .cursor-pointer");
 
     links.forEach((link) => {
       link.addEventListener("mouseenter", handleLinkHover);
@@ -33,35 +33,75 @@ export default function AnimatedCursor() {
 
   const variants = {
     default: {
-      x: mousePosition.x - 8,
-      y: mousePosition.y - 8,
-      backgroundColor: "rgba(255, 255, 255, 0.1)",
+      x: mousePosition.x - 16,
+      y: mousePosition.y - 16,
+      height: 32,
+      width: 32,
+      backgroundColor: "transparent",
+      borderWidth: "2px",
+      borderColor: "#fff", // White + Difference = Inverted Background
+      rotate: 0,
+      mixBlendMode: "difference",
     },
     link: {
-      x: mousePosition.x - 32,
-      y: mousePosition.y - 32,
-      height: 64,
-      width: 64,
-      backgroundColor: "rgba(255, 255, 255, 0.05)",
+      x: mousePosition.x - 24,
+      y: mousePosition.y - 24,
+      height: 48,
+      width: 48,
+      backgroundColor: "#fff", // White background for difference effect
+      borderWidth: "2px",
+      borderColor: "#fff",
+      rotate: 45,
+      mixBlendMode: "difference",
+    },
+  };
+
+  const dotVariants = {
+    default: {
+      x: mousePosition.x - 4,
+      y: mousePosition.y - 4,
+      height: 8,
+      width: 8,
+      backgroundColor: "#fff", // White + Difference = Inverted
+      mixBlendMode: "difference",
+    },
+    link: {
+      x: mousePosition.x - 4,
+      y: mousePosition.y - 4,
+      height: 8,
+      width: 8,
+      backgroundColor: "#fff",
       mixBlendMode: "difference",
     },
   };
 
   return (
     <>
+      {/* Main Square Cursor - delayed slightly for trail feel if desired, but here prompt asked for interesting Theme */}
       <motion.div
-        className="hidden md:block fixed top-0 left-0 w-8 h-8 rounded-none border-2 border-black bg-accent-color pointer-events-none z-50 mix-blend-difference"
+        className="hidden md:block fixed top-0 left-0 pointer-events-none z-50 transition-colors duration-200 ease-out"
         variants={variants}
         animate={cursorVariant}
-        transition={{ type: "spring", stiffness: 500, damping: 28 }}
-      />
-      <motion.div
-        className="hidden md:block fixed top-0 left-0 w-3 h-3 bg-black rounded-none pointer-events-none z-50 transform rotate-45"
-        style={{
-          x: mousePosition.x - 6,
-          y: mousePosition.y - 6,
+        // Use spring for snappy but smooth movement
+        transition={{
+          type: "spring",
+          stiffness: 150,
+          damping: 15,
+          mass: 0.5
         }}
+        style={{
+          borderStyle: "solid",
+        }}
+      />
+
+      {/* Center Dot - acts as the precise pointer */}
+      <motion.div
+        className="hidden md:block fixed top-0 left-0 pointer-events-none z-50 rounded-none"
+        variants={dotVariants}
+        animate={cursorVariant}
+        transition={{ type: "spring", stiffness: 1000, damping: 28 }} // Super snappy
       />
     </>
   );
 }
+

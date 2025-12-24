@@ -156,7 +156,7 @@ function App() {
             <GitHub />
           </section>
         </Suspense>
-        <p className="mb-8 font-bold"> That crazy if you scrolled down 🤝</p>
+
       </main>
       <motion.div
         className="fixed bottom-6 right-6 flex flex-col items-end gap-5 z-50"

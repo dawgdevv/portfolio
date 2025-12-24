@@ -21,7 +21,7 @@ function Experience() {
             whileHover={{ y: -4, x: -4 }}
             transition={{ delay: index * 0.1 }}
             key={index}
-            className="bg-white dark:bg-zinc-800 p-6 border-4 border-black shadow-neo hover:shadow-neo-lg transition-all duration-200"
+            className="bg-white dark:bg-zinc-800 p-6 border-4 border-white hover:border-black shadow-neo hover:shadow-neo-lg transition-all duration-200"
           >
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-4">
               <div className="space-y-1">
@@ -39,7 +39,7 @@ function Experience() {
                 </div>
               </div>
               <div className="flex items-center gap-2">
-                <span className="px-3 py-1 text-xs md:text-sm font-bold bg-accent-color text-white border-2 border-black shadow-neo-sm transform -rotate-1">
+                <span className="px-3 py-1 text-xs md:text-sm font-bold bg-accent-color text-white border-2 border-white hover:border-black shadow-neo-sm transform -rotate-1">
                   {experience.year}
                 </span>
               </div>
@@ -54,7 +54,7 @@ function Experience() {
                 <motion.span
                   key={techIndex}
                   whileHover={{ scale: 1.05 }}
-                  className="px-2 py-1 text-xs font-bold text-black border-2 border-black bg-white shadow-neo-sm"
+                  className="px-2 py-1 text-xs font-bold text-black border-2 border-white hover:border-black bg-white shadow-neo-sm"
                 >
                   {tech}
                 </motion.span>

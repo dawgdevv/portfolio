@@ -18,7 +18,7 @@ function Navbar({ activeSection, onNavClick }) {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ type: "spring", stiffness: 200, damping: 20 }}
-        className="bg-white border-2 border-black shadow-neo dark:bg-zinc-900 relative max-w-4xl"
+        className="bg-white border-2 border-white hover:border-black shadow-neo dark:bg-zinc-900 relative max-w-4xl"
       >
         <div className="container mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
@@ -29,7 +29,7 @@ function Navbar({ activeSection, onNavClick }) {
                 <motion.button
                   key={item.id}
                   onClick={() => onNavClick(item.id)}
-                  className={`relative z-10 px-4 py-2 text-sm font-bold uppercase tracking-wider border-2 border-black transition-all ${activeSection === item.id
+                  className={`relative z-10 px-4 py-2 text-sm font-bold uppercase tracking-wider border-2 border-white hover:border-black transition-all ${activeSection === item.id
                     ? "bg-accent-color text-white shadow-neo-sm"
                     : "bg-white text-black hover:bg-gray-100 hover:shadow-neo-sm"
                     }`}
@@ -45,7 +45,7 @@ function Navbar({ activeSection, onNavClick }) {
             <div className="md:hidden">
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="bg-white text-black border-2 border-black p-2 shadow-neo-sm active:translate-y-1 active:shadow-none transition-all"
+                className="bg-white text-black border-2 border-white hover:border-black p-2 shadow-neo-sm active:translate-y-1 active:shadow-none transition-all"
               >
                 {!isOpen ? (
                   <svg
@@ -88,7 +88,7 @@ function Navbar({ activeSection, onNavClick }) {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden border-t-2 border-black bg-white"
+              className="md:hidden border-t-2 border-white hover:border-black bg-white"
             >
               <div className="p-4 space-y-3">
                 {navItems.map((item) => (
@@ -98,7 +98,7 @@ function Navbar({ activeSection, onNavClick }) {
                       onNavClick(item.id);
                       setIsOpen(false);
                     }}
-                    className={`block w-full text-center px-4 py-3 text-sm font-bold uppercase border-2 border-black transition-all ${activeSection === item.id
+                    className={`block w-full text-center px-4 py-3 text-sm font-bold uppercase border-2 border-white hover:border-black transition-all ${activeSection === item.id
                       ? "bg-accent-color text-white shadow-neo-sm"
                       : "bg-white text-black shadow-neo-sm hover:translate-x-1"
                       }`}

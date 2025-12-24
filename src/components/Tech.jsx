@@ -165,7 +165,7 @@ function Tech() {
                 href={tech.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex flex-col items-center justify-center w-32 h-32 md:w-40 md:h-40 bg-white dark:bg-zinc-800 border-4 border-black shadow-neo hover:shadow-neo-lg transition-all duration-200 group"
+                className="flex flex-col items-center justify-center w-32 h-32 md:w-40 md:h-40 bg-white dark:bg-zinc-800 border-4 border-white hover:border-black shadow-neo hover:shadow-neo-lg transition-all duration-200 group"
               >
                 <tech.Icon className={`text-5xl md:text-6xl ${tech.color} drop-shadow-md transition-transform`} />
               </a>

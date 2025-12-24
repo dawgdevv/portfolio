@@ -43,11 +43,11 @@ const Contact = ({ onClose }) => {
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.9 }}
-      className="bg-white dark:bg-zinc-900 rounded-none border-4 border-black shadow-neo-lg p-8 w-full max-w-4xl mx-4 relative"
+      className="bg-white dark:bg-zinc-900 rounded-none border-4 border-white hover:border-black shadow-neo-lg p-8 w-full max-w-4xl mx-4 relative"
     >
       <button
         onClick={onClose}
-        className="absolute top-4 right-4 text-black dark:text-white hover:text-red-600 transition-colors border-2 border-transparent hover:border-black p-1"
+        className="absolute top-4 right-4 text-black dark:text-white hover:text-red-600 transition-colors border-2 border-transparent hover:border-white hover:border-black p-1"
       >
         <X className="h-8 w-8" />
       </button>
@@ -75,7 +75,7 @@ const Contact = ({ onClose }) => {
                 onChange={(e) =>
                   setFormData({ ...formData, email: e.target.value })
                 }
-                className="w-full px-4 py-3 bg-white dark:bg-zinc-800 border-2 border-black text-black dark:text-white placeholder-gray-500 focus:outline-none focus:shadow-neo-sm transition-shadow"
+                className="w-full px-4 py-3 bg-white dark:bg-zinc-800 border-2 border-white hover:border-black text-black dark:text-white placeholder-gray-500 focus:outline-none focus:shadow-neo-sm transition-shadow"
                 placeholder="your@email.com"
                 required
               />
@@ -90,7 +90,7 @@ const Contact = ({ onClose }) => {
                 onChange={(e) =>
                   setFormData({ ...formData, message: e.target.value })
                 }
-                className="w-full px-4 py-3 bg-white dark:bg-zinc-800 border-2 border-black text-black dark:text-white placeholder-gray-500 focus:outline-none focus:shadow-neo-sm h-32 resize-none transition-shadow"
+                className="w-full px-4 py-3 bg-white dark:bg-zinc-800 border-2 border-white hover:border-black text-black dark:text-white placeholder-gray-500 focus:outline-none focus:shadow-neo-sm h-32 resize-none transition-shadow"
                 placeholder="Your message here..."
                 required
               />
@@ -101,7 +101,7 @@ const Contact = ({ onClose }) => {
               whileTap={{ x: 4, y: 4, boxShadow: "0px 0px 0px 0px #000" }}
               type="submit"
               disabled={isLoading}
-              className={`w-full py-3 bg-accent-color text-white font-black uppercase tracking-wider border-2 border-black shadow-neo transition-all
+              className={`w-full py-3 bg-accent-color text-white font-black uppercase tracking-wider border-2 border-white hover:border-black shadow-neo transition-all
                 ${isLoading
                   ? "opacity-70 cursor-not-allowed"
                   : "hover:bg-accent-hover"
@@ -139,7 +139,7 @@ const Contact = ({ onClose }) => {
           <div className="space-y-4">
             <motion.div
               whileHover={{ x: 5 }}
-              className="flex items-center space-x-4 p-4 bg-gray-50 dark:bg-zinc-800 border-2 border-black shadow-neo-sm"
+              className="flex items-center space-x-4 p-4 bg-gray-50 dark:bg-zinc-800 border-2 border-white hover:border-black shadow-neo-sm"
             >
               <MapPin className="h-6 w-6 text-accent-color" />
               <p className="text-sm font-bold text-black dark:text-white">{CONTACT.address}</p>
@@ -147,7 +147,7 @@ const Contact = ({ onClose }) => {
 
             <motion.div
               whileHover={{ x: 5 }}
-              className="flex items-center space-x-4 p-4 bg-gray-50 dark:bg-zinc-800 border-2 border-black shadow-neo-sm"
+              className="flex items-center space-x-4 p-4 bg-gray-50 dark:bg-zinc-800 border-2 border-white hover:border-black shadow-neo-sm"
             >
               <Phone className="h-6 w-6 text-accent-color" />
               <p className="text-sm font-bold text-black dark:text-white">{CONTACT.phoneNo}</p>
@@ -155,7 +155,7 @@ const Contact = ({ onClose }) => {
 
             <motion.div
               whileHover={{ x: 5 }}
-              className="flex items-center space-x-4 p-4 bg-gray-50 dark:bg-zinc-800 border-2 border-black shadow-neo-sm"
+              className="flex items-center space-x-4 p-4 bg-gray-50 dark:bg-zinc-800 border-2 border-white hover:border-black shadow-neo-sm"
             >
               <Mail className="h-6 w-6 text-accent-color" />
               <p className="text-sm font-bold text-black dark:text-white">{CONTACT.email}</p>
@@ -163,7 +163,7 @@ const Contact = ({ onClose }) => {
 
             <motion.div
               whileHover={{ x: 5 }}
-              className="flex items-center space-x-4 p-4 bg-gray-50 dark:bg-zinc-800 border-2 border-black shadow-neo-sm"
+              className="flex items-center space-x-4 p-4 bg-gray-50 dark:bg-zinc-800 border-2 border-white hover:border-black shadow-neo-sm"
             >
               <Mail className="h-6 w-6 text-accent-color" />
               <p className="text-sm font-bold text-black dark:text-white">{CONTACT.eduemail}</p>

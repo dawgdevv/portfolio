@@ -84,7 +84,7 @@ const GitHub = () => {
     return (
       <section id="github" className="container mx-auto px-4 py-20 bg-bg-primary">
         <div className="flex justify-center items-center h-64">
-          <div className="animate-spin h-12 w-12 border-4 border-black border-t-accent-color rounded-full"></div>
+          <div className="animate-spin h-12 w-12 border-4 border-white hover:border-black border-t-accent-color rounded-full"></div>
         </div>
       </section>
     );
@@ -93,7 +93,7 @@ const GitHub = () => {
   if (error) {
     return (
       <section id="github" className="container mx-auto px-4 py-20 bg-bg-primary">
-        <div className="bg-red-100 border-4 border-black p-6 text-center shadow-neo">
+        <div className="bg-red-100 border-4 border-white hover:border-black p-6 text-center shadow-neo">
           <p className="font-bold text-red-600 text-xl">ERROR: {error}</p>
         </div>
       </section>
@@ -111,7 +111,7 @@ const GitHub = () => {
           viewport={{ once: true }}
           className="mb-16 text-center"
         >
-          <h2 className="text-5xl md:text-6xl font-black uppercase tracking-tighter text-black dark:text-white mb-4 bg-white dark:bg-black border-4 border-black inline-block px-8 py-4 shadow-neo hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all cursor-default">
+          <h2 className="text-5xl md:text-6xl font-black uppercase tracking-tighter text-black dark:text-white mb-4 bg-white dark:bg-black border-4 border-white hover:border-black inline-block px-8 py-4 shadow-neo hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all cursor-default">
             GitHub Activity
           </h2>
         </motion.div>
@@ -135,7 +135,7 @@ const GitHub = () => {
               initial={{ scale: 0.8, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
               whileHover={{ scale: 1.05, rotate: index % 2 === 0 ? 2 : -2 }}
-              className="bg-white dark:bg-zinc-900 border-4 border-black p-6 shadow-neo hover:shadow-neo-lg transition-all duration-300 group cursor-pointer"
+              className="bg-white dark:bg-zinc-900 border-4 border-white hover:border-black p-6 shadow-neo hover:shadow-neo-lg transition-all duration-300 group cursor-pointer"
             >
               <stat.icon className={`text-4xl mb-4 ${stat.color} group-hover:scale-110 transition-transform`} />
               <h3 className="text-4xl font-black text-black dark:text-white mb-1 group-hover:text-accent-color transition-colors">
@@ -155,7 +155,7 @@ const GitHub = () => {
           viewport={{ once: true }}
           className="mb-20"
         >
-          <div className="bg-white dark:bg-zinc-900 border-4 border-black shadow-neo-lg">
+          <div className="bg-white dark:bg-zinc-900 border-4 border-white hover:border-black shadow-neo-lg">
 
             {/* Calendar Content */}
             <div className="p-6 md:p-10 overflow-x-auto">
@@ -196,7 +196,7 @@ const GitHub = () => {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ y: -8, x: -4, rotate: 1 }}
-                className="block bg-white dark:bg-zinc-900 border-4 border-black shadow-neo p-6 hover:shadow-neo-lg transition-all duration-300 relative group overflow-hidden"
+                className="block bg-white dark:bg-zinc-900 border-4 border-white hover:border-black shadow-neo p-6 hover:shadow-neo-lg transition-all duration-300 relative group overflow-hidden"
               >
                 {/* Hover Accent Background */}
                 <div className="absolute inset-0 bg-accent-color opacity-0 group-hover:opacity-5 transition-opacity pointer-events-none"></div>
@@ -216,7 +216,7 @@ const GitHub = () => {
                   <div className="flex items-center gap-2">
                     {repo.language && (
                       <div className="flex items-center gap-2">
-                        <div className="w-3 h-3 bg-accent-color border-2 border-black"></div>
+                        <div className="w-3 h-3 bg-accent-color border-2 border-white hover:border-black"></div>
                         <span className="text-xs font-bold uppercase text-gray-700 dark:text-gray-300">
                           {repo.language}
                         </span>
@@ -244,7 +244,7 @@ const GitHub = () => {
               href={`https://github.com/${GITHUB_USERNAME}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 bg-black text-white px-8 py-4 font-black uppercase tracking-wider border-4 border-transparent hover:bg-accent-color hover:text-white hover:border-black hover:shadow-neo transition-all transform hover:-translate-y-1"
+              className="inline-flex items-center gap-3 bg-black text-white px-8 py-4 font-black uppercase tracking-wider border-4 border-transparent hover:bg-accent-color hover:text-white hover:border-white hover:border-black hover:shadow-neo transition-all transform hover:-translate-y-1"
             >
               <FaGithub className="text-xl" />
               View All Repositories

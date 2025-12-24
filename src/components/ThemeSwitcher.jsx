@@ -31,7 +31,7 @@ export default function ThemeSwitcher() {
       whileHover={{ scale: 1.1, rotate: 10 }}
       whileTap={{ scale: 0.9, rotate: -10 }}
       onClick={toggleTheme}
-      className="fixed top-4 right-4 z-50 bg-white border-2 border-black shadow-neo p-2 hover:shadow-neo-lg transition-all"
+      className="fixed top-4 right-4 z-50 bg-white border-2 border-white hover:border-black shadow-neo p-2 hover:shadow-neo-lg transition-all"
     >
       {theme === "dark" ? (
         <FiSun className="text-xl text-black" />
