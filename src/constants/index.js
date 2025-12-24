@@ -5,13 +5,10 @@ import ReditAnalysis from "../assets/reddit.png";
 import BACIP from "../assets/bacip.png";
 import BlogApp from "../assets/blog.png";
 import GoalFlowApp from "../assets/goalflow.png";
-export const HERO_CONTENT = `
-I mostly work with JavaScript, Node.js, React, Go and all the tools that go into building modern full-stack applications. I'm particularly interested in everything related to tech I genuinely enjoy building websites, systems, and tinkering with new technologies.
+import Fourows from "../assets/4rows.png";
+import ErgoVisualCoder from "../assets/ergoVisualCoder.png";
+import AgenticOps from "../assets/agentic.jpeg";
 
-I adapt quickly to different stacks, but I have a soft spot for web3 and am a big fan of decentralization. I'm also a Linux enthusiast and use Ubuntu as my daily driver.
-
-Most of my days revolve around solving LeetCode problems, building things from scratch, and constantly thinking about how little I know. That’s really it I just love building stuff. Nothing more to it.
-`;
 
 export const EXPERIENCES = [
   {
@@ -49,6 +46,91 @@ export const EXPERIENCES = [
 ];
 
 export const PROJECTS = [
+  {
+    name: "Four-in-a-Row",
+    description:
+      "A full-stack implementation of the classic Connect Four game featuring a React client with canvas graphics and a Go backend.",
+    longDescription:
+      "This repository hosts a complete client-server implementation of the Four-in-a-Row game. The client is built with React and Vite, utilizing Konva for high-performance canvas rendering and Framer Motion for smooth visual effects. The backend is powered by Go, designed to handle game logic and state management efficiently.",
+    technologies: [
+      "React.js",
+      "Vite",
+      "TypeScript",
+      "Konva (Canvas)",
+      "Framer Motion",
+      "Zustand",
+      "Go (Golang)",
+    ],
+    features: [
+      "Interactive Konva canvas-based game board",
+      "Real-time game state management with Zustand",
+      "Smooth animations using Framer Motion",
+      "Client-server architecture",
+      "Scalable Go backend structure",
+    ],
+    liveLink: "https://4-rows-game.vercel.app/", // No public live link found in the provided files
+    githubLink: "https://github.com/dawgdevv/4_rows_game",
+    videoLink: "",
+    image: Fourows, // Refers to 'client_side/image.png' in the repo
+  },
+  {
+    name: "Ergo Visual Coder",
+    description:
+      "A visual coding platform for building and learning ErgoScript smart contracts using a drag-and-drop interface powered by Blockly.",
+    longDescription:
+      "Ergo Visual Coder makes blockchain development accessible by allowing users to assemble logic blocks visually to create smart contracts. It features real-time code generation, an agent-assisted learning system (Tutor & Builder agents), and an eUTXO simulation engine to test contracts before deployment.",
+    technologies: [
+      "React.js",
+      "TypeScript",
+      "Blockly",
+      "FastAPI",
+      "Python",
+      "Tailwind CSS",
+      "Zustand",
+      "RAG (Retrieval-Augmented Generation)",
+    ],
+    features: [
+      "Visual Block Editor (Blockly) for ErgoScript",
+      "Real-time ErgoScript code generation",
+      "AI-powered Builder and Tutor agents for assistance",
+      "eUTXO contract simulation engine",
+      "Testnet deployment capabilities",
+      "Retrieval-Augmented Generation for documentation",
+    ],
+    liveLink: "", // Localhost specified in Readme
+    githubLink: "https://github.com/dawgdevv/blockly-ergoscript_new_implementation_unstopable",
+    videoLink: "",
+    image: ErgoVisualCoder, // Refers to the badge or 'client/public/ico.png'
+  },
+  {
+    name: "AgenticOps",
+    description:
+      "A scalable multi-agent system for large-scale PDF analysis, utilizing a distributed mapper–reducer architecture for fast and reliable document processing.",
+    longDescription:
+      "AgenticOps is a distributed multi-agent system designed for high-volume document understanding. Powered by Ray and LLM-driven agents, it employs a hierarchical architecture where Master, SubMaster, and Worker agents collaborate to process documents in parallel. The system maintains global context across pages, handles automatic retries and fault tolerance, and synthesizes final insights into structured JSON and PDF reports.",
+    technologies: [
+      "Python",
+      "Ray Distributed Framework",
+      "Mistral LLM", //
+      "MongoDB", //
+      "FastAPI", //
+      "React.js", //
+      "Google Gemini API", //
+      "Redis", //
+    ],
+    features: [
+      "Multi-tier agent architecture (Master, SubMaster, Worker)", //
+      "Parallel page-level processing with global context", //
+      "Automatic retries, lineage-based recovery, and fault tolerance", //
+      "Dynamic resource allocation based on document complexity", //
+      "Real-time monitoring using an event-driven system", //
+      "Final synthesis of reports in both JSON and PDF formats", //
+    ],
+    liveLink: "", //
+    githubLink: "https://github.com/devrishivermaa/agentiops", // Inferred from file path
+    videoLink: "", // No video link found in the provided files
+    image: AgenticOps, // Refers to 'Flowchart (1).jpg' in the repo
+  },
   {
     name: "DTIX",
     description:
