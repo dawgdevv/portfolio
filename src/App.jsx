@@ -67,7 +67,7 @@ function App() {
           if (
             scrollPosition >= offsetTop - navHeight - windowHeight / 2 &&
             scrollPosition <
-              offsetTop + offsetHeight - navHeight - windowHeight / 2
+            offsetTop + offsetHeight - navHeight - windowHeight / 2
           ) {
             currentSection = id;
           }

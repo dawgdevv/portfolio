@@ -50,16 +50,16 @@ export default function AnimatedCursor() {
   return (
     <>
       <motion.div
-        className="hidden md:block fixed top-0 left-0 w-16 h-16 rounded-full pointer-events-none z-50"
+        className="hidden md:block fixed top-0 left-0 w-8 h-8 rounded-none border-2 border-black bg-accent-color pointer-events-none z-50 mix-blend-difference"
         variants={variants}
         animate={cursorVariant}
         transition={{ type: "spring", stiffness: 500, damping: 28 }}
       />
       <motion.div
-        className="hidden md:block fixed top-0 left-0 w-4 h-4 bg-white rounded-full pointer-events-none z-50"
+        className="hidden md:block fixed top-0 left-0 w-3 h-3 bg-black rounded-none pointer-events-none z-50 transform rotate-45"
         style={{
-          x: mousePosition.x - 2,
-          y: mousePosition.y - 2,
+          x: mousePosition.x - 6,
+          y: mousePosition.y - 6,
         }}
       />
     </>

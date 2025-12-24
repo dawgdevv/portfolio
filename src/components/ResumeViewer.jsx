@@ -9,6 +9,7 @@ import {
   Download,
   ChevronLeft,
   ChevronRight,
+  X,
 } from "lucide-react";
 import PropTypes from "prop-types";
 import resumePdf from "../assets/Resume_Nishant.pdf"; // Adjust path if needed
@@ -59,88 +60,90 @@ const ResumeViewer = ({ onClose }) => {
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.9 }}
-      className="bg-black/80 backdrop-blur-md rounded-lg border border-gray-700 shadow-xl w-[90vw] h-[90vh] max-w-4xl flex flex-col overflow-hidden"
+      className="bg-zinc-900 border-4 border-black shadow-neo-lg w-[95vw] h-[95vh] max-w-5xl flex flex-col overflow-hidden"
     >
       {/* Header Controls */}
-      <div className="flex items-center justify-between p-3 bg-gray-800/50 border-b border-gray-700 text-white">
-        <span className="font-semibold text-sm">Nishant Raj - Resume</span>
-        <div className="flex items-center gap-2">
+      <div className="flex items-center justify-between p-4 bg-white border-b-4 border-black text-black">
+        <span className="font-black text-lg uppercase tracking-tight">Nishant Raj - Resume</span>
+        <div className="flex items-center gap-3">
           {/* Zoom Controls */}
-          <button
-            onClick={zoomOut}
-            disabled={scale <= 0.5}
-            className="p-1 rounded hover:bg-gray-700 disabled:opacity-50"
-          >
-            <ZoomOut size={18} />
-          </button>
-          <span className="text-xs w-10 text-center">
-            {Math.round(scale * 100)}%
-          </span>
-          <button
-            onClick={zoomIn}
-            disabled={scale >= 3.0}
-            className="p-1 rounded hover:bg-gray-700 disabled:opacity-50"
-          >
-            <ZoomIn size={18} />
-          </button>
+          <div className="flex items-center border-2 border-black bg-white">
+            <button
+              onClick={zoomOut}
+              disabled={scale <= 0.5}
+              className="p-2 hover:bg-gray-200 disabled:opacity-50 border-r-2 border-black"
+            >
+              <ZoomOut size={20} />
+            </button>
+            <span className="text-xs font-bold w-12 text-center">
+              {Math.round(scale * 100)}%
+            </span>
+            <button
+              onClick={zoomIn}
+              disabled={scale >= 3.0}
+              className="p-2 hover:bg-gray-200 disabled:opacity-50 border-l-2 border-black"
+            >
+              <ZoomIn size={20} />
+            </button>
+          </div>
 
           {/* Page Navigation */}
           {numPages && numPages > 1 && (
-            <>
+            <div className="flex items-center border-2 border-black bg-white">
               <button
                 onClick={goToPrevPage}
                 disabled={pageNumber <= 1}
-                className="p-1 rounded hover:bg-gray-700 disabled:opacity-50"
+                className="p-2 hover:bg-gray-200 disabled:opacity-50 border-r-2 border-black"
               >
-                <ChevronLeft size={18} />
+                <ChevronLeft size={20} />
               </button>
-              <span className="text-xs">
-                Page {pageNumber} of {numPages}
+              <span className="text-xs font-bold px-3">
+                {pageNumber} / {numPages}
               </span>
               <button
                 onClick={goToNextPage}
                 disabled={pageNumber >= numPages}
-                className="p-1 rounded hover:bg-gray-700 disabled:opacity-50"
+                className="p-2 hover:bg-gray-200 disabled:opacity-50 border-l-2 border-black"
               >
-                <ChevronRight size={18} />
+                <ChevronRight size={20} />
               </button>
-            </>
+            </div>
           )}
 
           {/* Download Button */}
           <a
             href={resumePdf}
             download="Nishant_Raj_Resume.pdf"
-            className="p-1 rounded hover:bg-gray-700 ml-2"
+            className="p-2 bg-accent-color text-white border-2 border-black shadow-neo-sm hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all ml-2"
             title="Download Resume"
           >
-            <Download size={18} />
+            <Download size={20} />
           </a>
 
           {/* Close Button */}
           <button
             onClick={onClose}
-            className="p-1 rounded hover:bg-red-500/50 ml-2 text-gray-300 hover:text-white"
+            className="p-2 bg-red-500 text-white border-2 border-black shadow-neo-sm hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all ml-2"
           >
-            ✕
+            <X size={20} />
           </button>
         </div>
       </div>
 
       {/* PDF Content Area */}
-      <div className="flex-grow overflow-auto p-4 bg-black/30 flex justify-center items-start">
+      <div className="flex-grow overflow-auto p-8 bg-gray-100 dark:bg-zinc-800 flex justify-center items-start">
         {isLoading && (
-          <div className="text-gray-400 flex flex-col items-center justify-center h-full">
-            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500 mb-4"></div>
-            <p>Loading resume...</p>
+          <div className="text-black dark:text-gray-400 flex flex-col items-center justify-center h-full">
+            <div className="animate-spin h-12 w-12 border-4 border-black border-t-accent-color mb-4 bg-white/50"></div>
+            <p className="font-bold uppercase">Loading resume...</p>
           </div>
         )}
         {error && (
-          <div className="text-red-400 flex flex-col items-center justify-center h-full">
-            <p>{error}</p>
+          <div className="text-red-500 flex flex-col items-center justify-center h-full">
+            <p className="font-bold">{error}</p>
             <button
               onClick={() => window.location.reload()}
-              className="mt-4 px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-md text-white text-sm"
+              className="mt-4 px-6 py-2 bg-black text-white hover:bg-gray-800 border-2 border-transparent font-bold"
             >
               Reload
             </button>

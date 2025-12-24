@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800&display=swap"); /* Ensure JetBrains Mono is imported */
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800&display=swap");
+/* Ensure JetBrains Mono is imported */
 
 @tailwind base;
 @tailwind components;
@@ -7,14 +8,19 @@
 
 :root {
   font-family: "Inter", system-ui, Avenir, Helvetica, Arial, sans-serif;
-  --bg-primary: #030712; /* Dark blue-gray */
-  --text-primary: #e5e7eb; /* Light gray */
-  --text-secondary: #9ca3af; /* Medium gray */
-  --accent-color: #8b5cf6; /* orange */
-  --accent-hover: #7c3aed; /* Darker orange */
+  --bg-primary: #f0f0f0;
+  /* Light gray background for better contrast with black borders */
+  --text-primary: #000000;
+  /* Pitch black text */
+  --text-secondary: #333333;
+  /* Dark gray */
+  --accent-color: #8b5cf6;
+  /* Keep accent */
+  --accent-hover: #7c3aed;
 
   line-height: 1.6;
-  font-weight: 400;
+  font-weight: 500;
+  /* Bolder text by default */
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -31,114 +37,75 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Custom scrollbar for a more modern look (optional) */
+/* Neo Brutalist Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 12px;
+  background: #fff;
+  border-left: 2px solid #000;
 }
-::-webkit-scrollbar-track {
-  background: #0a0d1f; /* Slightly lighter than main bg */
-}
+
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(
-    to bottom,
-    var(--accent-color),
-    #ec4899
-  ); /* Pink */
-  border-radius: 10px;
+  background: #000;
+  border: 2px solid #fff;
 }
+
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(
-    to bottom,
-    var(--accent-hover),
-    #d946ef
-  ); /* Magenta */
+  background: #333;
 }
 
-@keyframes float {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-8px); /* Slightly less float */
-  }
-  100% {
-    transform: translateY(0px);
-  }
+.neo-box {
+  border: 2px solid #000;
+  box-shadow: 4px 4px 0px 0px #000;
+  background-color: #fff;
+  transition: all 0.2s ease-in-out;
 }
 
-.float {
-  animation: float 5s ease-in-out infinite; /* Slightly faster */
+.neo-box:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px 0px #000;
+}
+
+.neo-box:active {
+  transform: translate(0px, 0px);
+  box-shadow: 0px 0px 0px 0px #000;
+}
+
+.neo-button {
+  background-color: var(--accent-color);
+  color: white;
+  border: 2px solid #000;
+  box-shadow: 4px 4px 0px 0px #000;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  transition: all 0.1s;
+}
+
+.neo-button:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px 0px #000;
+}
+
+.neo-button:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0px 0px 0px 0px #000;
 }
 
 .light-theme {
-  --bg-primary: #f9fafb; /* Off-white */
-  --text-primary: #1f2937; /* Dark Gray */
-  --text-secondary: #4b5563; /* Medium Gray */
-  --accent-color: #6d28d9; /* Indigo */
-  --accent-hover: #5b21b6; /* Darker Indigo */
+  /* Keep variables if needed, but defining main look in :root for now as Neo Brutalist is often high contrast light mode by default, 
+       but can work in dark. Let's stick to the user's current theme structure but just override values if possible or just use the new classes. 
+       The user asked to "squared up", so we force 0 radius. */
+  --bg-primary: #fff;
+  --text-primary: #000;
 }
 
-/* Add these smooth transitions for theme switching */
-body {
-  transition: background-color 0.3s ease, color 0.3s ease;
+/* Force removal of rounded corners everywhere */
+* {
+  border-radius: 0 !important;
 }
 
-.light-theme .bg-\[\#030712\] {
-  background-color: var(--bg-primary) !important;
-}
-
-.light-theme .text-white {
-  color: var(--text-primary) !important;
-}
-
-.light-theme .from-\[\#030712\] {
-  --tw-gradient-from: #f5f7fa !important;
-}
-
-.light-theme .to-\[\#1f2937\] {
-  --tw-gradient-to: #e2e8f0 !important;
-}
-
-/* Add this class to use for your interactive elements */
-.interactive {
-  transition: all 0.2s ease-out; /* Faster transition */
-  transform-origin: center;
-}
-
-.interactive:hover {
-  transform: translateY(-3px) scale(1.03); /* More subtle hover */
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Softer shadow for light theme */
-}
-
-.light-theme .interactive:hover {
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-}
-
-/* Add a general focus style for accessibility */
-*:focus-visible {
-  outline: 2px solid var(--accent-color);
-  outline-offset: 2px;
-  border-radius: 4px; /* Optional: makes focus ring match rounded elements */
-}
-/* Add these to your existing index.css file */
-.line-clamp-2 {
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  line-clamp: 2;
-  overflow: hidden;
-}
-
-/* Compact section spacing utilities */
-.section-compact {
-  padding-top: 2.5rem; /* 10 */
-  padding-bottom: 2.5rem;
-}
-.section-compact-lg {
-  padding-top: 3rem; /* 12 */
-  padding-bottom: 3rem;
-}
-
-body.modal-open {
-  overflow: hidden;
+/* Utility to ensure text readability on dark backgrounds if any */
+.text-shadow-neo {
+  text-shadow: 2px 2px 0px #000;
 }

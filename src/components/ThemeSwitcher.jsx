@@ -28,15 +28,15 @@ export default function ThemeSwitcher() {
 
   return (
     <motion.button
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.9, rotate: 360 }}
+      whileHover={{ scale: 1.1, rotate: 10 }}
+      whileTap={{ scale: 0.9, rotate: -10 }}
       onClick={toggleTheme}
-      className="fixed top-4 right-4 z-50 bg-white/10 backdrop-blur-md border border-white/20 p-2 rounded-full"
+      className="fixed top-4 right-4 z-50 bg-white border-2 border-black shadow-neo p-2 hover:shadow-neo-lg transition-all"
     >
       {theme === "dark" ? (
-        <FiSun className="text-lg text-yellow-300" />
+        <FiSun className="text-xl text-black" />
       ) : (
-        <FiMoon className="text-lg text-blue-500" />
+        <FiMoon className="text-xl text-black" />
       )}
     </motion.button>
   );

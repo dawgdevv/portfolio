@@ -100,7 +100,7 @@ function Tech() {
       <motion.h2
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="mb-4 text-3xl md:text-4xl font-bold bg-gradient-to-r from-gray-100 to-gray-300 bg-clip-text text-transparent"
+        className="mb-12 text-4xl md:text-5xl font-black text-center uppercase tracking-tighter text-black dark:text-white"
       >
         Technologies
       </motion.h2>
@@ -109,7 +109,7 @@ function Tech() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.2 }}
-        className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3 md:gap-4 max-w-5xl mx-auto"
+        className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 max-w-6xl mx-auto"
       >
         {techStack.map((tech, index) => (
           <motion.div
@@ -118,9 +118,13 @@ function Tech() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: index * 0.1 }}
             whileHover={{
-              scale: 1.1,
-              rotate: 5,
-              transition: { duration: 0.2 },
+              y: -5,
+              x: -5,
+              transition: { duration: 0.1 },
+            }}
+            whileTap={{
+              y: 0,
+              x: 0,
             }}
             className="flex justify-center"
           >
@@ -128,9 +132,10 @@ function Tech() {
               href={tech.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 rounded-xl bg-black/60 backdrop-blur-sm border border-white/10 hover:border-gray-700/60 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-orange-500/10"
+              className="flex flex-col items-center justify-center p-6 w-full bg-white dark:bg-zinc-800 border-4 border-black shadow-neo hover:shadow-neo-lg transition-all duration-200 group"
             >
-              <tech.Icon className={`text-5xl md:text-6xl ${tech.color}`} />
+              <tech.Icon className={`text-6xl ${tech.color} drop-shadow-md`} />
+              {/* Optional label if needed, or stick to icons only as per original design but bolder */}
             </a>
           </motion.div>
         ))}

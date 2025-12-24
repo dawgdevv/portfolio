@@ -9,54 +9,52 @@ function Experience() {
       <motion.h2
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="mb-6 text-3xl md:text-4xl font-bold text-center bg-gradient-to-r from-gray-100 to-gray-300 bg-clip-text text-transparent"
+        className="mb-12 text-4xl md:text-5xl font-black text-center uppercase tracking-tighter text-black dark:text-white"
       >
         Experience
       </motion.h2>
-      <div className="space-y-4 md:space-y-5 max-w-4xl mx-auto">
+      <div className="space-y-6 md:space-y-8 max-w-4xl mx-auto">
         {EXPERIENCES.map((experience, index) => (
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            whileHover={{ scale: 1.02 }}
+            whileHover={{ y: -4, x: -4 }}
             transition={{ delay: index * 0.1 }}
             key={index}
-            className="bg-black/60 backdrop-blur-sm rounded-xl p-4 md:p-5 border border-white/10 hover:border-gray-700/60 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-orange-500/10"
+            className="bg-white dark:bg-zinc-800 p-6 border-4 border-black shadow-neo hover:shadow-neo-lg transition-all duration-200"
           >
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-4">
               <div className="space-y-1">
                 <motion.h3
-                  className="text-lg md:text-xl font-bold text-white"
-                  whileHover={{ x: 10 }}
+                  className="text-xl md:text-2xl font-black uppercase tracking-tight text-black dark:text-white"
+                  whileHover={{ x: 5 }}
                   transition={{ duration: 0.2 }}
                 >
                   {experience.role}
                 </motion.h3>
-                <div className="flex items-center gap-2 text-gray-400">
-                  <span className="text-sm font-medium">
-                    {experience.company}
-                  </span>
-                  <span className="text-gray-600">•</span>
-                  <span className="text-sm">{experience.location}</span>
+                <div className="flex items-center gap-2 text-gray-800 dark:text-gray-300 font-bold font-mono text-sm">
+                  <span>{experience.company}</span>
+                  <span>•</span>
+                  <span>{experience.location}</span>
                 </div>
               </div>
               <div className="flex items-center gap-2">
-                <span className="px-2.5 py-1 text-xs md:text-sm text-orange-300 bg-orange-500/10 rounded-full border border-orange-500/20">
+                <span className="px-3 py-1 text-xs md:text-sm font-bold bg-accent-color text-white border-2 border-black shadow-neo-sm transform -rotate-1">
                   {experience.year}
                 </span>
               </div>
             </div>
 
-            <p className="mt-2.5 text-gray-300 text-sm md:text-base leading-relaxed">
+            <p className="text-black dark:text-gray-200 text-sm md:text-base leading-relaxed font-medium">
               {experience.description}
             </p>
 
-            <div className="mt-3 flex flex-wrap gap-2">
+            <div className="mt-4 flex flex-wrap gap-2">
               {experience.technologies.map((tech, techIndex) => (
                 <motion.span
                   key={techIndex}
                   whileHover={{ scale: 1.05 }}
-                  className="px-2.5 py-1 text-xs font-medium text-gray-300 bg-gray-800/50 rounded-full border border-gray-700/50 hover:border-gray-600/50 transition-colors"
+                  className="px-2 py-1 text-xs font-bold text-black border-2 border-black bg-white shadow-neo-sm"
                 >
                   {tech}
                 </motion.span>
