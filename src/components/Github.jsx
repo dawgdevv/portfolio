@@ -18,21 +18,21 @@ const GitHub = () => {
 
   const GITHUB_USERNAME = "dawgdevv";
 
-  // Theme colors derived from --accent-color: #8b5cf6
+  // Theme colors derived from --accent-color: #4cec3eff
   const theme = {
     light: [
-      "#f3e8ff", // very light purple (bg)
-      "#d8b4fe", // light purple
-      "#a855f7", // purple
-      "#7e22ce", // dark purple
-      "#581c87", // very dark purple
+      "#ebedf0", // Level 0
+      "#9be9a8", // Level 1
+      "#40c463", // Level 2
+      "#30a14e", // Level 3
+      "#216e39", // Level 4
     ],
     dark: [
-      "#2e1065", // very dark background for empty squares in dark mode
-      "#7e22ce",
-      "#a855f7",
-      "#d8b4fe",
-      "#f3e8ff",
+      "#161b22", // Level 0
+      "#0e4429", // Level 1
+      "#006d32", // Level 2
+      "#26a641", // Level 3
+      "#39d353", // Level 4
     ],
   };
 

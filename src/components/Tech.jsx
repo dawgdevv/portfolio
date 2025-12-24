@@ -7,9 +7,12 @@ import {
   SiPostgresql,
   SiUbuntu,
   SiSolidity,
+  SiRedis,
+  SiFastapi,
+  SiTypescript,
 } from "react-icons/si";
 
-import { FaGitAlt } from "react-icons/fa";
+import { FaGitAlt, FaAws, FaPython } from "react-icons/fa";
 import { FaGolang } from "react-icons/fa6";
 import { DiNodejs, DiJavascript1, DiDocker } from "react-icons/di";
 
@@ -21,6 +24,16 @@ const techStack = [
     Icon: DiJavascript1,
     color: "text-yellow-300",
     url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+  },
+  {
+    Icon: SiTypescript,
+    color: "text-blue-600",
+    url: "https://www.typescriptlang.org/",
+  },
+  {
+    Icon: FaPython,
+    color: "text-blue-500",
+    url: "https://www.python.org/",
   },
   {
     Icon: RiReactjsLine,
@@ -39,6 +52,11 @@ const techStack = [
     url: "https://nodejs.org/en/docs/",
   },
   {
+    Icon: SiFastapi,
+    color: "text-teal-500",
+    url: "https://fastapi.tiangolo.com/",
+  },
+  {
     Icon: SiMongodb,
     color: "text-green-700",
     url: "https://docs.mongodb.com/",
@@ -49,6 +67,21 @@ const techStack = [
     url: "https://www.postgresql.org/docs/",
   },
   {
+    Icon: SiRedis,
+    color: "text-red-600",
+    url: "https://redis.io/",
+  },
+  {
+    Icon: FaAws,
+    color: "text-orange-500",
+    url: "https://aws.amazon.com/",
+  },
+  {
+    Icon: DiDocker,
+    color: "text-blue-500",
+    url: "https://docs.docker.com/",
+  },
+  {
     Icon: SiUbuntu,
     color: "text-orange-600",
     url: "https://ubuntu.com/",
@@ -57,11 +90,6 @@ const techStack = [
     Icon: FaGolang,
     color: "text-blue-500",
     url: "https://golang.org/doc/",
-  },
-  {
-    Icon: DiDocker,
-    color: "text-blue-500",
-    url: "https://docs.docker.com/",
   },
   {
     Icon: FaGitAlt,
@@ -95,51 +123,56 @@ TechIcon.propTypes = {
 
 function Tech() {
   return (
-    <div className="flex flex-col justify-center items-center relative px-4">
+    <div className="flex flex-col justify-center items-center relative px-4 overflow-hidden py-10">
       <SnowfallBackground />
       <motion.h2
         initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
         className="mb-12 text-4xl md:text-5xl font-black text-center uppercase tracking-tighter text-black dark:text-white"
       >
         Technologies
       </motion.h2>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.2 }}
-        className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 max-w-6xl mx-auto"
-      >
-        {techStack.map((tech, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: index * 0.1 }}
-            whileHover={{
-              y: -5,
-              x: -5,
-              transition: { duration: 0.1 },
-            }}
-            whileTap={{
-              y: 0,
-              x: 0,
-            }}
-            className="flex justify-center"
-          >
-            <a
-              href={tech.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex flex-col items-center justify-center p-6 w-full bg-white dark:bg-zinc-800 border-4 border-black shadow-neo hover:shadow-neo-lg transition-all duration-200 group"
+      <div className="w-full relative overflow-hidden">
+
+        <motion.div
+          className="flex gap-8 w-max"
+          animate={{
+            x: ["0%", "-50%"],
+          }}
+          transition={{
+            x: {
+              repeat: Infinity,
+              repeatType: "loop",
+              duration: 40,
+              ease: "linear",
+            },
+          }}
+        >
+          {/* Duplicate the array to create the infinite loop effect */}
+          {[...techStack, ...techStack].map((tech, index) => (
+            <motion.div
+              key={index}
+              whileHover={{
+                scale: 1.1,
+                rotate: 5,
+                transition: { duration: 0.2 },
+              }}
+              className="flex-shrink-0"
             >
-              <tech.Icon className={`text-6xl ${tech.color} drop-shadow-md`} />
-              {/* Optional label if needed, or stick to icons only as per original design but bolder */}
-            </a>
-          </motion.div>
-        ))}
-      </motion.div>
+              <a
+                href={tech.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex flex-col items-center justify-center w-32 h-32 md:w-40 md:h-40 bg-white dark:bg-zinc-800 border-4 border-black shadow-neo hover:shadow-neo-lg transition-all duration-200 group"
+              >
+                <tech.Icon className={`text-5xl md:text-6xl ${tech.color} drop-shadow-md transition-transform`} />
+              </a>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
     </div>
   );
 }

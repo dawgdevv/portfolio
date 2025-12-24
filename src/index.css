@@ -109,3 +109,13 @@ body {
 .text-shadow-neo {
   text-shadow: 2px 2px 0px #000;
 }
+
+/* Hide scrollbar utility */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
