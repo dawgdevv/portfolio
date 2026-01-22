@@ -37,9 +37,9 @@ const Hero = () => {
               type: "spring",
               bounce: 0.5,
             }}
-            className="flex items-center justify-center gap-3 mb-4"
+            className="flex flex-wrap items-center justify-center gap-2 md:gap-4 mb-4 font-mono"
           >
-            <span className="text-lg md:text-xl font-bold bg-gradient-to-r from-cyan-300 to-blue-500 bg-clip-text text-transparent uppercase tracking-wider">
+            <span className="text-xl md:text-2xl font-bold bg-gradient-to-r from-cyan-300 to-blue-500 bg-clip-text text-transparent uppercase tracking-wider">
               Hi there
             </span>
             <motion.span
@@ -53,16 +53,16 @@ const Hero = () => {
                 repeatDelay: 1,
                 ease: "easeInOut",
               }}
-              className="text-2xl origin-bottom-right cursor-default"
+              className="text-2xl md:text-3xl origin-bottom-right cursor-default"
             >
               👋
             </motion.span>
-            <span className="text-lg md:text-xl text-gray-400 font-medium tracking-wide uppercase">
+            <span className="text-xl md:text-2xl text-gray-400 font-medium tracking-wide uppercase">
               , I&apos;m
             </span>
           </motion.div>
 
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-white mb-8 overflow-hidden">
+          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-white mb-8 overflow-hidden break-words">
             {"Nishant Raj".split("").map((char, index) => (
               <motion.span
                 key={index}
@@ -90,7 +90,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="text-lg md:text-xl lg:text-2xl text-gray-400 max-w-3xl mx-auto font-light leading-relaxed tracking-wide space-y-6"
+            className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-400 max-w-3xl mx-auto font-mono leading-relaxed tracking-wide space-y-6"
           >
             <p>
               I am a{" "}
