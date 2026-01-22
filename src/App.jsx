@@ -15,7 +15,6 @@ import Navbar from "./components/Navbar";
 import AnimatedCursor from "./components/AnimatedCursor";
 
 const Hero = lazy(() => import("./components/Hero"));
-const Tech = lazy(() => import("./components/Tech"));
 const Experience = lazy(() => import("./components/Experience"));
 const Project = lazy(() => import("./components/Project"));
 const Contact = lazy(() => import("./components/Contact"));
@@ -90,7 +89,6 @@ function App() {
       { id: "hero", label: "Introduction" },
       { id: "experience", label: "Experience" },
       { id: "projects", label: "Projects" },
-      { id: "tech", label: "Technologies" },
       { id: "github", label: "GitHub" },
     ],
     [],
@@ -202,12 +200,6 @@ function App() {
             className="w-full flex justify-center items-center py-16"
           >
             <Project />
-          </section>
-          <section
-            id="tech"
-            className="w-full flex justify-center items-center py-16"
-          >
-            <Tech />
           </section>
           <section
             id="github"

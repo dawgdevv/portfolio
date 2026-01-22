@@ -7,7 +7,7 @@ function Navbar({ activeSection, onNavClick }) {
 
   const navItems = [
     { id: "hero", label: "Introduction" },
-    { id: "tech", label: "Technologies" },
+
     { id: "experience", label: "Experience" },
     { id: "projects", label: "Projects" },
   ];
@@ -22,17 +22,17 @@ function Navbar({ activeSection, onNavClick }) {
       >
         <div className="container mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
-
             {/* Desktop menu */}
             <div className="hidden md:flex space-x-2 relative">
               {navItems.map((item) => (
                 <motion.button
                   key={item.id}
                   onClick={() => onNavClick(item.id)}
-                  className={`relative z-10 px-4 py-2 text-sm font-bold uppercase tracking-wider border-2 border-white hover:border-black transition-all ${activeSection === item.id
-                    ? "bg-accent-color text-white shadow-neo-sm"
-                    : "bg-white text-black hover:bg-gray-100 hover:shadow-neo-sm"
-                    }`}
+                  className={`relative z-10 px-4 py-2 text-sm font-bold uppercase tracking-wider border-2 border-white hover:border-black transition-all ${
+                    activeSection === item.id
+                      ? "bg-accent-color text-white shadow-neo-sm"
+                      : "bg-white text-black hover:bg-gray-100 hover:shadow-neo-sm"
+                  }`}
                   whileHover={{ y: -2 }}
                   whileTap={{ y: 0 }}
                 >
@@ -98,10 +98,11 @@ function Navbar({ activeSection, onNavClick }) {
                       onNavClick(item.id);
                       setIsOpen(false);
                     }}
-                    className={`block w-full text-center px-4 py-3 text-sm font-bold uppercase border-2 border-white hover:border-black transition-all ${activeSection === item.id
-                      ? "bg-accent-color text-white shadow-neo-sm"
-                      : "bg-white text-black shadow-neo-sm hover:translate-x-1"
-                      }`}
+                    className={`block w-full text-center px-4 py-3 text-sm font-bold uppercase border-2 border-white hover:border-black transition-all ${
+                      activeSection === item.id
+                        ? "bg-accent-color text-white shadow-neo-sm"
+                        : "bg-white text-black shadow-neo-sm hover:translate-x-1"
+                    }`}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >

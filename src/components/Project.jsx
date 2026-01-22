@@ -31,13 +31,30 @@ export default function Project() {
             >
               <div
                 onClick={() => toggleProject(index)}
-                className="flex items-center justify-between p-6 h-[80px] bg-white dark:bg-zinc-900 cursor-pointer group"
+                className="flex flex-col md:flex-row items-start md:items-center justify-between p-6 bg-white dark:bg-zinc-900 cursor-pointer group gap-4"
               >
-                <h3 className="font-black text-2xl md:text-3xl text-black dark:text-white uppercase tracking-tighter truncate pr-4 flex-1">
-                  {project.name}
-                </h3>
+                <div className="flex flex-col gap-3 flex-1 min-w-0">
+                  <h3 className="font-black text-2xl md:text-3xl text-black dark:text-white uppercase tracking-tighter truncate w-full">
+                    {project.name}
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {project.technologies?.slice(0, 5).map((tech, i) => (
+                      <span
+                        key={i}
+                        className="px-2 py-0.5 text-[10px] font-bold uppercase bg-gray-100 dark:bg-zinc-800 text-gray-600 dark:text-gray-300 border border-transparent shadow-sm"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                    {project.technologies?.length > 5 && (
+                      <span className="px-2 py-0.5 text-[10px] font-bold text-gray-400">
+                        +{project.technologies.length - 5}
+                      </span>
+                    )}
+                  </div>
+                </div>
 
-                <div className="flex items-center gap-3 sm:gap-4">
+                <div className="flex items-center gap-3 sm:gap-4 shrink-0 self-end md:self-center">
                   <div
                     className="flex items-center gap-2 mr-2"
                     onClick={(e) => e.stopPropagation()}
