@@ -1,27 +1,32 @@
-import { useState, useEffect, useMemo, lazy, Suspense } from "react";
+/* eslint-disable react/prop-types */
+import { useState, useEffect, useMemo, lazy, Suspense, useRef } from "react";
+import {
+  motion,
+  AnimatePresence,
+  useMotionValue,
+  useSpring,
+  useTransform,
+} from "framer-motion";
+import { Contact as ContactIcon, FileText } from "lucide-react";
+import { FaLinkedin, FaGithub, FaSquareXTwitter } from "react-icons/fa6";
+import { SiPeerlist } from "react-icons/si";
+
 import Navbar from "./components/Navbar";
+import AnimatedCursor from "./components/AnimatedCursor";
+
 const Hero = lazy(() => import("./components/Hero"));
 const Tech = lazy(() => import("./components/Tech"));
 const Experience = lazy(() => import("./components/Experience"));
 const Project = lazy(() => import("./components/Project"));
 const Contact = lazy(() => import("./components/Contact"));
 const GitHub = lazy(() => import("./components/Github"));
-
 const ResumeViewer = lazy(() => import("./components/ResumeViewer"));
-import AnimatedCursor from "./components/AnimatedCursor";
-import { Contact as ContactIcon, FileText } from "lucide-react";
-import { FaLinkedin, FaGithub, FaSquareXTwitter } from "react-icons/fa6";
-import { SiPeerlist } from "react-icons/si";
-import { motion, AnimatePresence } from "framer-motion";
 
 const LoadingFallback = () => (
   <div className="flex justify-center items-center py-16 text-sm font-semibold text-gray-400">
     Loading...
   </div>
 );
-
-import { useMotionValue, useSpring, useTransform } from "framer-motion";
-import { useRef } from "react";
 
 function Dock({ items }) {
   let mouseX = useMotionValue(Infinity);
