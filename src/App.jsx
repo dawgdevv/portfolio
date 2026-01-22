@@ -6,6 +6,7 @@ const Experience = lazy(() => import("./components/Experience"));
 const Project = lazy(() => import("./components/Project"));
 const Contact = lazy(() => import("./components/Contact"));
 const GitHub = lazy(() => import("./components/Github"));
+
 const ResumeViewer = lazy(() => import("./components/ResumeViewer"));
 import AnimatedCursor from "./components/AnimatedCursor";
 import { Contact as ContactIcon, FileText } from "lucide-react";
@@ -13,11 +14,65 @@ import { FaLinkedin, FaGithub, FaSquareXTwitter } from "react-icons/fa6";
 import { SiPeerlist } from "react-icons/si";
 import { motion, AnimatePresence } from "framer-motion";
 
-const LoadingSpinner = () => (
-  <div className="flex justify-center items-center h-screen">
-    <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-orange-500"></div>
+const LoadingFallback = () => (
+  <div className="flex justify-center items-center py-16 text-sm font-semibold text-gray-400">
+    Loading...
   </div>
 );
+
+import { useMotionValue, useSpring, useTransform } from "framer-motion";
+import { useRef } from "react";
+
+function Dock({ items }) {
+  let mouseX = useMotionValue(Infinity);
+
+  return (
+    <motion.div
+      onMouseMove={(e) => mouseX.set(e.pageX)}
+      onMouseLeave={() => mouseX.set(Infinity)}
+      className="fixed bottom-6 left-1/2 -translate-x-1/2 flex h-16 items-end gap-4 rounded-2xl bg-black/40 backdrop-blur-md border border-white/10 px-4 pb-3 z-50 transform"
+      initial={{ opacity: 0, y: 50, x: "-50%" }}
+      animate={{ opacity: 1, y: 0, x: "-50%" }}
+      transition={{ delay: 0.5, type: "spring", stiffness: 200, damping: 20 }}
+    >
+      {items.map((item, index) => (
+        <DockIcon mouseX={mouseX} key={index} item={item} />
+      ))}
+    </motion.div>
+  );
+}
+
+function DockIcon({ mouseX, item }) {
+  let ref = useRef(null);
+
+  let distance = useTransform(mouseX, (val) => {
+    let bounds = ref.current?.getBoundingClientRect() ?? { x: 0, width: 0 };
+    return val - bounds.x - bounds.width / 2;
+  });
+
+  let widthSync = useTransform(distance, [-150, 0, 150], [40, 80, 40]);
+  let width = useSpring(widthSync, { mass: 0.1, stiffness: 150, damping: 12 });
+
+  return (
+    <motion.div
+      ref={ref}
+      style={{ width }}
+      className="aspect-square flex justify-center items-center cursor-pointer group relative"
+      onClick={
+        item.action ? item.action : () => window.open(item.href, "_blank")
+      }
+    >
+      <div className="w-full h-full p-2 bg-white/5 hover:bg-white/10 rounded-full border border-white/10 flex items-center justify-center transition-colors">
+        {item.icon}
+      </div>
+
+      {/* Tooltip */}
+      <span className="absolute -top-10 left-1/2 -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+        {item.label}
+      </span>
+    </motion.div>
+  );
+}
 
 function App() {
   const [activeSection, setActiveSection] = useState("hero");
@@ -28,12 +83,12 @@ function App() {
   const sections = useMemo(
     () => [
       { id: "hero", label: "Introduction" },
-      { id: "tech", label: "Technologies" },
       { id: "experience", label: "Experience" },
       { id: "projects", label: "Projects" },
+      { id: "tech", label: "Technologies" },
       { id: "github", label: "GitHub" },
     ],
-    []
+    [],
   );
 
   const scrollToSection = (id) => {
@@ -67,7 +122,7 @@ function App() {
           if (
             scrollPosition >= offsetTop - navHeight - windowHeight / 2 &&
             scrollPosition <
-            offsetTop + offsetHeight - navHeight - windowHeight / 2
+              offsetTop + offsetHeight - navHeight - windowHeight / 2
           ) {
             currentSection = id;
           }
@@ -124,18 +179,12 @@ function App() {
       </div>
       <Navbar activeSection={activeSection} onNavClick={scrollToSection} />
       <main className="relative z-10 container mx-auto px-4 pt-8 lg:pt-2 flex flex-col items-center">
-        <Suspense fallback={<LoadingSpinner />}>
+        <Suspense fallback={<LoadingFallback />}>
           <section
             id="hero"
             className="min-h-[calc(100vh-6rem)] w-full flex justify-center items-center py-24"
           >
             <Hero />
-          </section>
-          <section
-            id="tech"
-            className="w-full flex justify-center items-center py-16"
-          >
-            <Tech />
           </section>
           <section
             id="experience"
@@ -150,83 +199,53 @@ function App() {
             <Project />
           </section>
           <section
+            id="tech"
+            className="w-full flex justify-center items-center py-16"
+          >
+            <Tech />
+          </section>
+          <section
             id="github"
             className="w-full flex justify-center items-center py-16"
           >
             <GitHub />
           </section>
         </Suspense>
-
       </main>
-      <motion.div
-        className="fixed bottom-6 right-6 flex flex-col items-end gap-5 z-50"
-        initial={{ opacity: 0, x: 50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 0, stiffness: 100 }}
-      >
-        {[
+      <Dock
+        items={[
           {
             label: "Resume",
-            icon: <FileText className="text-red-600 w-6 h-6" />,
+            icon: <FileText className="text-red-600 w-full h-full" />,
             action: handleResumeClick,
-            href: null,
           },
           {
             label: "LinkedIn",
-            icon: <FaLinkedin className="text-blue-600 w-6 h-6" />,
+            icon: <FaLinkedin className="text-blue-600 w-full h-full" />,
             href: "https://www.linkedin.com/in/nraj24/",
-            action: null,
           },
           {
             label: "GitHub",
-            icon: <FaGithub className="text-white w-6 h-6" />,
+            icon: <FaGithub className="text-white w-full h-full" />,
             href: "https://github.com/dawgdevv",
-            action: null,
           },
           {
             label: "Twitter",
-            icon: <FaSquareXTwitter className="w-6 h-6" />,
+            icon: <FaSquareXTwitter className="w-full h-full" />,
             href: "https://x.com/sfunish",
-            action: null,
           },
           {
             label: "Peerlist",
-            icon: <SiPeerlist className="text-green-500 w-6 h-6" />,
+            icon: <SiPeerlist className="text-green-500 w-full h-full" />,
             href: "https://peerlist.io/nishantraj",
-            action: null,
           },
           {
             label: "Contact",
-            icon: <ContactIcon className="w-6 h-6" />,
+            icon: <ContactIcon className="w-full h-full" />,
             action: handleContactClick,
-            href: null,
           },
-        ].map((item, index) => (
-          <motion.button
-            key={item.label}
-            whileHover={{ scale: 1.1, x: -5 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={
-              item.action ? item.action : () => window.open(item.href, "_blank")
-            }
-            className="group bg-black/40 backdrop-blur-md border border-white/10 shadow-lg hover:border-orange-500/50 text-gray-300 hover:text-white p-3 rounded-full flex items-center gap-2 transition-all duration-300"
-            aria-label={item.label}
-            custom={index}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              delay: 0.6 + index * 0.1,
-              type: "spring",
-              stiffness: 120,
-            }}
-          >
-            {item.icon}
-            <span className="hidden group-hover:inline-block text-xs font-mono pr-1">
-              {item.label}
-            </span>
-          </motion.button>
-        ))}
-      </motion.div>
+        ]}
+      />
       <AnimatePresence>
         {isContactModalOpen && (
           <motion.div
@@ -243,7 +262,7 @@ function App() {
               transition={{ type: "spring", stiffness: 300, damping: 25 }}
               className="w-full max-w-lg"
             >
-              <Suspense fallback={<LoadingSpinner />}>
+              <Suspense fallback={<LoadingFallback />}>
                 <Contact onClose={handleCloseModal} />
               </Suspense>
             </motion.div>
@@ -259,7 +278,7 @@ function App() {
             transition={{ duration: 0.3 }}
             className="fixed inset-0 bg-black/70 backdrop-blur-md z-[70] flex items-center justify-center p-4"
           >
-            <Suspense fallback={<LoadingSpinner />}>
+            <Suspense fallback={<LoadingFallback />}>
               <ResumeViewer onClose={handleCloseResumeModal} />
             </Suspense>
           </motion.div>

@@ -112,7 +112,7 @@ function Hero() {
           <div className="flex justify-center">
             <div className="bg-accent-color p-6 border-4 border-white hover:border-black shadow-neo transform -rotate-2 hover:rotate-0 transition-transform duration-300 max-w-4xl relative z-10">
               <AnimatedText
-                text="ENGINEER THAT'S DEEP INTO BUILDING STUFF"
+                text="FULL STACK ENGINEER THAT'S DEEP INTO BUILDING STUFF"
                 className="text-2xl md:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight uppercase"
                 delay={0.2}
               />

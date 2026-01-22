@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { RiReactjsLine } from "react-icons/ri";
 import { TbBrandNextjs } from "react-icons/tb";
 import {
@@ -104,15 +103,11 @@ const techStack = [
 ];
 
 const TechIcon = ({ Icon, color, url }) => (
-  <motion.div
-    whileHover={{ scale: 1.2, rotate: 90 }}
-    whileTap={{ scale: 0.8, rotate: -90, borderRadius: "100%" }}
-    className="rounded-2xl border-4 border-neutral-800 p-4"
-  >
+  <div className="rounded-2xl border-4 border-neutral-800 p-4">
     <a href={url} target="_blank" rel="noopener noreferrer">
       <Icon className={`text-6xl ${color}`} />
     </a>
-  </motion.div>
+  </div>
 );
 
 TechIcon.propTypes = {
@@ -122,56 +117,81 @@ TechIcon.propTypes = {
 };
 
 function Tech() {
+  // Organize tech stack into categories for better "stacked" presentation
+  const techCategories = [
+    {
+      title: "Frontend",
+      techs: techStack.filter((t) =>
+        [
+          RiReactjsLine,
+          TbBrandNextjs,
+          SiTailwindcss,
+          DiJavascript1,
+          SiTypescript,
+        ].includes(t.Icon),
+      ),
+    },
+    {
+      title: "Backend & DB",
+      techs: techStack.filter((t) =>
+        [
+          DiNodejs,
+          SiFastapi,
+          SiMongodb,
+          SiPostgresql,
+          SiRedis,
+          FaPython,
+          FaGolang,
+        ].includes(t.Icon),
+      ),
+    },
+    {
+      title: "DevOps & Tools",
+      techs: techStack.filter((t) =>
+        [FaAws, DiDocker, SiUbuntu, FaGitAlt, SiSolidity].includes(t.Icon),
+      ),
+    },
+  ];
+
   return (
-    <div className="flex flex-col justify-center items-center relative px-4 overflow-hidden py-10">
+    <div className="flex flex-col justify-center items-center relative px-4 py-10 max-w-4xl mx-auto">
       <SnowfallBackground />
-      <motion.h2
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="mb-12 text-4xl md:text-5xl font-black text-center uppercase tracking-tighter text-black dark:text-white"
-      >
+      <h2 className="mb-16 text-4xl md:text-5xl font-black text-center uppercase tracking-tighter text-black dark:text-white">
         Technologies
-      </motion.h2>
+      </h2>
 
-      <div className="w-full relative overflow-hidden">
+      <div className="w-full grid gap-8">
+        {techCategories.map((category, catIndex) => (
+          <div
+            key={catIndex}
+            className="bg-white dark:bg-zinc-900 border-4 border-white hover:border-black shadow-neo p-6 relative group overflow-hidden"
+          >
+            {/* Hover Accent Background */}
+            <div className="absolute inset-0 bg-accent-color opacity-0 group-hover:opacity-5 transition-opacity pointer-events-none"></div>
 
-        <motion.div
-          className="flex gap-8 w-max"
-          animate={{
-            x: ["0%", "-50%"],
-          }}
-          transition={{
-            x: {
-              repeat: Infinity,
-              repeatType: "loop",
-              duration: 40,
-              ease: "linear",
-            },
-          }}
-        >
-          {/* Duplicate the array to create the infinite loop effect */}
-          {[...techStack, ...techStack].map((tech, index) => (
-            <motion.div
-              key={index}
-              whileHover={{
-                scale: 1.1,
-                rotate: 5,
-                transition: { duration: 0.2 },
-              }}
-              className="flex-shrink-0"
-            >
-              <a
-                href={tech.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex flex-col items-center justify-center w-32 h-32 md:w-40 md:h-40 bg-white dark:bg-zinc-800 border-4 border-white hover:border-black shadow-neo hover:shadow-neo-lg transition-all duration-200 group"
-              >
-                <tech.Icon className={`text-5xl md:text-6xl ${tech.color} drop-shadow-md transition-transform`} />
-              </a>
-            </motion.div>
-          ))}
-        </motion.div>
+            <h3 className="text-xl font-black uppercase tracking-tight text-black dark:text-white mb-6 flex items-center gap-2 relative z-10">
+              <span className="w-10 h-1 bg-black dark:bg-white"></span>
+              {category.title}
+            </h3>
+
+            <div className="flex flex-wrap gap-4 relative z-10">
+              {category.techs.map((tech, index) => (
+                <a
+                  key={index}
+                  href={tech.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 bg-gray-50 dark:bg-zinc-800 border-2 border-transparent hover:border-gray-200 dark:hover:border-zinc-700 rounded-lg"
+                  title={tech.url}
+                >
+                  <tech.Icon
+                    className={`text-3xl ${tech.color} drop-shadow-sm`}
+                  />
+                </a>
+              ))}
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
