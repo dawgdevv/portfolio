@@ -15,12 +15,12 @@ export default function Project() {
   };
 
   return (
-    <section className="container mx-auto px-4 py-10 max-w-4xl">
-      <h2 className="mb-16 text-4xl md:text-5xl font-black text-center uppercase tracking-tighter text-black dark:text-white">
+    <section className="container mx-auto px-4 py-2 max-w-4xl">
+      <h2 className="mb-3 text-xl md:text-2xl font-black text-center uppercase tracking-tighter text-black dark:text-white">
         Projects
       </h2>
 
-      <div className="flex flex-col gap-4 relative">
+      <div className="flex flex-col gap-2 relative">
         {PROJECTS.map((project, index) => {
           const isExpanded = expandedIndex === index;
 
@@ -31,10 +31,10 @@ export default function Project() {
             >
               <div
                 onClick={() => toggleProject(index)}
-                className="flex flex-col md:flex-row items-start md:items-center justify-between p-6 bg-white dark:bg-zinc-900 cursor-pointer group gap-4"
+                className="flex flex-col md:flex-row items-start md:items-center justify-between p-3 bg-white dark:bg-zinc-900 cursor-pointer group gap-2"
               >
                 <div className="flex flex-col gap-3 flex-1 min-w-0">
-                  <h3 className="font-black text-2xl md:text-3xl text-black dark:text-white uppercase tracking-tighter truncate w-full">
+                  <h3 className="font-black text-lg md:text-xl text-black dark:text-white uppercase tracking-tighter truncate w-full">
                     {project.name}
                   </h3>
                   <div className="flex flex-wrap gap-2">
@@ -106,12 +106,12 @@ export default function Project() {
               </div>
 
               {isExpanded && (
-                <div className="p-6 pt-0">
-                  <div className="border-4 border-white hover:border-black mb-6">
+                <div className="p-3 pt-0">
+                  <div className="border-4 border-white hover:border-black mb-3">
                     <img
                       src={project.image}
                       alt={project.name}
-                      className="w-full h-48 md:h-80 object-cover"
+                      className="w-full h-32 md:h-48 object-cover"
                     />
                   </div>
 

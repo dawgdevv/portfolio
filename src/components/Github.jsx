@@ -22,25 +22,25 @@ const GitHub = () => {
   };
 
   return (
-    <section id="github" className="py-20 bg-bg-primary overflow-hidden">
+    <section id="github" className="py-2 bg-bg-primary overflow-hidden">
       <div className="container mx-auto px-4 max-w-6xl">
         {/* Header */}
-        <div className="mb-16 text-center">
-          <h2 className="text-5xl md:text-6xl font-black uppercase tracking-tighter text-black dark:text-white mb-4 bg-white dark:bg-black border-4 border-white hover:border-black inline-block px-8 py-4 shadow-neo hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all cursor-default">
+        <div className="mb-3 text-center">
+          <h2 className="text-xl md:text-2xl font-black uppercase tracking-tighter text-black dark:text-white mb-2 bg-white dark:bg-black border-4 border-white hover:border-black inline-block px-4 py-2 shadow-neo hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all cursor-default">
             GitHub Activity
           </h2>
         </div>
 
         {/* Calendar Section */}
-        <div className="mb-20">
+        <div className="mb-3">
           <div className="bg-white dark:bg-zinc-900 border-4 border-white hover:border-black shadow-neo-lg">
             {/* Calendar Content */}
-            <div className="p-6 md:p-10 overflow-x-auto">
+            <div className="p-2 md:p-3 overflow-x-auto">
               <GitHubCalendar
                 username={GITHUB_USERNAME}
-                fontSize={14}
-                blockSize={14}
-                blockMargin={4}
+                fontSize={10}
+                blockSize={8}
+                blockMargin={2}
                 theme={theme}
                 style={{
                   color: "inherit",

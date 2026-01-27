@@ -11,7 +11,7 @@ import { Contact as ContactIcon, FileText } from "lucide-react";
 import { FaLinkedin, FaGithub, FaSquareXTwitter } from "react-icons/fa6";
 import { SiPeerlist } from "react-icons/si";
 
-import Navbar from "./components/Navbar";
+
 import AnimatedCursor from "./components/AnimatedCursor";
 
 const Hero = lazy(() => import("./components/Hero"));
@@ -125,7 +125,7 @@ function App() {
           if (
             scrollPosition >= offsetTop - navHeight - windowHeight / 2 &&
             scrollPosition <
-              offsetTop + offsetHeight - navHeight - windowHeight / 2
+            offsetTop + offsetHeight - navHeight - windowHeight / 2
           ) {
             currentSection = id;
           }
@@ -164,7 +164,7 @@ function App() {
   return (
     <div className="min-h-screen bg-[#030712] text-gray-100 overflow-x-hidden relative selection:bg-orange-500/30">
       <AnimatedCursor />
-      <div className="fixed inset-0 -z-10">
+      <div className="relative inset-0 -z-10">
         <div className="absolute inset-0 bg-gradient-to-br from-[#030712] via-[#0a0d1f] to-[#111827] opacity-95"></div>
         <div
           className="absolute inset-0 opacity-[0.02]"
@@ -174,36 +174,37 @@ function App() {
           }}
         ></div>
       </div>
-      <div className="fixed top-0 left-0 w-full h-1 z-[60]">
+      <div className="relative top-0 left-0 w-full h-1 z-[60]">
         <motion.div
           className="h-full bg-gradient-to-r from-orange-600 via-pink-500 to-orange-400 shadow-lg shadow-orange-500/30"
           style={{ width: `${scrollProgress}%` }}
         />
       </div>
-      <Navbar activeSection={activeSection} onNavClick={scrollToSection} />
-      <main className="relative z-10 container mx-auto px-4 pt-8 lg:pt-2 flex flex-col items-center">
+
+      <main className="relative z-10 container mx-auto px-6 pt-4 flex flex-col items-center">
         <Suspense fallback={<LoadingFallback />}>
           <section
             id="hero"
-            className="min-h-[calc(100vh-6rem)] w-full flex justify-center items-center py-24"
+            className="min-h-[30vh] w-full flex justify-center items-center py-10"
           >
             <Hero />
           </section>
+
           <section
             id="experience"
-            className="w-full flex justify-center items-center py-16"
+            className="w-full flex justify-center items-center py-12"
           >
             <Experience />
           </section>
           <section
             id="projects"
-            className="w-full flex justify-center items-center py-16"
+            className="w-full flex justify-center items-center py-12"
           >
             <Project />
           </section>
           <section
             id="github"
-            className="w-full flex justify-center items-center py-16"
+            className="w-full flex justify-center items-center py-12"
           >
             <GitHub />
           </section>

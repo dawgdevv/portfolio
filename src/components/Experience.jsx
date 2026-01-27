@@ -4,16 +4,16 @@ import SnowfallBackground from "./SnowfallBackground.jsx";
 
 function Experience() {
   return (
-    <section className="container mx-auto px-4 py-10 flex flex-col justify-center">
+    <section className="container mx-auto px-4 py-2 flex flex-col justify-center">
       <SnowfallBackground />
       <motion.h2
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="mb-12 text-4xl md:text-5xl font-black text-center uppercase tracking-tighter text-black dark:text-white"
+        className="mb-3 text-xl md:text-2xl font-black text-center uppercase tracking-tighter text-black dark:text-white"
       >
         Experience
       </motion.h2>
-      <div className="space-y-6 md:space-y-8 max-w-4xl mx-auto">
+      <div className="space-y-2 max-w-4xl mx-auto">
         {EXPERIENCES.map((experience, index) => (
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -21,12 +21,12 @@ function Experience() {
             whileHover={{ y: -4, x: -4 }}
             transition={{ delay: index * 0.1 }}
             key={index}
-            className="bg-white dark:bg-zinc-800 p-6 border-4 border-white hover:border-black shadow-neo hover:shadow-neo-lg transition-all duration-200"
+            className="bg-white dark:bg-zinc-800 p-2 border-4 border-white hover:border-black shadow-neo hover:shadow-neo-lg transition-all duration-200"
           >
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-4">
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-3">
               <div className="space-y-1">
                 <motion.h3
-                  className="text-xl md:text-2xl font-black uppercase tracking-tight text-black dark:text-white"
+                  className="text-base md:text-lg font-black uppercase tracking-tight text-black dark:text-white"
                   whileHover={{ x: 5 }}
                   transition={{ duration: 0.2 }}
                 >
