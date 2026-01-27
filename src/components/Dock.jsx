@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 export default function Dock({ items, className }) {
     return (
         <div
-            className={`flex h-auto items-center gap-3 bg-white dark:bg-zinc-900 border-4 border-white hover:border-black shadow-neo px-4 py-3 z-50 ${className}`}
+            className={`flex h-auto flex-wrap justify-center items-center gap-3 bg-white dark:bg-zinc-900 border-4 border-white hover:border-black shadow-neo px-4 py-3 z-50 ${className}`}
         >
             {items.map((item, index) => (
                 <DockIcon key={index} item={item} />

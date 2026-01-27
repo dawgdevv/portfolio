@@ -34,7 +34,7 @@ const GitHub = () => {
 
         {/* Calendar Section */}
         <div className="mb-8 flex justify-center">
-          <div className="bg-white dark:bg-zinc-900 border-4 border-white hover:border-black shadow-neo-lg p-2 md:p-4 inline-block">
+          <div className="bg-white dark:bg-zinc-900 border-4 border-white hover:border-black shadow-neo-lg p-2 md:p-4 inline-block max-w-full overflow-x-auto">
             <GitHubCalendar
               username={GITHUB_USERNAME}
               fontSize={12}

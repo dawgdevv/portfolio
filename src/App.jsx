@@ -129,7 +129,7 @@ function App() {
         />
       </div>
 
-      <main className="relative z-10 container mx-auto px-6 pt-4 flex flex-col items-center">
+      <main className="relative z-10 container mx-auto px-4 sm:px-6 pt-4 pb-20 flex flex-col items-center">
         <Suspense fallback={<LoadingFallback />}>
           <section
             id="hero"
