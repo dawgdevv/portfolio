@@ -1,107 +1,113 @@
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 
 export default function AnimatedCursor() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [cursorVariant, setCursorVariant] = useState("default");
+
+  const cursorX = useMotionValue(-100);
+  const cursorY = useMotionValue(-100);
+
+  const springConfig = { damping: 25, stiffness: 300, mass: 0.5 };
+  const cursorXSpring = useSpring(cursorX, springConfig);
+  const cursorYSpring = useSpring(cursorY, springConfig);
 
   useEffect(() => {
     const mouseMove = (e) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
+      cursorX.set(e.clientX);
+      cursorY.set(e.clientY);
     };
 
-    window.addEventListener("mousemove", mouseMove);
+    const mouseDown = () => setCursorVariant("click");
+    const mouseUp = () => setCursorVariant((prev) => (prev === "click" ? "default" : prev));
 
+    window.addEventListener("mousemove", mouseMove);
+    window.addEventListener("mousedown", mouseDown);
+    window.addEventListener("mouseup", mouseUp);
+
+    return () => {
+      window.removeEventListener("mousemove", mouseMove);
+      window.removeEventListener("mousedown", mouseDown);
+      window.removeEventListener("mouseup", mouseUp);
+    };
+  }, [cursorX, cursorY]);
+
+  useEffect(() => {
     const handleLinkHover = () => setCursorVariant("link");
     const handleLinkExit = () => setCursorVariant("default");
 
-    const links = document.querySelectorAll("a, button, input, textarea, .cursor-pointer");
+    const selectors = "a, button, input, textarea, .cursor-pointer";
+    const links = document.querySelectorAll(selectors);
 
     links.forEach((link) => {
       link.addEventListener("mouseenter", handleLinkHover);
       link.addEventListener("mouseleave", handleLinkExit);
     });
 
+    // Observer for dynamic elements
+    const observer = new MutationObserver(() => {
+      const newLinks = document.querySelectorAll(selectors);
+      newLinks.forEach((link) => {
+        link.removeEventListener("mouseenter", handleLinkHover);
+        link.addEventListener("mouseenter", handleLinkHover);
+        link.removeEventListener("mouseleave", handleLinkExit);
+        link.addEventListener("mouseleave", handleLinkExit);
+      });
+    });
+
+    observer.observe(document.body, { childList: true, subtree: true });
+
     return () => {
-      window.removeEventListener("mousemove", mouseMove);
       links.forEach((link) => {
         link.removeEventListener("mouseenter", handleLinkHover);
         link.removeEventListener("mouseleave", handleLinkExit);
       });
+      observer.disconnect();
     };
   }, []);
 
   const variants = {
     default: {
-      x: mousePosition.x - 16,
-      y: mousePosition.y - 16,
-      height: 32,
-      width: 32,
-      backgroundColor: "transparent",
-      borderWidth: "2px",
-      borderColor: "#fff", // White + Difference = Inverted Background
-      rotate: 0,
-      mixBlendMode: "difference",
-    },
-    link: {
-      x: mousePosition.x - 24,
-      y: mousePosition.y - 24,
-      height: 48,
-      width: 48,
-      backgroundColor: "#fff", // White background for difference effect
-      borderWidth: "2px",
-      borderColor: "#fff",
-      rotate: 45,
-      mixBlendMode: "difference",
-    },
-  };
-
-  const dotVariants = {
-    default: {
-      x: mousePosition.x - 4,
-      y: mousePosition.y - 4,
-      height: 8,
-      width: 8,
-      backgroundColor: "#fff", // White + Difference = Inverted
-      mixBlendMode: "difference",
-    },
-    link: {
-      x: mousePosition.x - 4,
-      y: mousePosition.y - 4,
-      height: 8,
-      width: 8,
+      height: 12, // Small default
+      width: 12,
+      x: -6,
+      y: -6,
       backgroundColor: "#fff",
       mixBlendMode: "difference",
+      rotate: 0,
     },
+    link: {
+      height: 32, // Subtle expansion
+      width: 32,
+      x: -16,
+      y: -16,
+      backgroundColor: "#fff",
+      mixBlendMode: "difference",
+      rotate: 0, // No rotation, keeping it minimal
+    },
+    click: {
+      height: 10,
+      width: 10,
+      x: -5,
+      y: -5,
+      backgroundColor: "#fff",
+      mixBlendMode: "difference",
+      rotate: 0,
+    }
   };
 
   return (
     <>
-      {/* Main Square Cursor - delayed slightly for trail feel if desired, but here prompt asked for interesting Theme */}
       <motion.div
-        className="hidden md:block fixed top-0 left-0 pointer-events-none z-50 transition-colors duration-200 ease-out"
+        className="hidden md:block fixed top-0 left-0 pointer-events-none z-[9999]"
+        style={{
+          x: cursorXSpring,
+          y: cursorYSpring,
+        }}
         variants={variants}
         animate={cursorVariant}
-        // Use spring for snappy but smooth movement
-        transition={{
-          type: "spring",
-          stiffness: 150,
-          damping: 15,
-          mass: 0.5
-        }}
-        style={{
-          borderStyle: "solid",
-        }}
-      />
-
-      {/* Center Dot - acts as the precise pointer */}
-      <motion.div
-        className="hidden md:block fixed top-0 left-0 pointer-events-none z-50 rounded-none"
-        variants={dotVariants}
-        animate={cursorVariant}
-        transition={{ type: "spring", stiffness: 1000, damping: 28 }} // Super snappy
+        initial="default"
+        transition={{ type: "spring", stiffness: 300, damping: 25, mass: 0.5 }}
       />
     </>
   );
 }
-

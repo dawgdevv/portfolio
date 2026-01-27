@@ -3,9 +3,6 @@ import { useState, useEffect, useMemo, lazy, Suspense, useRef } from "react";
 import {
   motion,
   AnimatePresence,
-  useMotionValue,
-  useSpring,
-  useTransform,
 } from "framer-motion";
 import { Contact as ContactIcon, FileText } from "lucide-react";
 import { FaLinkedin, FaGithub, FaSquareXTwitter } from "react-icons/fa6";
@@ -27,56 +24,7 @@ const LoadingFallback = () => (
   </div>
 );
 
-function Dock({ items }) {
-  let mouseX = useMotionValue(Infinity);
 
-  return (
-    <motion.div
-      onMouseMove={(e) => mouseX.set(e.pageX)}
-      onMouseLeave={() => mouseX.set(Infinity)}
-      className="fixed bottom-6 left-1/2 -translate-x-1/2 flex h-16 items-end gap-4 rounded-2xl bg-black/40 backdrop-blur-md border border-white/10 px-4 pb-3 z-50 transform"
-      initial={{ opacity: 0, y: 50, x: "-50%" }}
-      animate={{ opacity: 1, y: 0, x: "-50%" }}
-      transition={{ delay: 0.5, type: "spring", stiffness: 200, damping: 20 }}
-    >
-      {items.map((item, index) => (
-        <DockIcon mouseX={mouseX} key={index} item={item} />
-      ))}
-    </motion.div>
-  );
-}
-
-function DockIcon({ mouseX, item }) {
-  let ref = useRef(null);
-
-  let distance = useTransform(mouseX, (val) => {
-    let bounds = ref.current?.getBoundingClientRect() ?? { x: 0, width: 0 };
-    return val - bounds.x - bounds.width / 2;
-  });
-
-  let widthSync = useTransform(distance, [-150, 0, 150], [40, 80, 40]);
-  let width = useSpring(widthSync, { mass: 0.1, stiffness: 150, damping: 12 });
-
-  return (
-    <motion.div
-      ref={ref}
-      style={{ width }}
-      className="aspect-square flex justify-center items-center cursor-pointer group relative"
-      onClick={
-        item.action ? item.action : () => window.open(item.href, "_blank")
-      }
-    >
-      <div className="w-full h-full p-2 bg-white/5 hover:bg-white/10 rounded-full border border-white/10 flex items-center justify-center transition-colors">
-        {item.icon}
-      </div>
-
-      {/* Tooltip */}
-      <span className="absolute -top-10 left-1/2 -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
-        {item.label}
-      </span>
-    </motion.div>
-  );
-}
 
 function App() {
   const [activeSection, setActiveSection] = useState("hero");
@@ -187,7 +135,38 @@ function App() {
             id="hero"
             className="min-h-[30vh] w-full flex justify-center items-center py-10"
           >
-            <Hero />
+            <Hero dockItems={[
+              {
+                label: "Resume",
+                icon: <FileText className="text-red-600 w-full h-full" />,
+                action: handleResumeClick,
+              },
+              {
+                label: "LinkedIn",
+                icon: <FaLinkedin className="text-blue-600 w-full h-full" />,
+                href: "https://www.linkedin.com/in/nraj24/",
+              },
+              {
+                label: "GitHub",
+                icon: <FaGithub className="text-white w-full h-full" />,
+                href: "https://github.com/dawgdevv",
+              },
+              {
+                label: "Twitter",
+                icon: <FaSquareXTwitter className="w-full h-full" />,
+                href: "https://x.com/sfunish",
+              },
+              {
+                label: "Peerlist",
+                icon: <SiPeerlist className="text-green-500 w-full h-full" />,
+                href: "https://peerlist.io/nishantraj",
+              },
+              {
+                label: "Contact",
+                icon: <ContactIcon className="w-full h-full" />,
+                action: handleContactClick,
+              },
+            ]} />
           </section>
 
           <section
@@ -208,42 +187,15 @@ function App() {
           >
             <GitHub />
           </section>
+
         </Suspense>
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-white dark:bg-zinc-900 border-2 border-white hover:border-black shadow-neo hover:shadow-neo-lg px-4 py-1 flex items-center gap-2 transition-all group cursor-default">
+          <span className="text-sm font-black uppercase text-black dark:text-white group-hover:text-orange-600 transition-colors">
+            Made By Nishant Raj
+          </span>
+
+        </div>
       </main>
-      <Dock
-        items={[
-          {
-            label: "Resume",
-            icon: <FileText className="text-red-600 w-full h-full" />,
-            action: handleResumeClick,
-          },
-          {
-            label: "LinkedIn",
-            icon: <FaLinkedin className="text-blue-600 w-full h-full" />,
-            href: "https://www.linkedin.com/in/nraj24/",
-          },
-          {
-            label: "GitHub",
-            icon: <FaGithub className="text-white w-full h-full" />,
-            href: "https://github.com/dawgdevv",
-          },
-          {
-            label: "Twitter",
-            icon: <FaSquareXTwitter className="w-full h-full" />,
-            href: "https://x.com/sfunish",
-          },
-          {
-            label: "Peerlist",
-            icon: <SiPeerlist className="text-green-500 w-full h-full" />,
-            href: "https://peerlist.io/nishantraj",
-          },
-          {
-            label: "Contact",
-            icon: <ContactIcon className="w-full h-full" />,
-            action: handleContactClick,
-          },
-        ]}
-      />
       <AnimatePresence>
         {isContactModalOpen && (
           <motion.div
@@ -282,7 +234,10 @@ function App() {
           </motion.div>
         )}
       </AnimatePresence>
+
     </div>
+
+
   );
 }
 

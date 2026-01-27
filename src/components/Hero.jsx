@@ -5,7 +5,9 @@ import { SiTypescript } from "react-icons/si";
 import { FaGolang } from "react-icons/fa6";
 import { DiJavascript1 } from "react-icons/di";
 
-const Hero = () => {
+import Dock from "./Dock";
+
+const Hero = ({ dockItems }) => {
   return (
     <div className="relative w-full flex items-center overflow-hidden">
       {/* Background Glow */}
@@ -37,9 +39,11 @@ const Hero = () => {
               type: "spring",
               bounce: 0.5,
             }}
-            className="flex flex-wrap items-center justify-start gap-2 md:gap-3 mb-2 font-sans"
+            className="flex flex-wrap items-center justify-start gap-2 md:gap-3 mb-2 font-sans py-2"
           >
-            <span className="text-2xl md:text-4xl font-black bg-gradient-to-r from-amber-200 via-yellow-400 to-amber-300 bg-clip-text text-transparent uppercase tracking-wider drop-shadow-[0_0_20px_rgba(251,191,36,0.3)]">
+            <span
+              className="text-2xl md:text-4xl font-black bg-gradient-to-r from-amber-200 via-yellow-400 to-amber-300 bg-clip-text text-transparent uppercase tracking-wider drop-shadow-[0_0_20px_rgba(251,191,36,0.3)] py-1 px-1"
+            >
               Hi there
             </span>
             <motion.span
@@ -53,38 +57,51 @@ const Hero = () => {
                 repeatDelay: 1,
                 ease: "easeInOut",
               }}
-              className="text-2xl md:text-4xl origin-bottom-right cursor-default"
+              className="text-2xl md:text-4xl origin-bottom-right cursor-default py-1 px-1"
             >
-              💻
+              👋
             </motion.span>
-            <span className="text-xl md:text-3xl text-gray-300 font-bold tracking-wide uppercase">
+            <span className="text-xl md:text-3xl text-gray-300 font-bold tracking-wide uppercase py-1 px-1">
               , I&apos;m
             </span>
           </motion.div>
 
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter text-white mb-4 overflow-hidden break-words">
-            {"Nishant Raj".split("").map((char, index) => (
-              <motion.span
-                key={index}
-                initial={{ y: 100, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{
-                  duration: 0.8,
-                  delay: index * 0.05 + 0.5,
-                  type: "spring",
-                  bounce: 0.4,
-                }}
-                className="inline-block hover:text-amber-300 transition-colors duration-300 cursor-default"
-                whileHover={{
-                  y: -10,
-                  rotate: Math.random() * 10 - 5,
-                  transition: { duration: 0.2 },
-                }}
+          <div className="flex flex-col md:flex-row items-center md:items-end gap-4 md:gap-6 flex-wrap">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter text-white mb-4 md:mb-0 break-words leading-tight px-1">
+              {"Nishant Raj".split("").map((char, index) => (
+                <motion.span
+                  key={index}
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{
+                    duration: 0.8,
+                    delay: index * 0.05 + 0.5,
+                    type: "spring",
+                    bounce: 0.4,
+                  }}
+                  className="inline-block hover:text-amber-300 transition-colors duration-300 cursor-default"
+                  whileHover={{
+                    y: -10,
+                    rotate: Math.random() * 10 - 5,
+                    transition: { duration: 0.2 },
+                  }}
+                >
+                  {char === " " ? "\u00A0" : char}
+                </motion.span>
+              ))}
+            </h1>
+
+            {dockItems && (
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.8, duration: 0.8 }}
+                className="mb-2 shrink-0"
               >
-                {char === " " ? "\u00A0" : char}
-              </motion.span>
-            ))}
-          </h1>
+                <Dock items={dockItems} />
+              </motion.div>
+            )}
+          </div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -121,7 +138,10 @@ const Hero = () => {
               .
             </p>
             <p className="text-gray-300">
-              Connect with me to turn your idea into reality or have a chat in
+              <span className="items-center inline-block">
+                Connect with me
+              </span>{" "}
+              to turn your idea into reality or have a chat in
               general. I love everything about development and diving deep into
               building exceptional products. I am{" "}
               <span className="text-white drop-shadow-[0_0_15px_rgba(251,191,36,0.4)] font-semibold bg-gradient-to-r from-amber-200 to-yellow-300 bg-clip-text text-transparent">

@@ -1,4 +1,5 @@
 import GitHubCalendar from "react-github-calendar";
+import { FaStar, FaCodeFork } from "react-icons/fa6";
 
 const GitHub = () => {
   const GITHUB_USERNAME = "dawgdevv";
@@ -32,25 +33,23 @@ const GitHub = () => {
         </div>
 
         {/* Calendar Section */}
-        <div className="mb-3">
-          <div className="bg-white dark:bg-zinc-900 border-4 border-white hover:border-black shadow-neo-lg">
-            {/* Calendar Content */}
-            <div className="p-2 md:p-3 overflow-x-auto">
-              <GitHubCalendar
-                username={GITHUB_USERNAME}
-                fontSize={10}
-                blockSize={8}
-                blockMargin={2}
-                theme={theme}
-                style={{
-                  color: "inherit",
-                  fontWeight: "bold",
-                  fontFamily: "Inter, sans-serif",
-                }}
-              />
-            </div>
+        <div className="mb-8 flex justify-center">
+          <div className="bg-white dark:bg-zinc-900 border-4 border-white hover:border-black shadow-neo-lg p-2 md:p-4 inline-block">
+            <GitHubCalendar
+              username={GITHUB_USERNAME}
+              fontSize={12}
+              blockSize={13}
+              blockMargin={3}
+              theme={theme}
+              style={{
+                color: "inherit",
+                fontWeight: "bold",
+                fontFamily: "Inter, sans-serif",
+              }}
+            />
           </div>
         </div>
+
       </div>
     </section>
   );
