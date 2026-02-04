@@ -1,15 +1,9 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect, useMemo, lazy, Suspense, useRef } from "react";
-import {
-  motion,
-  AnimatePresence,
-} from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Contact as ContactIcon, FileText } from "lucide-react";
 import { FaLinkedin, FaGithub, FaSquareXTwitter } from "react-icons/fa6";
 import { SiPeerlist } from "react-icons/si";
-
-
-import AnimatedCursor from "./components/AnimatedCursor";
 
 const Hero = lazy(() => import("./components/Hero"));
 const Experience = lazy(() => import("./components/Experience"));
@@ -23,8 +17,6 @@ const LoadingFallback = () => (
     Loading...
   </div>
 );
-
-
 
 function App() {
   const [activeSection, setActiveSection] = useState("hero");
@@ -73,7 +65,7 @@ function App() {
           if (
             scrollPosition >= offsetTop - navHeight - windowHeight / 2 &&
             scrollPosition <
-            offsetTop + offsetHeight - navHeight - windowHeight / 2
+              offsetTop + offsetHeight - navHeight - windowHeight / 2
           ) {
             currentSection = id;
           }
@@ -111,7 +103,6 @@ function App() {
 
   return (
     <div className="min-h-screen bg-[#030712] text-gray-100 overflow-x-hidden relative selection:bg-orange-500/30">
-      <AnimatedCursor />
       <div className="relative inset-0 -z-10">
         <div className="absolute inset-0 bg-gradient-to-br from-[#030712] via-[#0a0d1f] to-[#111827] opacity-95"></div>
         <div
@@ -135,38 +126,40 @@ function App() {
             id="hero"
             className="min-h-[30vh] w-full flex justify-center items-center py-10"
           >
-            <Hero dockItems={[
-              {
-                label: "Resume",
-                icon: <FileText className="text-red-600 w-full h-full" />,
-                action: handleResumeClick,
-              },
-              {
-                label: "LinkedIn",
-                icon: <FaLinkedin className="text-blue-600 w-full h-full" />,
-                href: "https://www.linkedin.com/in/nraj24/",
-              },
-              {
-                label: "GitHub",
-                icon: <FaGithub className="text-white w-full h-full" />,
-                href: "https://github.com/dawgdevv",
-              },
-              {
-                label: "Twitter",
-                icon: <FaSquareXTwitter className="w-full h-full" />,
-                href: "https://x.com/sfunish",
-              },
-              {
-                label: "Peerlist",
-                icon: <SiPeerlist className="text-green-500 w-full h-full" />,
-                href: "https://peerlist.io/nishantraj",
-              },
-              {
-                label: "Contact",
-                icon: <ContactIcon className="w-full h-full" />,
-                action: handleContactClick,
-              },
-            ]} />
+            <Hero
+              dockItems={[
+                {
+                  label: "Resume",
+                  icon: <FileText className="text-red-600 w-full h-full" />,
+                  action: handleResumeClick,
+                },
+                {
+                  label: "LinkedIn",
+                  icon: <FaLinkedin className="text-blue-600 w-full h-full" />,
+                  href: "https://www.linkedin.com/in/nraj24/",
+                },
+                {
+                  label: "GitHub",
+                  icon: <FaGithub className="text-white w-full h-full" />,
+                  href: "https://github.com/dawgdevv",
+                },
+                {
+                  label: "Twitter",
+                  icon: <FaSquareXTwitter className="w-full h-full" />,
+                  href: "https://x.com/sfunish",
+                },
+                {
+                  label: "Peerlist",
+                  icon: <SiPeerlist className="text-green-500 w-full h-full" />,
+                  href: "https://peerlist.io/nishantraj",
+                },
+                {
+                  label: "Contact",
+                  icon: <ContactIcon className="w-full h-full" />,
+                  action: handleContactClick,
+                },
+              ]}
+            />
           </section>
 
           <section
@@ -187,13 +180,11 @@ function App() {
           >
             <GitHub />
           </section>
-
         </Suspense>
         <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-white dark:bg-zinc-900 border-2 border-white hover:border-black shadow-neo hover:shadow-neo-lg px-4 py-1 flex items-center gap-2 transition-all group cursor-default">
           <span className="text-sm font-black uppercase text-black dark:text-white group-hover:text-orange-600 transition-colors">
             Made By Nishant Raj
           </span>
-
         </div>
       </main>
       <AnimatePresence>
@@ -234,10 +225,7 @@ function App() {
           </motion.div>
         )}
       </AnimatePresence>
-
     </div>
-
-
   );
 }
 
