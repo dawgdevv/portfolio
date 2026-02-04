@@ -34,13 +34,13 @@ body {
   margin: 0;
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-@media (hover: hover) and (pointer: fine) {
-  body {
-    cursor: none;
-  }
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+  cursor:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath fill='white' stroke='black' stroke-width='1' d='M4 2 L4 22 L10 17 L14 30 L18 28 L13 15 L20 15 Z'/%3E%3C/svg%3E")
+      4 2,
+    auto;
 }
 
 /* Neo Brutalist Scrollbar */
