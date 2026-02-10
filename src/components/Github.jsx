@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import GitHubCalendar from "react-github-calendar";
 import { FaStar, FaCodeFork } from "react-icons/fa6";
 
@@ -21,6 +22,25 @@ const GitHub = () => {
       "#39d353", // Level 4
     ],
   };
+
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://www.githubtimeline.com/embed.js";
+    script.setAttribute("data-key", "gt_Nyi4AkVCETXB3BS1");
+    script.setAttribute("data-view", "active");
+    script.setAttribute("data-theme", "auto");
+    script.setAttribute("data-mode", "interactive");
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      // Cleanup might be tricky with external scripts appending to body, but let's try to remove it if it exists.
+      // However, the timeline itself might inject other things. For now, simple removal of the script tag.
+      if (document.body.contains(script)) {
+        document.body.removeChild(script);
+      }
+    };
+  }, []);
 
   return (
     <section id="github" className="py-2 bg-bg-primary overflow-hidden">
@@ -47,6 +67,14 @@ const GitHub = () => {
                 fontFamily: "Inter, sans-serif",
               }}
             />
+          </div>
+        </div>
+
+        {/* Timeline Section */}
+        <div className="flex justify-center">
+          <div className="w-full max-w-4xl bg-white dark:bg-zinc-900 border-4 border-white hover:border-black shadow-neo p-4 md:p-6">
+            <h3 className="text-lg font-black uppercase mb-4 text-center">Timeline</h3>
+            <div id="gh-timeline" className="w-full"></div>
           </div>
         </div>
 

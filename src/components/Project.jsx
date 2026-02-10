@@ -27,11 +27,11 @@ export default function Project() {
           return (
             <div
               key={index}
-              className={`relative overflow-hidden bg-white dark:bg-zinc-900 border-4 border-white hover:border-black shadow-neo w-full ${isExpanded ? "shadow-neo-lg" : ""}`}
+              className={`relative overflow-hidden bg-white dark:bg-zinc-900 border-4 border-white hover:border-black shadow-neo w-full transition-all duration-300 ${isExpanded ? "shadow-neo-lg scale-[1.01]" : "hover:scale-[1.01]"}`}
             >
               <div
                 onClick={() => toggleProject(index)}
-                className="flex flex-col md:flex-row items-start md:items-center justify-between p-3 bg-white dark:bg-zinc-900 cursor-pointer group gap-2"
+                className="flex flex-col md:flex-row items-start md:items-center justify-between p-4 md:p-6 bg-white dark:bg-zinc-900 cursor-pointer group gap-4 transition-colors hover:bg-gray-50 dark:hover:bg-zinc-800/50"
               >
                 <div className="flex flex-col gap-3 flex-1 min-w-0">
                   <h3 className="font-black text-lg md:text-xl text-black dark:text-white uppercase tracking-tighter truncate w-full">
@@ -41,7 +41,7 @@ export default function Project() {
                     {project.technologies?.slice(0, 5).map((tech, i) => (
                       <span
                         key={i}
-                        className="px-2 py-0.5 text-[10px] font-bold uppercase bg-gray-100 dark:bg-zinc-800 text-gray-600 dark:text-gray-300 border border-transparent shadow-sm"
+                        className="px-2 py-1 text-[10px] font-bold uppercase bg-gray-100 dark:bg-zinc-800 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-zinc-700 shadow-sm"
                       >
                         {tech}
                       </span>
@@ -106,12 +106,12 @@ export default function Project() {
               </div>
 
               {isExpanded && (
-                <div className="p-3 pt-0">
-                  <div className="border-4 border-white hover:border-black mb-3">
+                <div className="p-4 md:p-6 pt-0 border-t-2 border-dashed border-gray-200 dark:border-zinc-800">
+                  <div className="border-4 border-white hover:border-black mb-6 group-hover:shadow-neo-sm transition-all">
                     <img
                       src={project.image}
                       alt={project.name}
-                      className="w-full h-32 md:h-48 object-cover"
+                      className="w-full h-auto object-contain max-h-[500px] bg-gray-100 dark:bg-zinc-800"
                     />
                   </div>
 
@@ -157,7 +157,7 @@ export default function Project() {
                           {project.technologies?.map((tech, i) => (
                             <span
                               key={i}
-                              className="px-2 py-1 text-xs font-bold uppercase bg-gray-100 dark:bg-zinc-800 text-black dark:text-white border-2 border-white hover:border-black shadow-neo-sm"
+                              className="px-2 py-1 text-xs font-bold uppercase bg-gray-100 dark:bg-zinc-800 text-black dark:text-white border-2 border-white hover:border-black shadow-neo-sm transition-all hover:-translate-y-0.5"
                             >
                               {tech}
                             </span>

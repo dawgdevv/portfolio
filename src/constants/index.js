@@ -1,10 +1,9 @@
 import DTIX from "../assets/DTIX.png";
-import UberClone from "../assets/uber.png";
+
 import DecentralizedDrive from "../assets/drive.png";
 import ReditAnalysis from "../assets/reddit.png";
 import BACIP from "../assets/bacip.png";
-import BlogApp from "../assets/blog.png";
-import GoalFlowApp from "../assets/goalflow.png";
+import PROBE from "../assets/probe.png";
 import Fourows from "../assets/4rows.png";
 import ErgoVisualCoder from "../assets/ergoVisualCoder.png";
 import AgenticOps from "../assets/agentic.jpeg";
@@ -46,6 +45,35 @@ export const EXPERIENCES = [
 ];
 
 export const PROJECTS = [
+  {
+    name: "Probe - (Open Source API Testing Tool)",
+    description:
+      "A fast, lightweight API test runner for the command line and web, allowing users to define tests in YAML and track results over time.",
+    longDescription:
+      "Probe is a comprehensive tool for API testing that bridges the gap between CLI automation and visual management. It features a high-performance Go-based runner that executes declarative YAML test suites, coupled with an embedded React 19 web dashboard for organizing projects, viewing run history, and analyzing detailed assertion results. It ships as a single binary with zero external dependencies.",
+    technologies: [
+      "Go (Golang)",
+      "React 19",
+      "TypeScript",
+      "Vite",
+      "Tailwind CSS 4",
+      "SQLite",
+      "Cobra",
+      "Gin",
+      "TanStack Query",
+    ],
+    features: [
+      "Dual interface: CLI for CI/CD & Web Dashboard for analysis",
+      "Declarative YAML test syntax with environment substitution",
+      "Advanced JSON path assertions & validation",
+      "Embedded single-binary architecture (Client + Server)",
+      "Persistent run history and project organization",
+    ],
+    liveLink: "", // Run locally via `probe serve`
+    githubLink: "https://github.com/dawgdevv/probe",
+    videoLink: "",
+    image: PROBE, // Refers to 'docs/screenshots/dashboard.png' or 'web/public/probe.svg'
+  },
   {
     name: "Four-in-a-Row",
     description:
@@ -214,7 +242,7 @@ export const PROJECTS = [
   },
 
   {
-    name: "BACIP",
+    name: "Blockchain Academic Credential Interoperability Protocol",
     description:
       "Blockchain Academic Credential Interoperability Protocol - A full-stack application for issuing, verifying, and managing academic credentials on the blockchain.",
     longDescription:
@@ -241,90 +269,9 @@ export const PROJECTS = [
     image: BACIP,
   },
 
-  {
-    name: "BlogSphere",
-    description:
-      "A modern full-stack blogging platform with AI-powered writing assistance, gamification, and interactive features.",
-    longDescription:
-      "A modern full-stack blogging platform where users can create, read, update, and delete blog posts, comment, and interact with others. Features include JWT authentication, AI-powered writing assistant (grammar, enhancement, tone), a gamified streak and level system with badges, a streak dashboard with activity heatmap, and a responsive, minimal UI. Built with React, Node.js, Express, and MongoDB.",
-    technologies: [
-      "React.js",
-      "Node.js",
-      "Express.js",
-      "MongoDB",
-      "JWT",
-      "AI APIs",
-      "Tailwind CSS",
-    ],
-    features: [
-      "Complete CRUD operations for blog posts",
-      "AI-powered writing assistant",
-      "Gamified streak and level system with badges",
-      "Activity heatmap dashboard",
-      "Secure JWT authentication",
-    ],
-    liveLink: "https://blog-app-henna-three.vercel.app/",
-    githubLink: "https://github.com/dawgdevv/Blog_app",
-    videoLink:
-      "https://www.loom.com/share/ee2bef4333c343d984cf6917c8c8d7d0?sid=cfc7e595-0132-45d6-ac32-6d8c37d5c2e6",
-    image: BlogApp,
-  },
 
-  {
-    name: "Taskly",
-    description:
-      "A comprehensive full-stack goal achievement platform with systematic goal setting, action planning, and progress tracking.",
-    longDescription:
-      "A comprehensive full-stack goal achievement platform that transforms dreams into reality through systematic goal setting, action planning, and progress tracking. Features include goal management with priority levels and deadlines, action plan creation with task breakdown, interactive horizontal scrolling task selector, real-time progress visualization, comprehensive dashboard with statistics, JWT authentication with protected routes, and a modern dark UI optimized for productivity. Built with React 18, Node.js, Express, MongoDB, and Tailwind CSS.",
-    technologies: [
-      "Reactjs",
-      "Node.js",
-      "Express.js",
-      "MongoDB",
-      "Tailwind CSS",
-      "JWT",
-    ],
-    features: [
-      "Goal management with priority levels and deadlines",
-      "Action plan creation with task breakdown",
-      "Interactive horizontal scrolling task selector",
-      "Real-time progress visualization",
-      "Comprehensive statistics dashboard",
-    ],
-    liveLink: "https://taskapp-blue.vercel.app/",
-    githubLink: "https://github.com/dawgdevv/Task_board",
-    videoLink:
-      "https://www.loom.com/share/1127c4cf417344c684a496ffdc381ad6?sid=d4337315-99e0-40c7-9a8a-dbfc68a3c3b4",
-    image: GoalFlowApp,
-  },
 
-  {
-    name: "Uber Clone",
-    description:
-      "A comprehensive ride-hailing application with features for both users and captains, including booking, tracking, and ride management.",
-    longDescription:
-      "A comprehensive ride-hailing application with features for both users and captains, including registration, login, profile management, ride booking, fare calculation, live tracking, and ride management.",
-    technologies: [
-      "React.js",
-      "Node.js",
-      "Express.js",
-      "MongoDB",
-      "Google Maps API",
-      "Socket.io",
-      "JWT",
-    ],
-    features: [
-      "User and driver registration/authentication",
-      "Real-time ride booking and tracking",
-      "Dynamic fare calculation",
-      "Profile and ride history management",
-      "In-app navigation and communication",
-    ],
-    liveLink: "https://full-stack-uber.vercel.app/",
-    githubLink: "https://github.com/dawgdevv/Full_stack_uber",
-    videoLink: "",
-    image: UberClone,
-  },
+
 ];
 
 export const GITHUB_CONFIG = {
