@@ -11,6 +11,23 @@ import AgenticOps from "../assets/agentic.jpeg";
 
 export const EXPERIENCES = [
   {
+    "year": "Feb 2026 - Present",
+    "role": "Full Stack Engineer - (Internship)",
+    "company": "Figmenta",
+    "location": "Milan, Italy (Remote)",
+    "description": "Designed and implemented a secure Role-Based Access Control (RBAC) system and Admin Workspace to manage moderation, signals, and analytics workflows across a fashion intelligence platform covering 200+ brands. Built scalable REST APIs, database schemas, and end-to-end features enabling brand analytics, cross-brand comparison, and fashion trend signaling for a production platform.",
+    "technologies": [
+      "JavaScript",
+      "TypeScript",
+      "Node.js",
+      "Express.js",
+      "React.js",
+      "PostgreSQL",
+      "REST APIs",
+      "Supabase"
+    ]
+  },
+  {
     year: "July 2025 - Present",
     role: "Full Stack Developer - (Internship)",
     company: "Bitwrap Technologies",
