@@ -9,27 +9,13 @@ import Dock from "./Dock";
 
 const Hero = ({ dockItems }) => {
   return (
-    <div className="relative w-full flex items-center overflow-hidden">
-      {/* Background Glow */}
-      <motion.div
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.3, 0.5, 0.3],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-orange-500/10 rounded-full blur-[80px] md:blur-[120px] -z-10 pointer-events-none"
-      />
-
+    <div className="relative w-full flex items-center py-2 md:py-4">
       <div className="relative z-10 max-w-full w-full mx-auto px-4 sm:px-6 lg:px-12 flex flex-col items-center text-left">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut", staggerChildren: 0.2 }}
-          className="space-y-3"
+          className="space-y-4 max-w-4xl"
         >
           <motion.div
             initial={{ opacity: 0, scale: 0.5 }}
@@ -39,14 +25,14 @@ const Hero = ({ dockItems }) => {
               type: "spring",
               bounce: 0.5,
             }}
-            className="flex flex-wrap items-center justify-start gap-2 md:gap-3 mb-2 font-sans py-2"
+            className="flex flex-wrap items-center justify-start gap-1 md:gap-2 mb-2 font-sans py-1"
           >
             <motion.span
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.6, type: "spring", bounce: 0.4 }}
               whileHover={{ scale: 1.02, x: -2, y: -2 }}
-              className="text-2xl md:text-4xl font-black bg-white text-black uppercase tracking-wider border-4 border-black px-4 py-2 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all cursor-default inline-block"
+              className="text-lg md:text-xl font-black bg-white dark:bg-zinc-800 text-black dark:text-white uppercase tracking-wider border-4 border-black dark:border-white px-3 py-1 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transition-all cursor-default inline-block"
             >
               Hi there
             </motion.span>
@@ -61,11 +47,11 @@ const Hero = ({ dockItems }) => {
                 repeatDelay: 1,
                 ease: "easeInOut",
               }}
-              className="text-2xl md:text-4xl origin-bottom-right cursor-default py-1 px-1"
+              className="text-xl md:text-2xl origin-bottom-right cursor-default py-0.5 px-0.5"
             >
               👋
             </motion.span>
-            <span className="text-xl md:text-3xl text-gray-300 font-bold tracking-wide uppercase py-1 px-1">
+            <span className="text-lg md:text-xl text-black dark:text-zinc-400 font-bold tracking-wide py-0.5 px-0.5">
               , I&apos;m
             </span>
           </motion.div>
@@ -76,7 +62,7 @@ const Hero = ({ dockItems }) => {
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.3, type: "spring", bounce: 0.3 }}
               whileHover={{ scale: 1.01, x: -3, y: -3 }}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter bg-black text-white border-4 border-white px-5 py-3 shadow-[6px_6px_0px_0px_rgba(255,255,255,1)] hover:shadow-[10px_10px_0px_0px_rgba(255,255,255,1)] transition-all cursor-default inline-block"
+              className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tighter bg-black dark:bg-white text-white dark:text-black border-4 border-black dark:border-white px-5 py-2 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)] transition-all cursor-default inline-block"
             >
               Nishant Raj
             </motion.h1>
@@ -86,7 +72,7 @@ const Hero = ({ dockItems }) => {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.8, duration: 0.8 }}
-                className="mb-2 shrink-0"
+                className="mb-2 shrink-0 md:ml-2"
               >
                 <Dock items={dockItems} />
               </motion.div>
@@ -97,57 +83,50 @@ const Hero = ({ dockItems }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="text-sm sm:text-base md:text-lg text-gray-200 max-w-4xl font-sans leading-relaxed tracking-wide space-y-6"
+            className="text-sm md:text-base text-black dark:text-zinc-200 font-medium leading-relaxed tracking-wide space-y-4 mt-8 p-4 md:p-6 bg-white dark:bg-zinc-900 border-4 border-black dark:border-white shadow-[6px_6px_0_0_#000] dark:shadow-[6px_6px_0_0_#fff]"
           >
-            <p className="text-gray-300">
+            <p>
               I am a{" "}
-              <span className="text-white drop-shadow-[0_0_15px_rgba(251,191,36,0.4)] font-semibold bg-gradient-to-r from-amber-200 to-yellow-300 bg-clip-text text-transparent">
+              <span className="font-black bg-black text-white dark:bg-white dark:text-black px-2 py-0.5 mx-1 uppercase border-2 border-black dark:border-white shadow-[2px_2px_0_0_rgba(255,255,255,0.5)] dark:shadow-[2px_2px_0_0_#000]">
                 Full Stack Engineer
               </span>{" "}
               who primarily works with{" "}
-              <span className="inline-flex align-middle">
-                <FaGolang className="text-blue-400 mx-1 text-xl" />
+              <span className="inline-flex align-middle bg-gray-100 dark:bg-zinc-800 px-1 border-2 border-black dark:border-zinc-500 mx-1">
+                <FaGolang className="text-black dark:text-white mx-0.5 text-lg" />
               </span>
               ,{" "}
-              <span className="inline-flex align-middle">
-                <SiTypescript className="text-blue-500 mx-1 text-xl" />
+              <span className="inline-flex align-middle bg-gray-100 dark:bg-zinc-800 px-1 border-2 border-black dark:border-zinc-500 mx-1">
+                <SiTypescript className="text-black dark:text-white mx-0.5 text-lg" />
               </span>
               , and{" "}
-              <span className="inline-flex align-middle">
-                <DiJavascript1 className="text-yellow-300 mx-1 text-xl" />
+              <span className="inline-flex align-middle bg-gray-100 dark:bg-zinc-800 px-1 border-2 border-black dark:border-zinc-500 mx-1">
+                <DiJavascript1 className="text-black dark:text-white mx-0.5 text-lg" />
               </span>
               . I actively participate in hackathons, contribute to open source,
               build meaningful projects, and ship daily.
             </p>
-            <p className="text-gray-300">
+            <p className="border-l-4 border-black dark:border-zinc-500 pl-3">
               I enjoy technical discussions and have shipped products for
               startups and clients that are used by real users. I believe in{" "}
-              <span className="text-white drop-shadow-[0_0_15px_rgba(251,191,36,0.4)] font-semibold bg-gradient-to-r from-amber-200 to-yellow-300 bg-clip-text text-transparent">
+              <span className="font-black uppercase decoration-4 underline-offset-4 underline bg-black dark:bg-white text-white dark:text-black px-1">
                 impact over perfection
               </span>
               .
             </p>
-            <p className="text-gray-300">
-              <span className="items-center inline-block">
+            <p>
+              <span className="font-bold border-b-2 border-dashed border-black dark:border-white inline-block">
                 Connect with me
               </span>{" "}
               to turn your idea into reality or have a chat in
               general. I love everything about development and diving deep into
               building exceptional products. I am{" "}
-              <span className="text-white drop-shadow-[0_0_15px_rgba(251,191,36,0.4)] font-semibold bg-gradient-to-r from-amber-200 to-yellow-300 bg-clip-text text-transparent">
+              <span className="font-black bg-black text-white dark:bg-white dark:text-black px-2 py-0.5 mx-1 uppercase border-2 border-black dark:border-white shadow-[2px_2px_0_0_rgba(255,255,255,0.5)] dark:shadow-[2px_2px_0_0_#000]">
                 language agnostic
               </span>{" "}
               and willing to work on anything if required. I am always learning,
               improving, and open to feedback.
             </p>
           </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
-            className="pt-8"
-          ></motion.div>
         </motion.div>
       </div>
     </div>

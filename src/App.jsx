@@ -56,7 +56,7 @@ function App() {
           if (
             scrollPosition >= offsetTop - navHeight - windowHeight / 2 &&
             scrollPosition <
-              offsetTop + offsetHeight - navHeight - windowHeight / 2
+            offsetTop + offsetHeight - navHeight - windowHeight / 2
           ) {
             currentSection = id;
           }
@@ -85,54 +85,53 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#030712] text-gray-100 overflow-x-hidden relative selection:bg-orange-500/30">
-      <div className="relative inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#030712] via-[#0a0d1f] to-[#111827] opacity-95"></div>
+    <div className="min-h-screen bg-gray-50 dark:bg-zinc-950 text-black dark:text-gray-100 overflow-x-hidden relative selection:bg-black selection:text-white dark:selection:bg-white dark:selection:text-black">
+      <div className="relative inset-0 -z-10 absolute bg-white dark:bg-zinc-950">
         <div
-          className="absolute inset-0 opacity-[0.02]"
+          className="absolute inset-0 opacity-[0.03] dark:opacity-[0.02]"
           style={{
             backgroundImage:
               "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E\")",
           }}
         ></div>
       </div>
-      <div className="relative top-0 left-0 w-full h-1 z-[60]">
+      <div className="fixed top-0 left-0 w-full h-2 z-[60] bg-transparent border-b-2 border-dashed border-gray-300 dark:border-zinc-800">
         <motion.div
-          className="h-full bg-gradient-to-r from-orange-600 via-pink-500 to-orange-400 shadow-lg shadow-orange-500/30"
+          className="h-full bg-black dark:bg-white border-r-4 border-white dark:border-black"
           style={{ width: `${scrollProgress}%` }}
         />
       </div>
 
-      <main className="relative z-10 container mx-auto px-4 sm:px-6 pt-4 pb-20 flex flex-col items-center">
+      <main className="relative z-10 container mx-auto px-4 sm:px-6 pt-6 pb-12 flex flex-col items-center gap-2 md:gap-4">
         <section
           id="hero"
-          className="min-h-[30vh] w-full flex justify-center items-center py-10"
+          className="w-full flex justify-center items-center py-2"
         >
           <Hero
             dockItems={[
               {
                 label: "Resume",
-                icon: <FileText className="text-red-600 w-full h-full" />,
+                icon: <FileText className="text-black dark:text-white w-full h-full" />,
                 action: handleResumeClick,
               },
               {
                 label: "LinkedIn",
-                icon: <FaLinkedin className="text-blue-600 w-full h-full" />,
+                icon: <FaLinkedin className="text-black dark:text-white w-full h-full" />,
                 href: "https://www.linkedin.com/in/nraj24/",
               },
               {
                 label: "GitHub",
-                icon: <FaGithub className="text-white w-full h-full" />,
+                icon: <FaGithub className="text-black dark:text-white w-full h-full" />,
                 href: "https://github.com/dawgdevv",
               },
               {
                 label: "Twitter",
-                icon: <FaSquareXTwitter className="w-full h-full" />,
+                icon: <FaSquareXTwitter className="text-black dark:text-white w-full h-full" />,
                 href: "https://x.com/sfunish",
               },
               {
                 label: "Peerlist",
-                icon: <SiPeerlist className="text-green-500 w-full h-full" />,
+                icon: <SiPeerlist className="text-black dark:text-white w-full h-full" />,
                 href: "https://peerlist.io/nishantraj",
               },
 
@@ -142,24 +141,24 @@ function App() {
 
         <section
           id="experience"
-          className="w-full flex justify-center items-center py-12"
+          className="w-full flex justify-center items-center py-2"
         >
           <Experience />
         </section>
         <section
           id="projects"
-          className="w-full flex justify-center items-center py-12"
+          className="w-full flex justify-center items-center py-2"
         >
           <Project />
         </section>
         <section
           id="github"
-          className="w-full flex justify-center items-center py-12"
+          className="w-full flex justify-center items-center py-2"
         >
           <GitHub />
         </section>
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-white dark:bg-zinc-900 border-2 border-white hover:border-black shadow-neo hover:shadow-neo-lg px-4 py-1 flex items-center gap-2 transition-all group cursor-default">
-          <span className="text-sm font-black uppercase text-black dark:text-white group-hover:text-orange-600 transition-colors">
+        <div className="fixed bottom-6 right-6 md:bottom-10 md:right-10 bg-white dark:bg-black border-4 border-black dark:border-white shadow-[6px_6px_0_0_#000] dark:shadow-[6px_6px_0_0_#fff] hover:shadow-[2px_2px_0_0_#000] dark:hover:shadow-[2px_2px_0_0_#fff] hover:translate-x-[4px] hover:translate-y-[4px] px-4 md:px-6 py-2 flex items-center gap-2 transition-all group cursor-default z-50">
+          <span className="text-xs md:text-sm font-black uppercase text-black dark:text-white group-hover:underline underline-offset-4 decoration-4 transition-colors">
             Made By Nishant Raj
           </span>
         </div>
