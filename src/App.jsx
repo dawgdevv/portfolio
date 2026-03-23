@@ -1,26 +1,17 @@
 /* eslint-disable react/prop-types */
-import { useState, useEffect, useMemo, lazy, Suspense, useRef } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Contact as ContactIcon, FileText } from "lucide-react";
+import { FileText } from "lucide-react";
 import { FaLinkedin, FaGithub, FaSquareXTwitter } from "react-icons/fa6";
 import { SiPeerlist } from "react-icons/si";
-
-const Hero = lazy(() => import("./components/Hero"));
-const Experience = lazy(() => import("./components/Experience"));
-const Project = lazy(() => import("./components/Project"));
-const Contact = lazy(() => import("./components/Contact"));
-const GitHub = lazy(() => import("./components/Github"));
-const ResumeViewer = lazy(() => import("./components/ResumeViewer"));
-
-const LoadingFallback = () => (
-  <div className="flex justify-center items-center py-16 text-sm font-semibold text-gray-400">
-    Loading...
-  </div>
-);
+import Hero from "./components/Hero";
+import Experience from "./components/Experience";
+import Project from "./components/Project";
+import GitHub from "./components/Github";
+import ResumeViewer from "./components/ResumeViewer";
 
 function App() {
   const [activeSection, setActiveSection] = useState("hero");
-  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
 
@@ -85,14 +76,6 @@ function App() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [sections]);
 
-  const handleContactClick = () => {
-    setIsContactModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsContactModalOpen(false);
-  };
-
   const handleResumeClick = () => {
     setIsResumeModalOpen(true);
   };
@@ -121,95 +104,66 @@ function App() {
       </div>
 
       <main className="relative z-10 container mx-auto px-4 sm:px-6 pt-4 pb-20 flex flex-col items-center">
-        <Suspense fallback={<LoadingFallback />}>
-          <section
-            id="hero"
-            className="min-h-[30vh] w-full flex justify-center items-center py-10"
-          >
-            <Hero
-              dockItems={[
-                {
-                  label: "Resume",
-                  icon: <FileText className="text-red-600 w-full h-full" />,
-                  action: handleResumeClick,
-                },
-                {
-                  label: "LinkedIn",
-                  icon: <FaLinkedin className="text-blue-600 w-full h-full" />,
-                  href: "https://www.linkedin.com/in/nraj24/",
-                },
-                {
-                  label: "GitHub",
-                  icon: <FaGithub className="text-white w-full h-full" />,
-                  href: "https://github.com/dawgdevv",
-                },
-                {
-                  label: "Twitter",
-                  icon: <FaSquareXTwitter className="w-full h-full" />,
-                  href: "https://x.com/sfunish",
-                },
-                {
-                  label: "Peerlist",
-                  icon: <SiPeerlist className="text-green-500 w-full h-full" />,
-                  href: "https://peerlist.io/nishantraj",
-                },
-                {
-                  label: "Contact",
-                  icon: <ContactIcon className="w-full h-full" />,
-                  action: handleContactClick,
-                },
-              ]}
-            />
-          </section>
+        <section
+          id="hero"
+          className="min-h-[30vh] w-full flex justify-center items-center py-10"
+        >
+          <Hero
+            dockItems={[
+              {
+                label: "Resume",
+                icon: <FileText className="text-red-600 w-full h-full" />,
+                action: handleResumeClick,
+              },
+              {
+                label: "LinkedIn",
+                icon: <FaLinkedin className="text-blue-600 w-full h-full" />,
+                href: "https://www.linkedin.com/in/nraj24/",
+              },
+              {
+                label: "GitHub",
+                icon: <FaGithub className="text-white w-full h-full" />,
+                href: "https://github.com/dawgdevv",
+              },
+              {
+                label: "Twitter",
+                icon: <FaSquareXTwitter className="w-full h-full" />,
+                href: "https://x.com/sfunish",
+              },
+              {
+                label: "Peerlist",
+                icon: <SiPeerlist className="text-green-500 w-full h-full" />,
+                href: "https://peerlist.io/nishantraj",
+              },
 
-          <section
-            id="experience"
-            className="w-full flex justify-center items-center py-12"
-          >
-            <Experience />
-          </section>
-          <section
-            id="projects"
-            className="w-full flex justify-center items-center py-12"
-          >
-            <Project />
-          </section>
-          <section
-            id="github"
-            className="w-full flex justify-center items-center py-12"
-          >
-            <GitHub />
-          </section>
-        </Suspense>
+            ]}
+          />
+        </section>
+
+        <section
+          id="experience"
+          className="w-full flex justify-center items-center py-12"
+        >
+          <Experience />
+        </section>
+        <section
+          id="projects"
+          className="w-full flex justify-center items-center py-12"
+        >
+          <Project />
+        </section>
+        <section
+          id="github"
+          className="w-full flex justify-center items-center py-12"
+        >
+          <GitHub />
+        </section>
         <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-white dark:bg-zinc-900 border-2 border-white hover:border-black shadow-neo hover:shadow-neo-lg px-4 py-1 flex items-center gap-2 transition-all group cursor-default">
           <span className="text-sm font-black uppercase text-black dark:text-white group-hover:text-orange-600 transition-colors">
             Made By Nishant Raj
           </span>
         </div>
       </main>
-      <AnimatePresence>
-        {isContactModalOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 bg-black/70 backdrop-blur-md z-[70] flex items-center justify-center p-4"
-          >
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0, y: 20 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.9, opacity: 0, y: 20 }}
-              transition={{ type: "spring", stiffness: 300, damping: 25 }}
-              className="w-full max-w-lg"
-            >
-              <Suspense fallback={<LoadingFallback />}>
-                <Contact onClose={handleCloseModal} />
-              </Suspense>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
       <AnimatePresence>
         {isResumeModalOpen && (
           <motion.div

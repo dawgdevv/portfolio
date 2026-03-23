@@ -3,10 +3,15 @@ import { useEffect, useRef } from "react";
 const SnowfallBackground = () => {
   const canvasRef = useRef(null);
   const animationFrameId = useRef(null);
+  const snowflakesRef = useRef([]);
+  const isVisibleRef = useRef(true);
+  const resizeTimeoutRef = useRef(null);
+  const ctxRef = useRef(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
+    ctxRef.current = ctx;
     let snowflakes = [];
 
     const resizeCanvas = () => {
@@ -15,24 +20,25 @@ const SnowfallBackground = () => {
     };
 
     const createSnowflakes = () => {
-      const numberOfSnowflakes = 350; // Fewer snowflakes for a calm effect
+      const numberOfSnowflakes = 200;
       snowflakes = [];
       for (let i = 0; i < numberOfSnowflakes; i++) {
         snowflakes.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          radius: Math.random() * 1.8 + 0.6, // Smaller snowflakes for a subtle look
+          radius: Math.random() * 1.5 + 0.5,
           density: Math.random() * 2,
-          drift: Math.random() * 1 - 0.3, // Gentle horizontal drift
+          drift: Math.random() * 1 - 0.3,
         });
       }
+      snowflakesRef.current = snowflakes;
     };
 
     const drawSnowflakes = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.fillStyle = "white";
       ctx.beginPath();
-      for (let flake of snowflakes) {
+      for (let flake of snowflakesRef.current) {
         ctx.moveTo(flake.x, flake.y);
         ctx.arc(flake.x, flake.y, flake.radius, 0, Math.PI * 2, true);
       }
@@ -40,11 +46,10 @@ const SnowfallBackground = () => {
     };
 
     const moveSnowflakes = () => {
-      for (let flake of snowflakes) {
-        flake.y += Math.pow(flake.density, 2) * 0.5 + 1.5; // Slow falling
-        flake.x += flake.drift; // Gentle horizontal movement
+      for (let flake of snowflakesRef.current) {
+        flake.y += Math.pow(flake.density, 2) * 0.5 + 1;
+        flake.x += flake.drift;
 
-        // Reset position if the flake moves out of view
         if (flake.y > canvas.height) {
           flake.y = 0;
           flake.x = Math.random() * canvas.width;
@@ -56,20 +61,47 @@ const SnowfallBackground = () => {
     };
 
     const animate = () => {
+      if (!isVisibleRef.current) return;
+      
       drawSnowflakes();
       moveSnowflakes();
       animationFrameId.current = requestAnimationFrame(animate);
+    };
+
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        isVisibleRef.current = false;
+        if (animationFrameId.current) {
+          cancelAnimationFrame(animationFrameId.current);
+        }
+      } else {
+        isVisibleRef.current = true;
+        animate();
+      }
+    };
+
+    const debouncedResize = () => {
+      clearTimeout(resizeTimeoutRef.current);
+      resizeTimeoutRef.current = setTimeout(() => {
+        resizeCanvas();
+        createSnowflakes();
+      }, 100);
     };
 
     resizeCanvas();
     createSnowflakes();
     animate();
 
-    window.addEventListener("resize", resizeCanvas);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    window.addEventListener("resize", debouncedResize);
 
     return () => {
-      window.removeEventListener("resize", resizeCanvas);
-      cancelAnimationFrame(animationFrameId.current);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      window.removeEventListener("resize", debouncedResize);
+      clearTimeout(resizeTimeoutRef.current);
+      if (animationFrameId.current) {
+        cancelAnimationFrame(animationFrameId.current);
+      }
     };
   }, []);
 

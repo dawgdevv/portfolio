@@ -41,11 +41,15 @@ const Hero = ({ dockItems }) => {
             }}
             className="flex flex-wrap items-center justify-start gap-2 md:gap-3 mb-2 font-sans py-2"
           >
-            <span
-              className="text-2xl md:text-4xl font-black bg-gradient-to-r from-amber-200 via-yellow-400 to-amber-300 bg-clip-text text-transparent uppercase tracking-wider drop-shadow-[0_0_20px_rgba(251,191,36,0.3)] py-1 px-1"
+            <motion.span
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.6, type: "spring", bounce: 0.4 }}
+              whileHover={{ scale: 1.02, x: -2, y: -2 }}
+              className="text-2xl md:text-4xl font-black bg-white text-black uppercase tracking-wider border-4 border-black px-4 py-2 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all cursor-default inline-block"
             >
               Hi there
-            </span>
+            </motion.span>
             <motion.span
               animate={{
                 rotate: [0, 14, -8, 14, -4, 10, 0, 0],
@@ -67,29 +71,15 @@ const Hero = ({ dockItems }) => {
           </motion.div>
 
           <div className="flex flex-col md:flex-row items-center md:items-end gap-4 md:gap-6 flex-wrap">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter text-white mb-4 md:mb-0 break-words leading-tight px-1">
-              {"Nishant Raj".split("").map((char, index) => (
-                <motion.span
-                  key={index}
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{
-                    duration: 0.8,
-                    delay: index * 0.05 + 0.5,
-                    type: "spring",
-                    bounce: 0.4,
-                  }}
-                  className="inline-block hover:text-amber-300 transition-colors duration-300 cursor-default"
-                  whileHover={{
-                    y: -10,
-                    rotate: Math.random() * 10 - 5,
-                    transition: { duration: 0.2 },
-                  }}
-                >
-                  {char === " " ? "\u00A0" : char}
-                </motion.span>
-              ))}
-            </h1>
+            <motion.h1 
+              initial={{ y: 30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.3, type: "spring", bounce: 0.3 }}
+              whileHover={{ scale: 1.01, x: -3, y: -3 }}
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter bg-black text-white border-4 border-white px-5 py-3 shadow-[6px_6px_0px_0px_rgba(255,255,255,1)] hover:shadow-[10px_10px_0px_0px_rgba(255,255,255,1)] transition-all cursor-default inline-block"
+            >
+              Nishant Raj
+            </motion.h1>
 
             {dockItems && (
               <motion.div
