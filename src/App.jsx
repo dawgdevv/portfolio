@@ -9,6 +9,7 @@ import Experience from "./components/Experience";
 import Project from "./components/Project";
 import GitHub from "./components/Github";
 import ResumeViewer from "./components/ResumeViewer";
+import CustomCursor from "./components/CustomCursor";
 
 function App() {
   const [activeSection, setActiveSection] = useState("hero");
@@ -86,6 +87,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-zinc-950 text-black dark:text-gray-100 overflow-x-hidden relative selection:bg-black selection:text-white dark:selection:bg-white dark:selection:text-black">
+      <CustomCursor />
       <div className="relative inset-0 -z-10 absolute bg-white dark:bg-zinc-950">
         <div
           className="absolute inset-0 opacity-[0.03] dark:opacity-[0.02]"
