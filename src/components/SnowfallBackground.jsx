@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import bgImage from "../assets/1341120.png";
 
 const SnowfallBackground = () => {
   const canvasRef = useRef(null);
@@ -20,15 +21,15 @@ const SnowfallBackground = () => {
     };
 
     const createSnowflakes = () => {
-      const numberOfSnowflakes = 200;
+      const numberOfSnowflakes = 600; // Increased from 200 to 600
       snowflakes = [];
       for (let i = 0; i < numberOfSnowflakes; i++) {
         snowflakes.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          radius: Math.random() * 1.5 + 0.5,
-          density: Math.random() * 2,
-          drift: Math.random() * 1 - 0.3,
+          radius: Math.random() * 2 + 0.8, // Slightly bigger snowflakes
+          density: Math.random() * 2.5, // Slightly faster falling speed
+          drift: Math.random() * 1.5 - 0.5, // More horizontal wind shift
         });
       }
       snowflakesRef.current = snowflakes;
@@ -62,7 +63,7 @@ const SnowfallBackground = () => {
 
     const animate = () => {
       if (!isVisibleRef.current) return;
-      
+
       drawSnowflakes();
       moveSnowflakes();
       animationFrameId.current = requestAnimationFrame(animate);
@@ -109,7 +110,13 @@ const SnowfallBackground = () => {
     <canvas
       ref={canvasRef}
       className="fixed top-0 left-0 w-full h-full pointer-events-none -z-10"
-      style={{ backgroundColor: "black" }}
+      style={{
+        backgroundColor: "black",
+        backgroundImage: `url(${bgImage})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundAttachment: "fixed"
+      }}
     />
   );
 };

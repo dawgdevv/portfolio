@@ -9,7 +9,7 @@ function Experience() {
       <motion.h2
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="mb-4 text-lg md:text-xl font-black text-center uppercase tracking-tighter text-black dark:text-white"
+        className="mb-4 text-lg md:text-xl font-black text-center uppercase tracking-tighter text-black dark:text-[#FFEDC2]"
       >
         Experience
       </motion.h2>

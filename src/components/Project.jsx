@@ -53,7 +53,7 @@ export default function Project() {
   return (
     <section className="container mx-auto px-4 py-4 max-w-4xl">
       <div className="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
-        <h2 className="text-xl md:text-2xl font-black uppercase tracking-tighter text-black dark:text-white">
+        <h2 className="text-xl md:text-2xl font-black uppercase tracking-tighter text-black dark:text-[#FFEDC2]">
           Projects
         </h2>
 
