@@ -12,6 +12,7 @@ function About() {
               className="w-full h-full object-cover transition-transform duration-300 ease-in-out hover:scale-105"
               src={aboutImage}
               alt="Portrait of the developer"
+              loading="lazy"
             />
           </div>
         </div>

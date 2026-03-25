@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useState, useEffect, useMemo, useRef } from "react";
+import { useState, useEffect, useMemo, useRef, lazy, Suspense } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FileText } from "lucide-react";
 import { FaLinkedin, FaGithub, FaSquareXTwitter } from "react-icons/fa6";
@@ -7,9 +7,10 @@ import { SiPeerlist } from "react-icons/si";
 import Hero from "./components/Hero";
 import Experience from "./components/Experience";
 import Project from "./components/Project";
-import GitHub from "./components/Github";
-import ResumeViewer from "./components/ResumeViewer";
 import CustomCursor from "./components/CustomCursor";
+
+const GitHub = lazy(() => import("./components/Github"));
+const ResumeViewer = lazy(() => import("./components/ResumeViewer"));
 
 function App() {
   const [activeSection, setActiveSection] = useState("hero");
@@ -44,31 +45,38 @@ function App() {
   useEffect(() => {
     setActiveSection("hero");
 
+    let ticking = false;
     const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      const windowHeight = window.innerHeight;
-      const navHeight = document.querySelector("nav")?.offsetHeight || 80;
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const scrollPosition = window.scrollY;
+          const windowHeight = window.innerHeight;
+          const navHeight = document.querySelector("nav")?.offsetHeight || 80;
 
-      let currentSection = "hero";
-      sections.forEach(({ id }) => {
-        const element = document.getElementById(id);
-        if (element) {
-          const { offsetTop, offsetHeight } = element;
-          if (
-            scrollPosition >= offsetTop - navHeight - windowHeight / 2 &&
-            scrollPosition <
-            offsetTop + offsetHeight - navHeight - windowHeight / 2
-          ) {
-            currentSection = id;
-          }
-        }
-      });
-      setActiveSection(currentSection);
+          let currentSection = "hero";
+          sections.forEach(({ id }) => {
+            const element = document.getElementById(id);
+            if (element) {
+              const { offsetTop, offsetHeight } = element;
+              if (
+                scrollPosition >= offsetTop - navHeight - windowHeight / 2 &&
+                scrollPosition <
+                offsetTop + offsetHeight - navHeight - windowHeight / 2
+              ) {
+                currentSection = id;
+              }
+            }
+          });
+          setActiveSection(currentSection);
 
-      const scrollTotal =
-        document.documentElement.scrollHeight - window.innerHeight;
-      const scrolled = (scrollPosition / Math.max(scrollTotal, 1)) * 100;
-      setScrollProgress(scrolled);
+          const scrollTotal =
+            document.documentElement.scrollHeight - window.innerHeight;
+          const scrolled = (scrollPosition / Math.max(scrollTotal, 1)) * 100;
+          setScrollProgress(scrolled);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -157,7 +165,9 @@ function App() {
           id="github"
           className="w-full flex justify-center items-center py-2"
         >
-          <GitHub />
+          <Suspense fallback={<div className="h-64 flex items-center justify-center"><div className="animate-spin h-8 w-8 border-2 border-gray-300 border-t-black rounded-full" /></div>}>
+            <GitHub />
+          </Suspense>
         </section>
         <div className="fixed bottom-6 right-6 md:bottom-10 md:right-10 bg-white dark:bg-black border-4 border-black dark:border-white shadow-[6px_6px_0_0_#000] dark:shadow-[6px_6px_0_0_#fff] hover:shadow-[2px_2px_0_0_#000] dark:hover:shadow-[2px_2px_0_0_#fff] hover:translate-x-[4px] hover:translate-y-[4px] px-4 md:px-6 py-2 flex items-center gap-2 transition-all group cursor-default z-50">
           <span className="text-xs md:text-sm font-black uppercase text-black dark:text-white group-hover:underline underline-offset-4 decoration-4 transition-colors">
@@ -174,7 +184,9 @@ function App() {
             transition={{ duration: 0.3 }}
             className="fixed inset-0 bg-black/70 backdrop-blur-md z-[70] flex items-center justify-center p-4"
           >
+            <Suspense fallback={<div className="animate-spin h-12 w-12 border-4 border-gray-300 border-t-white rounded-full" />}>
               <ResumeViewer onClose={handleCloseResumeModal} />
+            </Suspense>
           </motion.div>
         )}
       </AnimatePresence>

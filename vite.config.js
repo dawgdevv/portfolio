@@ -10,15 +10,6 @@ export default defineConfig({
   ].filter(Boolean),
   base: "/",
   build: {
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          'pdf-viewer': ['react-pdf', 'pdfjs-dist'],
-          'github': ['react-github-calendar'],
-          'vendor': ['framer-motion', 'lucide-react'],
-        }
-      }
-    },
     chunkSizeWarningLimit: 500,
     minify: 'terser',
     terserOptions: {

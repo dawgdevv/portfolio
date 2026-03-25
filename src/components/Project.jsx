@@ -137,6 +137,7 @@ export default function Project() {
                       <img
                         src={project.image}
                         alt={project.name}
+                        loading="lazy"
                         className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
                       />
                     </div>
@@ -231,6 +232,7 @@ export default function Project() {
                           <img
                             src={project.image}
                             alt={project.name}
+                            loading="lazy"
                             className="w-full h-auto object-contain max-h-[300px] bg-gray-100 dark:bg-zinc-800"
                           />
                         </div>

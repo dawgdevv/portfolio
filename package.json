@@ -12,7 +12,6 @@
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
-    "baseline-browser-mapping": "^2.10.10",
     "caniuse-lite": "^1.0.30001781",
     "framer-motion": "^12.38.0",
     "lucide-react": "^1.7.0",
