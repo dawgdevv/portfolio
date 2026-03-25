@@ -13,10 +13,10 @@ import {
   ExternalLink,
 } from "lucide-react";
 import PropTypes from "prop-types";
-import resumePdf from "../assets/SE_Backend_Nishant.pdf"; // Adjust path if needed
+import resumePdf from "../assets/Resume.pdf"; // Adjust path if needed
 
-// Match worker version to API version used by react-pdf
-pdfjs.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@4.8.69/build/pdf.worker.min.mjs`;
+// Match worker version to API version used by react-pdf automatically
+pdfjs.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
 const ResumeViewer = ({ onClose }) => {
   const [numPages, setNumPages] = useState(null);

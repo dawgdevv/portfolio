@@ -174,9 +174,7 @@ function App() {
             transition={{ duration: 0.3 }}
             className="fixed inset-0 bg-black/70 backdrop-blur-md z-[70] flex items-center justify-center p-4"
           >
-            <Suspense fallback={<LoadingFallback />}>
               <ResumeViewer onClose={handleCloseResumeModal} />
-            </Suspense>
           </motion.div>
         )}
       </AnimatePresence>
