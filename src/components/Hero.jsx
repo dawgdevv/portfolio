@@ -1,7 +1,6 @@
-import { SiTypescript } from "react-icons/si";
+import { SiTypescript, SiPython } from "react-icons/si";
 
 import { FaGolang } from "react-icons/fa6";
-import { DiJavascript1 } from "react-icons/di";
 
 import Dock from "./Dock";
 
@@ -36,11 +35,11 @@ const Hero = ({ dockItems }) => {
 
           <div className="text-sm md:text-base text-black dark:text-zinc-200 font-medium leading-relaxed tracking-wide space-y-4 mt-8 p-4 md:p-6 bg-white dark:bg-zinc-900 border-4 border-black dark:border-white shadow-[6px_6px_0_0_#000] dark:shadow-[6px_6px_0_0_#fff]">
             <p>
-              I am a{" "}
+              I'm a{" "}
               <span className="font-black bg-black text-white dark:bg-white dark:text-black px-2 py-0.5 mx-1 uppercase border-2 border-black dark:border-white shadow-[2px_2px_0_0_rgba(255,255,255,0.5)] dark:shadow-[2px_2px_0_0_#000]">
-                Full Stack Engineer
+                Full Stack / Backend Engineer
               </span>{" "}
-              who primarily works with{" "}
+              who spends most of his time in{" "}
               <span className="inline-flex align-middle bg-gray-100 dark:bg-zinc-800 px-1 border-2 border-black dark:border-zinc-500 mx-1">
                 <FaGolang className="text-black dark:text-white mx-0.5 text-lg" />
               </span>
@@ -50,31 +49,25 @@ const Hero = ({ dockItems }) => {
               </span>
               , and{" "}
               <span className="inline-flex align-middle bg-gray-100 dark:bg-zinc-800 px-1 border-2 border-black dark:border-zinc-500 mx-1">
-                <DiJavascript1 className="text-black dark:text-white mx-0.5 text-lg" />
+                <SiPython className="text-black dark:text-white mx-0.5 text-lg" />
               </span>
-              . I actively participate in hackathons, contribute to open source,
-              build meaningful projects, and ship daily.
+              {" "}building things that actually ship and get used.
             </p>
             <p className="border-l-4 border-black dark:border-zinc-500 pl-3">
-              I enjoy technical discussions and have shipped products for
-              startups and clients that are used by real users. I believe in{" "}
-              <span className="font-black uppercase decoration-4 underline-offset-4 underline bg-black dark:bg-white text-white dark:text-black px-1">
-                impact over perfection
-              </span>
-              .
+              I care about the craft. Not just making things work, but making
+              them fast, clean, and built to last. I've won hackathons,
+              contributed to open source, and shipped production features for
+              real startups with real users. I build in public because I think
+              the best way to grow is to show your work.
             </p>
             <p>
-              <span className="font-bold border-b-2 border-dashed border-black dark:border-white inline-block">
-                Connect with me
-              </span>{" "}
-              to turn your idea into reality or have a chat in
-              general. I love everything about development and diving deep into
-              building exceptional products. I am{" "}
+              If you've got an idea you want to turn into a product, or just
+              want to talk about something you're building I'm always up for
+              it. I'm{" "}
               <span className="font-black bg-black text-white dark:bg-white dark:text-black px-2 py-0.5 mx-1 uppercase border-2 border-black dark:border-white shadow-[2px_2px_0_0_rgba(255,255,255,0.5)] dark:shadow-[2px_2px_0_0_#000]">
                 language agnostic
-              </span>{" "}
-              and willing to work on anything if required. I am always learning,
-              improving, and open to feedback.
+              </span>
+              , curious by default, and I learn fast. Most importantly, I ship.
             </p>
           </div>
         </div>

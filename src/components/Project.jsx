@@ -57,7 +57,7 @@ export default function Project() {
           Projects
         </h2>
 
-        <div className="flex w-full md:w-auto relative border-4 border-white focus-within:border-black dark:border-zinc-800 dark:focus-within:border-white bg-white dark:bg-zinc-900 shadow-neo transition-all group">
+        <div className="flex w-full md:w-auto relative border-4 border-white focus-within:border-black bg-white dark:bg-zinc-900 shadow-neo transition-all group">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
             <FaSearch className="text-gray-400 dark:text-gray-500" />
           </div>
@@ -79,7 +79,7 @@ export default function Project() {
           onClick={() => setActiveFilter("All")}
           className={`px-3 py-1 text-[10px] md:text-xs font-bold uppercase transition-all shadow-sm ${activeFilter === "All"
               ? "bg-black text-white dark:bg-white dark:text-black border-2 border-transparent"
-              : "bg-gray-100 dark:bg-zinc-800 text-gray-600 dark:text-gray-300 border-2 border-gray-200 dark:border-zinc-700 hover:border-black dark:hover:border-white"
+              : "bg-gray-100 dark:bg-zinc-800 text-gray-600 dark:text-gray-300 border-2 border-gray-200 hover:border-black"
             }`}
         >
           All
@@ -90,7 +90,7 @@ export default function Project() {
             onClick={() => setActiveFilter(tech)}
             className={`px-3 py-1 text-[10px] md:text-xs font-bold uppercase transition-all shadow-sm ${activeFilter === tech
                 ? "bg-black text-white dark:bg-white dark:text-black border-2 border-transparent"
-                : "bg-gray-100 dark:bg-zinc-800 text-gray-600 dark:text-gray-300 border-2 border-gray-200 dark:border-zinc-700 hover:border-black dark:hover:border-white"
+                : "bg-gray-100 dark:bg-zinc-800 text-gray-600 dark:text-gray-300 border-2 border-gray-200 hover:border-black"
               }`}
           >
             {tech}
@@ -113,7 +113,7 @@ export default function Project() {
           return (
             <div
               key={project.name}
-              className={`relative overflow-hidden bg-white dark:bg-zinc-900 border-4 border-white hover:border-black dark:border-zinc-800 dark:hover:border-white shadow-neo w-full transition-all duration-300 ${isExpanded ? "shadow-neo-lg scale-[1.01] z-10" : "hover:scale-[1.01] z-0"
+              className={`relative overflow-hidden bg-white dark:bg-zinc-900 border-4 border-white hover:border-black shadow-neo w-full transition-all duration-300 ${isExpanded ? "shadow-neo-lg scale-[1.01] z-10" : "hover:scale-[1.01] z-0"
                 }`}
             >
                 <div
@@ -121,7 +121,7 @@ export default function Project() {
                   className="flex flex-col md:flex-row items-start md:items-center justify-between p-2 md:p-3 bg-white dark:bg-zinc-900 cursor-pointer group gap-2 transition-colors hover:bg-gray-50 dark:hover:bg-zinc-800/50"
                 >
                   <div className="flex gap-3 flex-1 min-w-0 items-center">
-                    <div className="hidden sm:block w-12 h-12 shrink-0 bg-gray-100 dark:bg-zinc-800 border-2 border-transparent group-hover:border-black dark:group-hover:border-white transition-all overflow-hidden">
+                    <div className="hidden sm:block w-12 h-12 shrink-0 bg-gray-100 dark:bg-zinc-800 border-2 border-transparent group-hover:border-black transition-all overflow-hidden">
                       <img
                         src={project.image}
                         alt={project.name}
@@ -192,7 +192,7 @@ export default function Project() {
                     </div>
 
                     <span
-                      className={`hidden md:inline-block text-[10px] md:text-xs font-bold uppercase tracking-wider px-3 py-1 bg-gray-100 dark:bg-zinc-800 border-2 border-transparent transition-all ${isExpanded ? "bg-accent-color text-white" : "text-gray-500"
+                      className={`hidden md:inline-block text-[10px] md:text-xs font-bold uppercase tracking-wider px-3 py-1 bg-gray-100 dark:bg-zinc-800 border-2 border-white hover:border-black transition-all ${isExpanded ? "bg-accent-color text-white" : "text-gray-500"
                         }`}
                     >
                       {isExpanded ? "Close" : "Details"}
@@ -216,7 +216,7 @@ export default function Project() {
                       className="overflow-hidden"
                     >
                       <div className="p-3 md:p-4 pt-0 border-t-2 border-dashed border-gray-200 dark:border-zinc-800 mt-2">
-                        <div className="border-4 border-white hover:border-black dark:border-zinc-800 dark:hover:border-white mb-4 transition-all group-hover:shadow-neo-sm">
+                        <div className="border-4 border-white hover:border-black mb-4 transition-all group-hover:shadow-neo-sm">
                           <img
                             src={project.image}
                             alt={project.name}
@@ -229,7 +229,7 @@ export default function Project() {
                           <div className="md:col-span-2 space-y-4">
                             <div>
                               <h4 className="text-base md:text-lg font-black uppercase tracking-tight text-black dark:text-white mb-2 flex items-center gap-2">
-                                <span className="w-3 h-3 bg-accent-color border-2 border-white dark:border-zinc-800 hover:border-black dark:hover:border-white"></span>
+                                <span className="w-3 h-3 bg-accent-color border-2 border-white hover:border-black"></span>
                                 About
                               </h4>
                               <p className="text-black dark:text-gray-300 font-medium leading-relaxed text-sm">
@@ -240,7 +240,7 @@ export default function Project() {
                             {project.features && (
                               <div>
                                 <h4 className="text-base md:text-lg font-black uppercase tracking-tight text-black dark:text-white mb-2 flex items-center gap-2">
-                                  <span className="w-3 h-3 bg-blue-500 border-2 border-white dark:border-zinc-800 hover:border-black dark:hover:border-white"></span>
+                                  <span className="w-3 h-3 bg-blue-500 border-2 border-white hover:border-black"></span>
                                   Features
                                 </h4>
                                 <ul className="grid sm:grid-cols-2 gap-2">
@@ -260,14 +260,14 @@ export default function Project() {
 
                           <div className="md:col-span-1 space-y-4">
                             <div>
-                              <h4 className="text-sm md:text-base font-black uppercase tracking-tight text-black dark:text-white mb-3 border-b-2 border-white dark:border-zinc-800 hover:border-black dark:hover:border-white inline-block">
+                              <h4 className="text-sm md:text-base font-black uppercase tracking-tight text-black dark:text-white mb-3 border-b-2 border-white hover:border-black inline-block">
                                 Tech Stack
                               </h4>
                               <div className="flex flex-wrap gap-2">
                                 {project.technologies?.map((tech, i) => (
                                   <span
                                     key={i}
-                                    className="px-2 py-1 text-[10px] md:text-xs font-bold uppercase bg-gray-100 dark:bg-zinc-800 text-black dark:text-white border-2 border-white dark:border-zinc-800 hover:border-black dark:hover:border-white shadow-neo-sm transition-all hover:-translate-y-0.5"
+                                    className="px-2 py-1 text-[10px] md:text-xs font-bold uppercase bg-gray-100 dark:bg-zinc-800 text-black dark:text-white border-2 border-white hover:border-black shadow-neo-sm transition-all hover:-translate-y-0.5"
                                   >
                                     {tech}
                                   </span>
@@ -291,7 +291,7 @@ export default function Project() {
                                   href={project.githubLink}
                                   target="_blank"
                                   rel="noopener noreferrer"
-                                  className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-gray-200 dark:bg-zinc-800 text-black dark:text-white font-bold uppercase text-xs md:text-sm border-2 border-transparent hover:border-black dark:hover:border-white hover:bg-white dark:hover:bg-black transition-all"
+                                  className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-gray-200 dark:bg-zinc-800 text-black dark:text-white font-bold uppercase text-xs md:text-sm border-2 border-white hover:border-black hover:bg-white dark:hover:bg-black transition-all"
                                 >
                                   <FaGithub /> Source Code
                                 </a>
