@@ -53,7 +53,7 @@ export default function Project() {
   return (
     <section className="container mx-auto px-4 py-4 max-w-4xl">
       <div className="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
-        <h2 className="text-xl md:text-2xl font-black uppercase tracking-tighter text-black dark:text-[#FFEDC2]">
+        <h2 className="text-xl md:text-2xl font-black uppercase tracking-tighter text-black" style={{ textShadow: '0 0 16px rgba(255,255,255,0.6), 0 0 32px rgba(255,255,255,0.3)' }}>
           Projects
         </h2>
 
@@ -99,35 +99,23 @@ export default function Project() {
       </div>
 
       <div className="flex flex-col gap-2 relative">
-        <AnimatePresence mode="popLayout">
-          {filteredProjects.length === 0 && (
-            <motion.div
-              layout
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              className="text-center py-12 border-4 border-dashed border-gray-300 dark:border-zinc-700 bg-white dark:bg-zinc-900"
+        {filteredProjects.length === 0 && (
+          <div className="text-center py-12 border-4 border-dashed border-gray-300 dark:border-zinc-700 bg-white dark:bg-zinc-900">
+            <p className="font-bold text-gray-500 dark:text-gray-400 uppercase tracking-tighter">
+              No projects matched your criteria.
+            </p>
+          </div>
+        )}
+
+        {filteredProjects.map((project) => {
+          const isExpanded = expandedProject === project.name;
+
+          return (
+            <div
+              key={project.name}
+              className={`relative overflow-hidden bg-white dark:bg-zinc-900 border-4 border-white hover:border-black dark:border-zinc-800 dark:hover:border-white shadow-neo w-full transition-all duration-300 ${isExpanded ? "shadow-neo-lg scale-[1.01] z-10" : "hover:scale-[1.01] z-0"
+                }`}
             >
-              <p className="font-bold text-gray-500 dark:text-gray-400 uppercase tracking-tighter">
-                No projects matched your criteria.
-              </p>
-            </motion.div>
-          )}
-
-          {filteredProjects.map((project, index) => {
-            const isExpanded = expandedProject === project.name;
-
-            return (
-              <motion.div
-                layout
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.2 }}
-                key={project.name}
-                className={`relative overflow-hidden bg-white dark:bg-zinc-900 border-4 border-white hover:border-black dark:border-zinc-800 dark:hover:border-white shadow-neo w-full transition-all duration-300 ${isExpanded ? "shadow-neo-lg scale-[1.01] z-10" : "hover:scale-[1.01] z-0"
-                  }`}
-              >
                 <div
                   onClick={() => toggleProject(project.name)}
                   className="flex flex-col md:flex-row items-start md:items-center justify-between p-2 md:p-3 bg-white dark:bg-zinc-900 cursor-pointer group gap-2 transition-colors hover:bg-gray-50 dark:hover:bg-zinc-800/50"
@@ -138,7 +126,7 @@ export default function Project() {
                         src={project.image}
                         alt={project.name}
                         loading="lazy"
-                        className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
+                        className="w-full h-full object-cover group-hover:opacity-90 transition-all duration-200"
                       />
                     </div>
                     <div className="flex flex-col gap-1 flex-1 min-w-0">
@@ -325,10 +313,9 @@ export default function Project() {
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </motion.div>
+              </div>
             );
           })}
-        </AnimatePresence>
       </div>
     </section>
   );

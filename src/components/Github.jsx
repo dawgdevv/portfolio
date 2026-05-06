@@ -1,6 +1,5 @@
 import React from "react";
 import { GitHubCalendar } from "react-github-calendar";
-import { motion } from "framer-motion";
 
 const GitHub = () => {
   const GITHUB_USERNAME = "dawgdevv";
@@ -27,13 +26,9 @@ const GitHub = () => {
     <section id="github" className="container mx-auto px-4 py-2 flex flex-col justify-center overflow-hidden">
       <div className="max-w-4xl mx-auto w-full">
         {/* Header */}
-        <motion.h2
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mb-4 text-lg md:text-xl font-black text-center uppercase tracking-tighter text-black dark:text-[#FFEDC2]"
-        >
+        <h2 className="mb-4 text-xl md:text-2xl font-black text-center uppercase tracking-tighter text-black" style={{ textShadow: '0 0 16px rgba(255,255,255,0.6), 0 0 32px rgba(255,255,255,0.3)' }}>
           GitHub Activity
-        </motion.h2>
+        </h2>
 
         {/* Calendar Section */}
         <div className="mb-4 flex justify-center">

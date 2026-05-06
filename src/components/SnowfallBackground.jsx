@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import bgImage from "../assets/1341120.png";
 
 const SnowfallBackground = () => {
@@ -8,6 +8,14 @@ const SnowfallBackground = () => {
   const isVisibleRef = useRef(true);
   const resizeTimeoutRef = useRef(null);
   const ctxRef = useRef(null);
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  // Preload background image so it doesn't appear in parts
+  useEffect(() => {
+    const img = new Image();
+    img.src = bgImage;
+    img.onload = () => setImageLoaded(true);
+  }, []);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -109,13 +117,14 @@ const SnowfallBackground = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed top-0 left-0 w-full h-full pointer-events-none -z-10"
+      className="fixed top-0 left-0 w-full h-full pointer-events-none -z-10 transition-opacity duration-700 ease-in-out"
       style={{
         backgroundColor: "black",
-        backgroundImage: `url(${bgImage})`,
+        backgroundImage: imageLoaded ? `url(${bgImage})` : "none",
         backgroundSize: "cover",
         backgroundPosition: "center",
-        backgroundAttachment: "fixed"
+        backgroundAttachment: "fixed",
+        opacity: imageLoaded ? 1 : 0,
       }}
     />
   );

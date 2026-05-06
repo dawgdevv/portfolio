@@ -15,19 +15,18 @@ export default function Dock({ items, className }) {
 function DockIcon({ item }) {
     return (
         <motion.div
-            whileHover={{ y: -4, scale: 1.1 }}
+            whileHover={{ y: -4, scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="w-10 h-10 flex justify-center items-center cursor-pointer group relative"
             onClick={
                 item.action ? item.action : () => window.open(item.href, "_blank")
             }
         >
-            <div className="w-10 h-10 p-2 bg-gray-100 dark:bg-zinc-800 hover:text-white border-2 border-white hover:border-black shadow-neo-sm flex items-center justify-center transition-colors">
+            <div className="w-10 h-10 p-2 bg-white dark:bg-zinc-900 border-2 border-black dark:border-white hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black shadow-neo-sm hover:shadow-neo flex items-center justify-center transition-all duration-150">
                 {item.icon}
             </div>
 
-            {/* Tooltip */}
-            <span className="absolute -top-10 left-1/2 -translate-x-1/2 bg-black text-white text-xs font-bold px-2 py-1 uppercase opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none border-2 border-white shadow-neo-sm">
+            <span className="absolute -top-10 left-1/2 -translate-x-1/2 bg-black text-white text-[10px] font-black px-2 py-1 uppercase tracking-wide opacity-0 group-hover:opacity-100 transition-all duration-150 whitespace-nowrap pointer-events-none border-2 border-black z-50">
                 {item.label}
             </span>
         </motion.div>

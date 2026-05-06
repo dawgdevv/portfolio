@@ -298,6 +298,19 @@ export const GITHUB_CONFIG = {
   repoCount: 6,
 };
 
+export const OPENSOURCE = [
+  {
+    org: "OpenSSF",
+    project: "gittuf",
+    description: "gittuf is a platform-agnostic Git security system",
+    links: [
+      "https://github.com/gittuf/gittuf/pull/1305#event-25185296641",
+      "https://github.com/gittuf/gittuf/pull/1317#event-25079047386",
+      "https://github.com/gittuf/gittuf/pull/1294#event-24853947514"
+    ],
+  },
+];
+
 export const CONTACT = {
   address: "Jaipur, Rajasthan, India",
   phoneNo: "+91 6376438732",

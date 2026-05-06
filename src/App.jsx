@@ -7,6 +7,7 @@ import { SiPeerlist } from "react-icons/si";
 import Hero from "./components/Hero";
 import Experience from "./components/Experience";
 import Project from "./components/Project";
+import OpenSource from "./components/OpenSource";
 import CustomCursor from "./components/CustomCursor";
 
 const GitHub = lazy(() => import("./components/Github"));
@@ -22,6 +23,7 @@ function App() {
       { id: "hero", label: "Introduction" },
       { id: "experience", label: "Experience" },
       { id: "projects", label: "Projects" },
+      { id: "opensource", label: "Open Source" },
       { id: "github", label: "GitHub" },
     ],
     [],
@@ -160,6 +162,12 @@ function App() {
           className="w-full flex justify-center items-center py-2"
         >
           <Project />
+        </section>
+        <section
+          id="opensource"
+          className="w-full flex justify-center items-center py-2"
+        >
+          <OpenSource />
         </section>
         <section
           id="github"

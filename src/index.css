@@ -48,18 +48,43 @@ body {
 
 /* Neo Brutalist Scrollbar */
 ::-webkit-scrollbar {
-  width: 12px;
-  background: #fff;
-  border-left: 2px solid #000;
+  width: 10px;
+  background: #e5e5e5;
 }
 
 ::-webkit-scrollbar-thumb {
   background: #000;
-  border: 2px solid #fff;
+  border: 2px solid #000;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: #333;
+}
+
+::-webkit-scrollbar-track {
+  background: #e5e5e5;
+  border-left: 3px solid #000;
+}
+
+::-webkit-scrollbar-corner {
+  background: #e5e5e5;
+}
+
+@media (prefers-color-scheme: dark) {
+  ::-webkit-scrollbar {
+    background: #18181b;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #fff;
+    border-color: #18181b;
+  }
+  ::-webkit-scrollbar-track {
+    background: #18181b;
+    border-color: #fff;
+  }
+  ::-webkit-scrollbar-corner {
+    background: #18181b;
+  }
 }
 
 .neo-box {
@@ -105,6 +130,17 @@ body {
 /* Force removal of rounded corners everywhere */
 * {
   border-radius: 0 !important;
+}
+
+/* Better selection styling */
+::selection {
+  background: #000;
+  color: #fff;
+}
+
+::-moz-selection {
+  background: #000;
+  color: #fff;
 }
 
 /* Utility to ensure text readability on dark backgrounds if any */
