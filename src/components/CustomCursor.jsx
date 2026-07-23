@@ -16,7 +16,7 @@ const CustomCursor = () => {
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
 
-  const springConfig = { damping: 25, stiffness: 400, mass: 0.5 };
+  const springConfig = { damping: 28, stiffness: 420, mass: 0.45 };
   const cursorXSpring = useSpring(cursorX, springConfig);
   const cursorYSpring = useSpring(cursorY, springConfig);
 
@@ -29,7 +29,7 @@ const CustomCursor = () => {
     const moveCursor = (e) => {
       cursorX.set(e.clientX);
       cursorY.set(e.clientY);
-      if (!isVisible) setIsVisible(true);
+      setIsVisible(true);
     };
 
     const handleMouseOver = (e) => {
@@ -38,14 +38,14 @@ const CustomCursor = () => {
         e.target.tagName.toLowerCase() === "a" ||
         e.target.closest("button") ||
         e.target.closest("a") ||
+        e.target.closest("[role='button']") ||
         window.getComputedStyle(e.target).cursor === "pointer";
 
-      setIsHovering(isClickable);
+      setIsHovering(Boolean(isClickable));
     };
 
     const handleMouseDown = () => setIsClicked(true);
     const handleMouseUp = () => setIsClicked(false);
-
     const handleMouseLeave = () => setIsVisible(false);
     const handleMouseEnter = () => setIsVisible(true);
 
@@ -64,15 +64,16 @@ const CustomCursor = () => {
       document.removeEventListener("mouseleave", handleMouseLeave);
       document.removeEventListener("mouseenter", handleMouseEnter);
     };
-  }, [cursorX, cursorY, isVisible]);
+  }, [cursorX, cursorY]);
 
   if (isTouchDevice || prefersReducedMotion) return null;
 
   return (
     <>
+      {/* Tip — solid neo square that tracks the pointer */}
       <motion.div
         aria-hidden="true"
-        className="pointer-events-none fixed left-0 top-0 z-9999 h-3 w-3 bg-white mix-blend-difference"
+        className="pointer-events-none fixed left-0 top-0 z-9999 h-3 w-3 border-2 border-black bg-white shadow-[2px_2px_0_0_#000] dark:border-white dark:bg-black dark:shadow-[2px_2px_0_0_#fff]"
         style={{
           x: cursorX,
           y: cursorY,
@@ -81,14 +82,15 @@ const CustomCursor = () => {
           opacity: isVisible ? 1 : 0,
         }}
         animate={{
-          scale: isClicked ? 0.5 : isHovering ? 0 : 1.2,
+          scale: isClicked ? 0.7 : isHovering ? 0.85 : 1,
         }}
-        transition={{ duration: 0.15 }}
+        transition={{ duration: 0.12 }}
       />
 
+      {/* Trailing ring — hard border box that follows with spring */}
       <motion.div
         aria-hidden="true"
-        className="pointer-events-none fixed left-0 top-0 z-9998 h-10 w-10 border-[3px] border-white mix-blend-difference"
+        className="pointer-events-none fixed left-0 top-0 z-9998 border-2 border-black shadow-[3px_3px_0_0_#000] dark:border-white dark:shadow-[3px_3px_0_0_#fff]"
         style={{
           x: cursorXSpring,
           y: cursorYSpring,
@@ -97,10 +99,14 @@ const CustomCursor = () => {
           opacity: isVisible ? 1 : 0,
         }}
         animate={{
-          scale: isClicked ? 0.8 : isHovering ? 1.4 : 1,
-          rotate: isHovering ? 45 : 0,
+          width: isHovering ? 44 : 28,
+          height: isHovering ? 44 : 28,
+          scale: isClicked ? 0.85 : 1,
+          backgroundColor: isHovering
+            ? "rgba(255,255,255,0.14)"
+            : "rgba(255,255,255,0)",
         }}
-        transition={{ type: "spring", stiffness: 300, damping: 20 }}
+        transition={{ type: "spring", stiffness: 320, damping: 22 }}
       />
     </>
   );

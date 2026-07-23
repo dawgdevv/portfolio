@@ -1,12 +1,8 @@
 import DTIX from "../assets/DTIX.png";
-
-import DecentralizedDrive from "../assets/drive.png";
 import ReditAnalysis from "../assets/reddit.png";
 import BACIP from "../assets/bacip.png";
 import PROBE from "../assets/probe.png";
 import Fourows from "../assets/4rows.png";
-import ErgoVisualCoder from "../assets/ergoVisualCoder.png";
-import AgenticOps from "../assets/agentic.jpeg";
 
 
 export const EXPERIENCES = [
@@ -119,64 +115,6 @@ export const PROJECTS = [
     image: Fourows, // Refers to 'client_side/image.png' in the repo
   },
   {
-    name: "Ergo Visual Coder",
-    description:
-      "A visual coding platform for building and learning ErgoScript smart contracts using a drag-and-drop interface powered by Blockly.",
-    longDescription:
-      "Ergo Visual Coder makes blockchain development accessible by allowing users to assemble logic blocks visually to create smart contracts. It features real-time code generation, an agent-assisted learning system (Tutor & Builder agents), and an eUTXO simulation engine to test contracts before deployment.",
-    technologies: [
-      "React.js",
-      "TypeScript",
-      "Blockly",
-      "FastAPI",
-      "Python",
-      "Tailwind CSS",
-      "Zustand",
-      "RAG (Retrieval-Augmented Generation)",
-    ],
-    features: [
-      "Visual Block Editor (Blockly) for ErgoScript",
-      "Real-time ErgoScript code generation",
-      "AI-powered Builder and Tutor agents for assistance",
-      "eUTXO contract simulation engine",
-      "Testnet deployment capabilities",
-      "Retrieval-Augmented Generation for documentation",
-    ],
-    liveLink: "", // Localhost specified in Readme
-    githubLink: "https://github.com/dawgdevv/blockly-ergoscript_new_implementation_unstopable",
-    videoLink: "",
-    image: ErgoVisualCoder, // Refers to the badge or 'client/public/ico.png'
-  },
-  {
-    name: "AgenticOps",
-    description:
-      "A scalable multi-agent system for large-scale PDF analysis, utilizing a distributed mapper–reducer architecture for fast and reliable document processing.",
-    longDescription:
-      "AgenticOps is a distributed multi-agent system designed for high-volume document understanding. Powered by Ray and LLM-driven agents, it employs a hierarchical architecture where Master, SubMaster, and Worker agents collaborate to process documents in parallel. The system maintains global context across pages, handles automatic retries and fault tolerance, and synthesizes final insights into structured JSON and PDF reports.",
-    technologies: [
-      "Python",
-      "Ray Distributed Framework",
-      "Mistral LLM", //
-      "MongoDB", //
-      "FastAPI", //
-      "React.js", //
-      "Google Gemini API", //
-      "Redis", //
-    ],
-    features: [
-      "Multi-tier agent architecture (Master, SubMaster, Worker)", //
-      "Parallel page-level processing with global context", //
-      "Automatic retries, lineage-based recovery, and fault tolerance", //
-      "Dynamic resource allocation based on document complexity", //
-      "Real-time monitoring using an event-driven system", //
-      "Final synthesis of reports in both JSON and PDF formats", //
-    ],
-    liveLink: "", //
-    githubLink: "https://github.com/devrishivermaa/agentiops", // Inferred from file path
-    videoLink: "", // No video link found in the provided files
-    image: AgenticOps, // Refers to 'Flowchart (1).jpg' in the repo
-  },
-  {
     name: "DTIX",
     description:
       "A user-friendly platform for booking tickets to various events, featuring authentication, seat selection, and secure payments.",
@@ -201,33 +139,6 @@ export const PROJECTS = [
     githubLink: "https://github.com/dawgdevv/Ticket_Booking_app",
     videoLink: "https://youtu.be/sD0PZ-AFGTo",
     image: DTIX,
-  },
-
-  {
-    name: "Decentralized Drive",
-    description:
-      "A decentralized file storage system built with Ethereum smart contracts and React, leveraging IPFS for secure file storage.",
-    longDescription:
-      "A decentralized file storage system built with Ethereum smart contracts and React. Key features include decentralized file storage using IPFS, file upload and management through Ethereum smart contracts, support for various file types, and secure access control using blockchain authentication.",
-    technologies: [
-      "React.js",
-      "Ethereum",
-      "Solidity",
-      "IPFS",
-      "Web3.js",
-      "Metamask",
-    ],
-    features: [
-      "Decentralized file storage using IPFS",
-      "Blockchain-based access control",
-      "Support for various file types",
-      "Secure authentication via Metamask",
-      "File sharing capabilities",
-    ],
-    liveLink: "https://decentralized-drive-phi.vercel.app/",
-    githubLink: "https://github.com/dawgdevv/Decentralized_Drive",
-    videoLink: "",
-    image: DecentralizedDrive,
   },
 
   {

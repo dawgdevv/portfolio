@@ -77,6 +77,28 @@ const Hero = ({ profileLinks }) => {
             </div>
           </aside>
         </div>
+
+        <div className="flex flex-col gap-4 border-t-4 border-black bg-black p-4 text-white dark:border-white dark:bg-white dark:text-black sm:p-6 md:flex-row md:items-center md:justify-between">
+          <div className="max-w-2xl space-y-2">
+            <p className="text-[10px] font-black uppercase tracking-[0.22em] text-zinc-300 dark:text-zinc-600">
+              Available for projects
+            </p>
+            <p className="text-sm font-medium leading-relaxed sm:text-base">
+              Building something? I help turn ideas into full systems with AI
+              integrations, backends, apps, and deployments. If you need a
+              partner who ships end to end, let&apos;s talk.
+            </p>
+          </div>
+          <a
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=nraj02415@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="neo-interactive inline-flex min-h-12 shrink-0 items-center justify-center gap-2 border-2 border-white bg-white px-4 py-3 text-xs font-black uppercase tracking-wide text-black dark:border-black dark:bg-black dark:text-white"
+          >
+            nraj02415@gmail.com
+            <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
+          </a>
+        </div>
       </div>
     </div>
   );
