@@ -7,8 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "npm run build && wrangler dev",
-    "deploy": "npm run build && wrangler deploy",
-    "deploy:github": "npm run build && gh-pages -d dist"
+    "deploy": "npm run build && wrangler deploy"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
@@ -31,7 +30,6 @@
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.5.2",
-    "gh-pages": "^6.3.0",
     "globals": "^17.4.0",
     "postcss": "^8.5.8",
     "rollup-plugin-visualizer": "^7.0.1",
