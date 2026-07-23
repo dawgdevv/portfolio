@@ -6,8 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "preview": "npm run build && wrangler dev",
+    "deploy": "npm run build && wrangler deploy",
+    "deploy:github": "npm run build && gh-pages -d dist"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
