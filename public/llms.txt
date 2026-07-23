@@ -1,0 +1,43 @@
+# Nishant Raj
+
+> Full Stack and Backend Engineer, open-source contributor, and independent thinker who builds practical products with AI.
+
+Nishant Raj (dawgdevv) designs and ships end-to-end systems: AI integrations, backend services, full-stack apps, and cloud deployments. He has worked with startups, freelanced, contributes to open source, and uses Linux daily.
+
+## Contact
+
+- Email: nraj02415@gmail.com
+- Portfolio: https://dawgdevv.tech/
+- Location: Jaipur, Rajasthan, India
+
+## Profiles
+
+- GitHub: https://github.com/dawgdevv
+- LinkedIn: https://www.linkedin.com/in/nraj24/
+- X: https://x.com/sfunish
+- Peerlist: https://peerlist.io/nishantraj
+- Resume: https://drive.google.com/file/d/1pmEk6SRjhfyPsgyEB6O1iORs1BVV4Qwd/view
+
+## Focus areas
+
+- AI integration into products and workflows
+- Backend optimization and API design
+- Full-stack product development
+- Cloud deployments and Linux systems
+- Open-source contributions
+
+## Site map for agents
+
+- Home / intro: https://dawgdevv.tech/
+- Experience: https://dawgdevv.tech/#experience
+- Projects: https://dawgdevv.tech/#projects
+- Open source: https://dawgdevv.tech/#opensource
+- Machine-readable summary: https://dawgdevv.tech/llms.txt
+- XML sitemap: https://dawgdevv.tech/sitemap.xml
+- Robots policy: https://dawgdevv.tech/robots.txt
+
+## Hiring / collaboration
+
+Available for projects with founders, startups, and teams who need someone to turn ideas into shipped systems. Prefer clear communication and practical engineering over process theater.
+
+Preferred contact: nraj02415@gmail.com
