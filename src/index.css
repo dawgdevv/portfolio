@@ -1,55 +1,45 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800&display=swap");
-/* Ensure JetBrains Mono is imported */
 @import "tailwindcss";
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 :root {
-  font-family: "Inter", system-ui, Avenir, Helvetica, Arial, sans-serif;
-  --bg-primary: #f0f0f0;
-  /* Light gray background for better contrast with black borders */
-  --text-primary: #000000;
-  /* Pitch black text */
-  --text-secondary: #333333;
-  /* Dark gray */
-  --accent-color: #8b5cf6;
-  /* Keep accent */
-  --accent-hover: #7c3aed;
-
+  font-family: "Inter", system-ui, sans-serif;
   line-height: 1.7;
   font-weight: 500;
-  /* Bolder text by default */
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
   font-size: 16px;
-
   scroll-behavior: smooth;
+}
+
+html {
+  scroll-padding-top: 2rem;
 }
 
 body {
   margin: 0;
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
-  transition:
-    background-color 0.3s ease,
-    color 0.3s ease;
+  min-width: 320px;
+  min-height: 100vh;
+  background: #09090b;
+  color: #09090b;
 }
 
-@media (hover: hover) and (pointer: fine) {
+#root {
+  min-height: 100vh;
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
   * {
     cursor: none !important;
   }
 }
 
-/* Neo Brutalist Scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
-  background: #e5e5e5;
+  background: #e4e4e7;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -57,17 +47,13 @@ body {
   border: 2px solid #000;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #333;
-}
-
 ::-webkit-scrollbar-track {
-  background: #e5e5e5;
+  background: #e4e4e7;
   border-left: 3px solid #000;
 }
 
 ::-webkit-scrollbar-corner {
-  background: #e5e5e5;
+  background: #e4e4e7;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -87,73 +73,178 @@ body {
   }
 }
 
-.neo-box {
-  border: 2px solid #fff;
-  box-shadow: 4px 4px 0px 0px #000;
-  background-color: #fff;
-  transition: all 0.2s ease-in-out;
+.portfolio-section {
+  display: flex;
+  width: 100%;
+  max-width: 64rem;
+  scroll-margin-top: 2rem;
+  justify-content: center;
 }
 
-.neo-box:hover {
+.neo-panel {
+  width: 100%;
+  overflow: hidden;
+  border: 4px solid #09090b;
+  background: #fafafa;
+  color: #09090b;
+  box-shadow: 8px 8px 0 0 #09090b;
+}
+
+.neo-panel-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: 4px solid #09090b;
+}
+
+.neo-kicker {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.625rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #52525b;
+}
+
+.neo-title {
+  font-size: clamp(1.75rem, 5vw, 3rem);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.055em;
+  text-transform: uppercase;
+}
+
+.neo-badge {
+  width: fit-content;
+  border: 2px solid #09090b;
+  background: #09090b;
+  color: #fafafa;
+  padding: 0.25rem 0.625rem;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.625rem;
+  font-weight: 800;
+  line-height: 1.3;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.neo-tag {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.75rem;
+  border: 2px solid #09090b;
+  background: #fafafa;
+  color: #09090b;
+  padding: 0.2rem 0.5rem;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.625rem;
+  font-weight: 800;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.neo-interactive {
+  transition:
+    transform 150ms ease,
+    box-shadow 150ms ease,
+    background-color 150ms ease,
+    color 150ms ease;
+}
+
+.neo-interactive:hover {
   transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0px 0px #000;
-  border-color: #000;
+  box-shadow: 3px 3px 0 0 #09090b;
 }
 
-/* ... */
-
-.neo-button {
-  background-color: var(--accent-color);
-  color: white;
-  border: 2px solid #fff;
-  /* ... */
+.neo-interactive:focus-visible {
+  outline: 4px solid #09090b;
+  outline-offset: 3px;
 }
 
-.neo-button:hover {
-  /* ... */
-  border-color: #000;
+.neo-footer {
+  display: flex;
+  width: 100%;
+  max-width: 64rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border: 4px solid #09090b;
+  background: #fafafa;
+  color: #09090b;
+  padding: 0.75rem 1rem;
+  box-shadow: 5px 5px 0 0 #09090b;
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
-.neo-button:active {
-  transform: translate(2px, 2px);
-  box-shadow: 0px 0px 0px 0px #000;
+@media (min-width: 640px) {
+  .neo-panel-header {
+    flex-direction: row;
+    align-items: flex-end;
+    padding: 1.5rem;
+  }
 }
 
-.light-theme {
-  /* Keep variables if needed, but defining main look in :root for now as Neo Brutalist is often high contrast light mode by default, 
-       but can work in dark. Let's stick to the user's current theme structure but just override values if possible or just use the new classes. 
-       The user asked to "squared up", so we force 0 radius. */
-  --bg-primary: #fff;
-  --text-primary: #000;
+@media (prefers-color-scheme: dark) {
+  .neo-panel {
+    border-color: #fafafa;
+    background: #09090b;
+    color: #fafafa;
+    box-shadow: 8px 8px 0 0 #fafafa;
+  }
+
+  .neo-panel-header {
+    border-color: #fafafa;
+  }
+
+  .neo-kicker {
+    color: #d4d4d8;
+  }
+
+  .neo-badge {
+    border-color: #fafafa;
+    background: #fafafa;
+    color: #09090b;
+  }
+
+  .neo-tag {
+    border-color: #fafafa;
+    background: #18181b;
+    color: #fafafa;
+  }
+
+  .neo-interactive:hover {
+    box-shadow: 3px 3px 0 0 #fafafa;
+  }
+
+  .neo-interactive:focus-visible {
+    outline-color: #fafafa;
+  }
+
+  .neo-footer {
+    border-color: #fafafa;
+    background: #09090b;
+    color: #fafafa;
+    box-shadow: 5px 5px 0 0 #fafafa;
+  }
 }
 
-/* Force removal of rounded corners everywhere */
-* {
-  border-radius: 0 !important;
-}
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    scroll-behavior: auto;
+  }
 
-/* Better selection styling */
-::selection {
-  background: #000;
-  color: #fff;
-}
-
-::-moz-selection {
-  background: #000;
-  color: #fff;
-}
-
-/* Utility to ensure text readability on dark backgrounds if any */
-.text-shadow-neo {
-  text-shadow: 2px 2px 0px #000;
-}
-
-/* Hide scrollbar utility */
-.hide-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-
-.hide-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }

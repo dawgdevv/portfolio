@@ -1,22 +1,26 @@
 import { useEffect, useState } from "react";
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import {
+  motion,
+  useMotionValue,
+  useReducedMotion,
+  useSpring,
+} from "framer-motion";
 
 const CustomCursor = () => {
   const [isHovering, setIsHovering] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [isTouchDevice, setIsTouchDevice] = useState(false);
+  const prefersReducedMotion = useReducedMotion();
 
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
 
-  // Smooth trailing physics for the outer box
   const springConfig = { damping: 25, stiffness: 400, mass: 0.5 };
   const cursorXSpring = useSpring(cursorX, springConfig);
   const cursorYSpring = useSpring(cursorY, springConfig);
 
   useEffect(() => {
-    // Detect touch devices
     if (window.matchMedia("(hover: none) and (pointer: coarse)").matches) {
       setIsTouchDevice(true);
       return;
@@ -29,7 +33,7 @@ const CustomCursor = () => {
     };
 
     const handleMouseOver = (e) => {
-      const isClickable = 
+      const isClickable =
         e.target.tagName.toLowerCase() === "button" ||
         e.target.tagName.toLowerCase() === "a" ||
         e.target.closest("button") ||
@@ -41,7 +45,7 @@ const CustomCursor = () => {
 
     const handleMouseDown = () => setIsClicked(true);
     const handleMouseUp = () => setIsClicked(false);
-    
+
     const handleMouseLeave = () => setIsVisible(false);
     const handleMouseEnter = () => setIsVisible(true);
 
@@ -62,13 +66,13 @@ const CustomCursor = () => {
     };
   }, [cursorX, cursorY, isVisible]);
 
-  if (isTouchDevice) return null;
+  if (isTouchDevice || prefersReducedMotion) return null;
 
   return (
     <>
-      {/* Inner Fast Dot */}
       <motion.div
-        className="fixed top-0 left-0 w-3 h-3 bg-white mix-blend-difference pointer-events-none z-[9999]"
+        aria-hidden="true"
+        className="pointer-events-none fixed left-0 top-0 z-9999 h-3 w-3 bg-white mix-blend-difference"
         style={{
           x: cursorX,
           y: cursorY,
@@ -82,9 +86,9 @@ const CustomCursor = () => {
         transition={{ duration: 0.15 }}
       />
 
-      {/* Outer Springy Brutalist Box */}
       <motion.div
-        className="fixed top-0 left-0 w-10 h-10 border-[3px] border-white mix-blend-difference pointer-events-none z-[9998]"
+        aria-hidden="true"
+        className="pointer-events-none fixed left-0 top-0 z-9998 h-10 w-10 border-[3px] border-white mix-blend-difference"
         style={{
           x: cursorXSpring,
           y: cursorYSpring,

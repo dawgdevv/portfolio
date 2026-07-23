@@ -291,13 +291,6 @@ export const PROJECTS = [
 
 ];
 
-export const GITHUB_CONFIG = {
-  username: "dawgdevv",
-  showContributions: true,
-  showRepos: true,
-  repoCount: 6,
-};
-
 export const OPENSOURCE = [
   {
     org: "OpenSSF",
@@ -310,10 +303,3 @@ export const OPENSOURCE = [
     ],
   },
 ];
-
-export const CONTACT = {
-  address: "Jaipur, Rajasthan, India",
-  phoneNo: "+91 6376438732",
-  email: "nishantrajcs26@gmail.com",
-  eduemail: "nishantraj@jklu.edu.in",
-};

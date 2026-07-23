@@ -1,75 +1,81 @@
-import { SiTypescript, SiPython } from "react-icons/si";
+import { ArrowUpRight } from "lucide-react";
 
-import { FaGolang } from "react-icons/fa6";
-
-import Dock from "./Dock";
-
-const Hero = ({ dockItems }) => {
+const Hero = ({ profileLinks }) => {
   return (
-    <div className="relative w-full flex items-center py-2 md:py-4">
-      <div className="relative z-10 max-w-full w-full mx-auto px-4 sm:px-6 lg:px-12 flex flex-col items-center text-left">
-        <div className="space-y-4 max-w-4xl">
-          <div className="flex flex-wrap items-center justify-start gap-1 md:gap-2 mb-2 font-sans py-1">
-            <span className="text-lg md:text-xl font-black bg-white dark:bg-zinc-800 text-black dark:text-white uppercase tracking-wider border-4 border-black dark:border-white px-3 py-1 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transition-all cursor-default inline-block hover:scale-[1.02] hover:-translate-x-0.5 hover:-translate-y-0.5">
-              Hi there
-            </span>
-            <span className="text-xl md:text-2xl origin-bottom-right cursor-default py-0.5 px-0.5">
-              👋
-            </span>
-            <span className="text-lg md:text-xl text-black dark:text-zinc-400 font-bold tracking-wide py-0.5 px-0.5">
-              , I&apos;m
-            </span>
-          </div>
-
-          <div className="flex flex-col md:flex-row items-center md:items-end gap-4 md:gap-6 flex-wrap">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tighter bg-black dark:bg-white text-white dark:text-black border-4 border-black dark:border-white px-5 py-2 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)] transition-all cursor-default inline-block hover:scale-[1.01] hover:-translate-x-1 hover:-translate-y-1">
+    <div className="relative z-10 w-full">
+      <div className="neo-panel">
+        <header className="flex flex-col gap-3 border-b-4 border-black p-4 dark:border-white sm:p-6 md:flex-row md:items-end md:justify-between">
+          <div>
+            <p className="mb-2 text-xs font-black uppercase tracking-[0.22em] text-zinc-600 dark:text-zinc-300">
+              Hi there <span aria-hidden="true">👋</span>, I&apos;m
+            </p>
+            <h1 className="text-4xl font-black uppercase leading-none tracking-[-0.06em] sm:text-5xl md:text-7xl">
               Nishant Raj
             </h1>
-
-            {dockItems && (
-              <div className="mb-2 shrink-0 md:ml-2">
-                <Dock items={dockItems} />
-              </div>
-            )}
           </div>
+          <div className="w-fit border-2 border-black bg-black px-3 py-1 text-[10px] font-black uppercase tracking-widest text-white dark:border-white dark:bg-white dark:text-black">
+            Engineer · Builder · Open Source
+          </div>
+        </header>
 
-          <div className="text-sm md:text-base text-black dark:text-zinc-200 font-medium leading-relaxed tracking-wide space-y-4 mt-8 p-4 md:p-6 bg-white dark:bg-zinc-900 border-4 border-black dark:border-white shadow-[6px_6px_0_0_#000] dark:shadow-[6px_6px_0_0_#fff]">
+        <div className="grid lg:grid-cols-[minmax(0,1.45fr)_minmax(19rem,0.8fr)]">
+          <div className="space-y-5 p-4 text-sm font-medium leading-relaxed tracking-wide dark:text-zinc-200 sm:p-6 md:text-base">
             <p>
-              I'm a{" "}
-              <span className="font-black bg-black text-white dark:bg-white dark:text-black px-2 py-0.5 mx-1 uppercase border-2 border-black dark:border-white shadow-[2px_2px_0_0_rgba(255,255,255,0.5)] dark:shadow-[2px_2px_0_0_#000]">
-                Full Stack / Backend Engineer
-              </span>{" "}
-              who spends most of his time in{" "}
-              <span className="inline-flex align-middle bg-gray-100 dark:bg-zinc-800 px-1 border-2 border-black dark:border-zinc-500 mx-1">
-                <FaGolang className="text-black dark:text-white mx-0.5 text-lg" />
-              </span>
+              I&apos;m a{" "}
+              <strong className="font-black">
+                Full Stack and Backend Engineer
+              </strong>
               ,{" "}
-              <span className="inline-flex align-middle bg-gray-100 dark:bg-zinc-800 px-1 border-2 border-black dark:border-zinc-500 mx-1">
-                <SiTypescript className="text-black dark:text-white mx-0.5 text-lg" />
-              </span>
-              , and{" "}
-              <span className="inline-flex align-middle bg-gray-100 dark:bg-zinc-800 px-1 border-2 border-black dark:border-zinc-500 mx-1">
-                <SiPython className="text-black dark:text-white mx-0.5 text-lg" />
-              </span>
-              {" "}building things that actually ship and get used.
+              open-source contributor, and independent thinker who builds
+              practical products with AI.
             </p>
-            <p className="border-l-4 border-black dark:border-zinc-500 pl-3">
-              I care about the craft. Not just making things work, but making
-              them fast, clean, and built to last. I've won hackathons,
-              contributed to open source, and shipped production features for
-              real startups with real users. I build in public because I think
-              the best way to grow is to show your work.
+            <p className="border-l-4 border-black pl-4 dark:border-white">
+              I&apos;ve worked with startups, freelanced, and shipped projects
+              around problems I find meaningful. My work spans AI integration,
+              backend optimization, cloud deployments, and Linux—my daily
+              environment for the past three years.
             </p>
             <p>
-              If you've got an idea you want to turn into a product, or just
-              want to talk about something you're building I'm always up for
-              it. I'm{" "}
-              <span className="font-black bg-black text-white dark:bg-white dark:text-black px-2 py-0.5 mx-1 uppercase border-2 border-black dark:border-white shadow-[2px_2px_0_0_rgba(255,255,255,0.5)] dark:shadow-[2px_2px_0_0_#000]">
-                language agnostic
-              </span>
-              , curious by default, and I learn fast. Most importantly, I ship.
+              I enjoy making systems faster, simpler, and more useful. I
+              contribute actively to open source, communicate openly, and share
+              honest opinions. I learn quickly, think independently, and care
+              most about solving real problems with people who value good
+              engineering.
             </p>
           </div>
+
+          <aside className="border-t-4 border-black bg-zinc-100 p-3 dark:border-white dark:bg-zinc-900 lg:border-l-4 lg:border-t-0">
+            <p className="px-2 pb-3 pt-1 text-[10px] font-black uppercase tracking-[0.22em] text-zinc-600 dark:text-zinc-300">
+              Find me online
+            </p>
+            <div className="flex flex-col gap-2">
+              {profileLinks?.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group grid grid-cols-[2.5rem_1fr_auto] items-center gap-3 border-2 border-black bg-white p-2.5 text-black transition-transform duration-150 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[3px_3px_0_0_#000] focus-visible:-translate-x-0.5 focus-visible:-translate-y-0.5 focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-black dark:border-white dark:bg-zinc-950 dark:text-white dark:hover:shadow-[3px_3px_0_0_#fff] dark:focus-visible:outline-white"
+                >
+                  <span className="flex h-10 w-10 items-center justify-center border-2 border-black bg-zinc-100 p-2 dark:border-white dark:bg-zinc-800">
+                    {item.icon}
+                  </span>
+                  <span className="min-w-0">
+                    <span className="block text-xs font-black uppercase tracking-wide">
+                      {item.label}
+                    </span>
+                    <span className="block truncate text-[10px] font-semibold text-zinc-600 dark:text-zinc-300 sm:text-xs">
+                      {item.description}
+                    </span>
+                  </span>
+                  <ArrowUpRight
+                    aria-hidden="true"
+                    className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                  />
+                </a>
+              ))}
+            </div>
+          </aside>
         </div>
       </div>
     </div>

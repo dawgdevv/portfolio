@@ -51,272 +51,231 @@ export default function Project() {
   };
 
   return (
-    <section className="container mx-auto px-4 py-4 max-w-4xl">
-      <div className="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
-        <h2 className="text-xl md:text-2xl font-black uppercase tracking-tighter text-black" style={{ textShadow: '0 0 16px rgba(255,255,255,0.6), 0 0 32px rgba(255,255,255,0.3)' }}>
-          Projects
-        </h2>
+    <div className="neo-panel">
+      <header className="neo-panel-header">
+        <div>
+          <p className="neo-kicker mb-2">Selected work</p>
+          <h2 className="neo-title">Projects</h2>
+        </div>
+        <span className="neo-badge">{PROJECTS.length} things shipped</span>
+      </header>
 
-        <div className="flex w-full md:w-auto relative border-4 border-white focus-within:border-black bg-white dark:bg-zinc-900 shadow-neo transition-all group">
-          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-            <FaSearch className="text-gray-400 dark:text-gray-500" />
+      <div className="grid gap-5 border-b-4 border-black bg-zinc-100 p-4 dark:border-white dark:bg-zinc-900 sm:p-6 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
+        <label className="block">
+          <span className="neo-kicker mb-2 block">Search the archive</span>
+          <span className="flex min-h-12 items-center border-2 border-black bg-white focus-within:outline-4 focus-within:outline-offset-2 focus-within:outline-black dark:border-white dark:bg-zinc-950 dark:focus-within:outline-white">
+            <FaSearch aria-hidden="true" className="ml-3 h-4 w-4 shrink-0" />
+            <input
+              type="search"
+              className="min-w-0 flex-1 bg-transparent px-3 py-2 text-sm font-bold outline-none placeholder:text-zinc-500"
+              placeholder="Name, description, or technology"
+              value={searchQuery}
+              onChange={(event) => setSearchQuery(event.target.value)}
+            />
+          </span>
+        </label>
+
+        <div>
+          <p className="neo-kicker mb-2">Filter by technology</p>
+          <div className="flex flex-wrap gap-2">
+            {["All", ...topTechs].map((tech) => {
+              const isActive = activeFilter === tech;
+              return (
+                <button
+                  key={tech}
+                  type="button"
+                  aria-pressed={isActive}
+                  onClick={() => setActiveFilter(tech)}
+                  className={`neo-interactive min-h-8 border-2 border-black px-2.5 py-1 font-mono text-[10px] font-black uppercase dark:border-white ${
+                    isActive
+                      ? "bg-black text-white dark:bg-white dark:text-black"
+                      : "bg-white text-black dark:bg-zinc-950 dark:text-white"
+                  }`}
+                >
+                  {tech}
+                </button>
+              );
+            })}
           </div>
-          <input
-            type="text"
-            className="w-full md:w-64 pl-10 pr-3 py-2 bg-transparent text-black dark:text-white font-bold placeholder-gray-500 outline-none"
-            placeholder="Search projects..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
         </div>
       </div>
 
-      <div className="flex flex-wrap gap-2 mb-6 items-center">
-        <span className="font-bold text-xs uppercase mr-2 text-black dark:text-gray-300">
-          Filter:
-        </span>
-        <button
-          onClick={() => setActiveFilter("All")}
-          className={`px-3 py-1 text-[10px] md:text-xs font-bold uppercase transition-all shadow-sm ${activeFilter === "All"
-              ? "bg-black text-white dark:bg-white dark:text-black border-2 border-transparent"
-              : "bg-gray-100 dark:bg-zinc-800 text-gray-600 dark:text-gray-300 border-2 border-gray-200 hover:border-black"
-            }`}
-        >
-          All
-        </button>
-        {topTechs.map((tech) => (
-          <button
-            key={tech}
-            onClick={() => setActiveFilter(tech)}
-            className={`px-3 py-1 text-[10px] md:text-xs font-bold uppercase transition-all shadow-sm ${activeFilter === tech
-                ? "bg-black text-white dark:bg-white dark:text-black border-2 border-transparent"
-                : "bg-gray-100 dark:bg-zinc-800 text-gray-600 dark:text-gray-300 border-2 border-gray-200 hover:border-black"
-              }`}
-          >
-            {tech}
-          </button>
-        ))}
-      </div>
-
-      <div className="flex flex-col gap-2 relative">
+      <div>
         {filteredProjects.length === 0 && (
-          <div className="text-center py-12 border-4 border-dashed border-gray-300 dark:border-zinc-700 bg-white dark:bg-zinc-900">
-            <p className="font-bold text-gray-500 dark:text-gray-400 uppercase tracking-tighter">
-              No projects matched your criteria.
+          <div className="p-10 text-center">
+            <p className="neo-kicker">No matching projects</p>
+            <p className="mt-2 text-sm font-semibold text-zinc-600 dark:text-zinc-300">
+              Try another technology or a broader search.
             </p>
           </div>
         )}
 
-        {filteredProjects.map((project) => {
+        {filteredProjects.map((project, projectIndex) => {
           const isExpanded = expandedProject === project.name;
+          const projectSlug = project.name
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, "-")
+            .replace(/(^-|-$)/g, "");
+          const headingId = `${projectSlug}-heading`;
+          const panelId = `${projectSlug}-details`;
 
           return (
-            <div
+            <article
               key={project.name}
-              className={`relative overflow-hidden bg-white dark:bg-zinc-900 border-4 border-white hover:border-black shadow-neo w-full transition-all duration-300 ${isExpanded ? "shadow-neo-lg scale-[1.01] z-10" : "hover:scale-[1.01] z-0"
-                }`}
+              className={
+                projectIndex !== filteredProjects.length - 1
+                  ? "border-b-4 border-black dark:border-white"
+                  : ""
+              }
             >
-                <div
+              <div className="grid grid-cols-[1fr_auto] items-stretch">
+                <button
+                  type="button"
+                  aria-expanded={isExpanded}
+                  aria-controls={panelId}
                   onClick={() => toggleProject(project.name)}
-                  className="flex flex-col md:flex-row items-start md:items-center justify-between p-2 md:p-3 bg-white dark:bg-zinc-900 cursor-pointer group gap-2 transition-colors hover:bg-gray-50 dark:hover:bg-zinc-800/50"
+                  className="group grid min-w-0 grid-cols-[3.5rem_1fr_auto] items-center gap-3 p-3 text-left transition-colors hover:bg-zinc-100 focus-visible:z-10 focus-visible:-outline-offset-4 focus-visible:outline-4 focus-visible:outline-black dark:hover:bg-zinc-900 dark:focus-visible:outline-white sm:grid-cols-[4.5rem_1fr_auto] sm:gap-4 sm:p-4"
                 >
-                  <div className="flex gap-3 flex-1 min-w-0 items-center">
-                    <div className="hidden sm:block w-12 h-12 shrink-0 bg-gray-100 dark:bg-zinc-800 border-2 border-transparent group-hover:border-black transition-all overflow-hidden">
-                      <img
-                        src={project.image}
-                        alt={project.name}
-                        loading="lazy"
-                        className="w-full h-full object-cover group-hover:opacity-90 transition-all duration-200"
-                      />
-                    </div>
-                    <div className="flex flex-col gap-1 flex-1 min-w-0">
-                      <h3 className="font-black text-base md:text-lg text-black dark:text-white uppercase tracking-tighter truncate w-full">
-                        {project.name}
-                      </h3>
-                      <div className="flex flex-wrap gap-1 md:gap-2 mt-0.5">
-                        {project.technologies?.slice(0, 5).map((tech, i) => (
-                          <span
-                            key={i}
-                            className="px-2 py-0.5 md:py-1 text-[9px] md:text-[10px] font-bold uppercase bg-gray-100 dark:bg-zinc-800 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-zinc-700 shadow-sm"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                        {project.technologies?.length > 5 && (
-                          <span className="px-2 py-0.5 md:py-1 text-[9px] md:text-[10px] font-bold text-gray-400">
-                            +{project.technologies.length - 5}
-                          </span>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-3 sm:gap-4 shrink-0 self-end md:self-center">
-                    <div
-                      className="flex items-center gap-2 mr-1 md:mr-2"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      {project.liveLink && (
-                        <a
-                          href={project.liveLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="p-1.5 md:p-2 bg-gray-100 dark:bg-zinc-800 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black border-2 border-transparent rounded-full transition-colors"
-                          title="Live Demo"
-                        >
-                          <FaExternalLinkAlt className="text-xs md:text-sm" />
-                        </a>
-                      )}
-                      {project.githubLink && (
-                        <a
-                          href={project.githubLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="p-1.5 md:p-2 bg-gray-100 dark:bg-zinc-800 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black border-2 border-transparent rounded-full transition-colors"
-                          title="Source Code"
-                        >
-                          <FaGithub className="text-xs md:text-sm" />
-                        </a>
-                      )}
-                      {project.videoLink && (
-                        <a
-                          href={project.videoLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="p-1.5 md:p-2 bg-gray-100 dark:bg-zinc-800 hover:bg-red-600 hover:text-white border-2 border-transparent rounded-full transition-colors"
-                          title="Video Demo"
-                        >
-                          <FaYoutube className="text-xs md:text-sm" />
-                        </a>
-                      )}
-                    </div>
-
+                  <img
+                    src={project.image}
+                    alt=""
+                    loading="lazy"
+                    className="h-14 w-14 border-2 border-black bg-zinc-100 object-cover dark:border-white dark:bg-zinc-900 sm:h-16 sm:w-16"
+                  />
+                  <span className="min-w-0">
                     <span
-                      className={`hidden md:inline-block text-[10px] md:text-xs font-bold uppercase tracking-wider px-3 py-1 bg-gray-100 dark:bg-zinc-800 border-2 border-white hover:border-black transition-all ${isExpanded ? "bg-accent-color text-white" : "text-gray-500"
-                        }`}
+                      id={headingId}
+                      className="block truncate text-sm font-black uppercase tracking-tight sm:text-lg"
                     >
+                      {project.name}
+                    </span>
+                    <span className="mt-1 flex flex-wrap gap-1.5">
+                      {project.technologies?.slice(0, 3).map((tech) => (
+                        <span key={tech} className="neo-kicker">
+                          {tech}
+                        </span>
+                      ))}
+                      {project.technologies?.length > 3 && (
+                        <span className="neo-kicker">
+                          +{project.technologies.length - 3}
+                        </span>
+                      )}
+                    </span>
+                    <span className="mt-2 line-clamp-2 text-xs font-medium leading-relaxed text-zinc-600 dark:text-zinc-300 sm:text-sm">
+                      {project.description}
+                    </span>
+                  </span>
+                  <span className="flex items-center gap-2">
+                    <span className="hidden border-2 border-black px-2 py-1 font-mono text-[10px] font-black uppercase dark:border-white sm:inline">
                       {isExpanded ? "Close" : "Details"}
                     </span>
-                    <motion.div
+                    <motion.span
                       animate={{ rotate: isExpanded ? 180 : 0 }}
-                      transition={{ duration: 0.3 }}
+                      transition={{ duration: 0.2 }}
                     >
-                      <FaChevronDown className="text-lg md:text-xl text-black dark:text-white" />
-                    </motion.div>
-                  </div>
-                </div>
+                      <FaChevronDown aria-hidden="true" className="h-4 w-4" />
+                    </motion.span>
+                  </span>
+                </button>
 
-                <AnimatePresence>
-                  {isExpanded && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="overflow-hidden"
+                <div className="flex flex-col border-l-2 border-black dark:border-white sm:flex-row">
+                  {project.liveLink && (
+                    <a
+                      href={project.liveLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Open live demo for ${project.name}`}
+                      className="neo-interactive flex min-h-11 min-w-11 flex-1 items-center justify-center border-b-2 border-black bg-white p-3 dark:border-white dark:bg-zinc-950 sm:border-b-0 sm:border-r-2"
                     >
-                      <div className="p-3 md:p-4 pt-0 border-t-2 border-dashed border-gray-200 dark:border-zinc-800 mt-2">
-                        <div className="border-4 border-white hover:border-black mb-4 transition-all group-hover:shadow-neo-sm">
-                          <img
-                            src={project.image}
-                            alt={project.name}
-                            loading="lazy"
-                            className="w-full h-auto object-contain max-h-[300px] bg-gray-100 dark:bg-zinc-800"
-                          />
-                        </div>
-
-                        <div className="grid md:grid-cols-3 gap-6">
-                          <div className="md:col-span-2 space-y-4">
-                            <div>
-                              <h4 className="text-base md:text-lg font-black uppercase tracking-tight text-black dark:text-white mb-2 flex items-center gap-2">
-                                <span className="w-3 h-3 bg-accent-color border-2 border-white hover:border-black"></span>
-                                About
-                              </h4>
-                              <p className="text-black dark:text-gray-300 font-medium leading-relaxed text-sm">
-                                {project.longDescription || project.description}
-                              </p>
-                            </div>
-
-                            {project.features && (
-                              <div>
-                                <h4 className="text-base md:text-lg font-black uppercase tracking-tight text-black dark:text-white mb-2 flex items-center gap-2">
-                                  <span className="w-3 h-3 bg-blue-500 border-2 border-white hover:border-black"></span>
-                                  Features
-                                </h4>
-                                <ul className="grid sm:grid-cols-2 gap-2">
-                                  {project.features.map((feature, i) => (
-                                    <li
-                                      key={i}
-                                      className="flex items-start gap-2 text-xs md:text-sm font-bold text-gray-700 dark:text-gray-300"
-                                    >
-                                      <span className="mt-1.5 min-w-[6px] h-[6px] bg-black dark:bg-white rounded-full"></span>
-                                      {feature}
-                                    </li>
-                                  ))}
-                                </ul>
-                              </div>
-                            )}
-                          </div>
-
-                          <div className="md:col-span-1 space-y-4">
-                            <div>
-                              <h4 className="text-sm md:text-base font-black uppercase tracking-tight text-black dark:text-white mb-3 border-b-2 border-white hover:border-black inline-block">
-                                Tech Stack
-                              </h4>
-                              <div className="flex flex-wrap gap-2">
-                                {project.technologies?.map((tech, i) => (
-                                  <span
-                                    key={i}
-                                    className="px-2 py-1 text-[10px] md:text-xs font-bold uppercase bg-gray-100 dark:bg-zinc-800 text-black dark:text-white border-2 border-white hover:border-black shadow-neo-sm transition-all hover:-translate-y-0.5"
-                                  >
-                                    {tech}
-                                  </span>
-                                ))}
-                              </div>
-                            </div>
-
-                            <div className="pt-4 border-t-2 border-dashed border-gray-300 dark:border-zinc-700 flex flex-col gap-2">
-                              {project.liveLink && (
-                                <a
-                                  href={project.liveLink}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-black text-white font-bold uppercase text-xs md:text-sm border-2 border-transparent hover:bg-white hover:text-black hover:border-black transition-all"
-                                >
-                                  <FaExternalLinkAlt /> Live Demo
-                                </a>
-                              )}
-                              {project.githubLink && (
-                                <a
-                                  href={project.githubLink}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-gray-200 dark:bg-zinc-800 text-black dark:text-white font-bold uppercase text-xs md:text-sm border-2 border-white hover:border-black hover:bg-white dark:hover:bg-black transition-all"
-                                >
-                                  <FaGithub /> Source Code
-                                </a>
-                              )}
-                              {project.videoLink && (
-                                <a
-                                  href={project.videoLink}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-red-600 text-white font-bold uppercase text-xs md:text-sm border-2 border-transparent hover:bg-white hover:text-red-600 hover:border-red-600 transition-all"
-                                >
-                                  <FaYoutube /> Video Demo
-                                </a>
-                              )}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </motion.div>
+                      <FaExternalLinkAlt aria-hidden="true" />
+                    </a>
                   )}
-                </AnimatePresence>
+                  {project.githubLink && (
+                    <a
+                      href={project.githubLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`View source code for ${project.name}`}
+                      className="neo-interactive flex min-h-11 min-w-11 flex-1 items-center justify-center border-b-2 border-black bg-white p-3 last:border-b-0 dark:border-white dark:bg-zinc-950 sm:border-b-0 sm:border-r-2 sm:last:border-r-0"
+                    >
+                      <FaGithub aria-hidden="true" />
+                    </a>
+                  )}
+                  {project.videoLink && (
+                    <a
+                      href={project.videoLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Watch video for ${project.name}`}
+                      className="neo-interactive flex min-h-11 min-w-11 flex-1 items-center justify-center bg-white p-3 dark:bg-zinc-950"
+                    >
+                      <FaYoutube aria-hidden="true" />
+                    </a>
+                  )}
+                </div>
               </div>
-            );
-          })}
+
+              <AnimatePresence initial={false}>
+                {isExpanded && (
+                  <motion.div
+                    id={panelId}
+                    role="region"
+                    aria-labelledby={headingId}
+                    initial={{ opacity: 0, y: -8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -8 }}
+                    transition={{ duration: 0.2 }}
+                    className="border-t-4 border-black bg-zinc-100 p-4 dark:border-white dark:bg-zinc-900 sm:p-6"
+                  >
+                    <div className="grid gap-6 lg:grid-cols-[minmax(0,1.25fr)_minmax(15rem,0.75fr)]">
+                      <div className="space-y-6">
+                        <img
+                          src={project.image}
+                          alt={`${project.name} preview`}
+                          loading="lazy"
+                          className="max-h-80 w-full border-4 border-black bg-white object-contain dark:border-white dark:bg-zinc-950"
+                        />
+                        <div>
+                          <p className="neo-kicker mb-2">About the project</p>
+                          <p className="text-sm font-medium leading-relaxed sm:text-base">
+                            {project.longDescription || project.description}
+                          </p>
+                        </div>
+                        {project.features?.length > 0 && (
+                          <div>
+                            <p className="neo-kicker mb-3">Core features</p>
+                            <ul className="grid gap-2 sm:grid-cols-2">
+                              {project.features.map((feature) => (
+                                <li
+                                  key={feature}
+                                  className="border-l-4 border-black pl-3 text-xs font-bold leading-relaxed dark:border-white sm:text-sm"
+                                >
+                                  {feature}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+                      </div>
+
+                      <aside>
+                        <p className="neo-kicker mb-3">Technology</p>
+                        <div className="flex flex-wrap gap-2">
+                          {project.technologies?.map((tech) => (
+                            <span key={tech} className="neo-tag">
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                      </aside>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </article>
+          );
+        })}
       </div>
-    </section>
+    </div>
   );
 }

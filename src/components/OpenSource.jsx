@@ -1,53 +1,60 @@
 import { OPENSOURCE } from "../constants/index.js";
-import { FaExternalLinkAlt } from "react-icons/fa";
+import { ArrowUpRight } from "lucide-react";
 
 function OpenSource() {
   return (
-    <section className="container mx-auto px-4 py-2 flex flex-col justify-center">
-      <h2 className="mb-4 text-xl md:text-2xl font-black text-center uppercase tracking-tighter text-black" style={{ textShadow: '0 0 16px rgba(255,255,255,0.6), 0 0 32px rgba(255,255,255,0.3)' }}>
-        Notable Open Source Contributions
-      </h2>
-      <div className="flex flex-col max-w-4xl mx-auto w-full gap-3">
-        {OPENSOURCE.map((contribution, index) => (
-          <div
-            key={index}
-            className="flex-1 hover:-translate-y-0.5 hover:-translate-x-0.5 transition-transform duration-200"
-          >
-            <div className="bg-white dark:bg-zinc-800 p-2 md:p-3 border-4 border-white hover:border-black shadow-neo hover:shadow-neo-lg transition-all duration-200">
-              <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-2">
-                <h3 className="text-sm md:text-base font-black uppercase tracking-tight text-black dark:text-white">
-                  <span className="text-gray-500 dark:text-gray-400 font-mono text-xs mr-1">
-                    {contribution.org}/
-                  </span>
-                  {contribution.project}
-                </h3>
-              </div>
+    <div className="neo-panel">
+      <header className="neo-panel-header">
+        <div>
+          <p className="neo-kicker mb-2">Building in public</p>
+          <h2 className="neo-title">Open Source</h2>
+        </div>
+        <span className="neo-badge">Code beyond my own projects</span>
+      </header>
 
-              <p className="text-black dark:text-gray-200 text-[11px] md:text-sm leading-relaxed font-medium mb-3">
-                {contribution.description}
-              </p>
-
-              {contribution.links && contribution.links.length > 0 && (
-                <div className="flex flex-wrap gap-1.5">
-                  {contribution.links.map((link, linkIndex) => (
-                    <a
-                      key={linkIndex}
-                      href={link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 px-2 py-0.5 text-[9px] md:text-[10px] font-bold uppercase text-black border-2 border-gray-200 hover:border-black bg-white shadow-sm transition-colors hover:scale-105"
-                    >
-                      <FaExternalLinkAlt className="text-[9px]" />
-                      Contribution {linkIndex + 1}
-                    </a>
-                  ))}
-                </div>
-              )}
-            </div>
+      {OPENSOURCE.map((contribution, contributionIndex) => (
+        <article
+          key={`${contribution.org}-${contribution.project}`}
+          className={`grid gap-5 p-4 sm:p-6 md:grid-cols-[minmax(0,0.75fr)_minmax(0,1.25fr)] md:gap-8 ${
+            contributionIndex !== OPENSOURCE.length - 1
+              ? "border-b-4 border-black dark:border-white"
+              : ""
+          }`}
+        >
+          <div>
+            <p className="neo-kicker mb-2">{contribution.org}</p>
+            <h3 className="text-2xl font-black uppercase leading-none tracking-tight sm:text-3xl">
+              {contribution.project}
+            </h3>
+            <p className="mt-3 text-sm font-medium leading-relaxed text-zinc-700 dark:text-zinc-200">
+              {contribution.description}
+            </p>
           </div>
-        ))}
-      </div>
-    </section>
+
+          <div className="flex flex-col gap-2">
+            <p className="neo-kicker mb-1">Accepted contributions</p>
+            {contribution.links?.map((link, linkIndex) => (
+              <a
+                key={link}
+                href={link}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`View ${contribution.org} ${contribution.project} contribution ${linkIndex + 1}`}
+                className="neo-interactive grid min-h-12 grid-cols-[auto_1fr_auto] items-center gap-3 border-2 border-black bg-zinc-100 px-3 py-2 text-black dark:border-white dark:bg-zinc-900 dark:text-white"
+              >
+                <span className="font-mono text-[10px] font-black">
+                  0{linkIndex + 1}
+                </span>
+                <span className="text-xs font-black uppercase tracking-wide">
+                  View contribution
+                </span>
+                <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
+              </a>
+            ))}
+          </div>
+        </article>
+      ))}
+    </div>
   );
 }
 

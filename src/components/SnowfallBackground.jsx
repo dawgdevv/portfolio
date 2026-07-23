@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from "react";
-import bgImage from "../assets/1341120.png";
+import { useEffect, useRef } from "react";
+import bgImage from "../assets/scene.webp";
 
 const SnowfallBackground = () => {
   const canvasRef = useRef(null);
@@ -7,20 +7,13 @@ const SnowfallBackground = () => {
   const snowflakesRef = useRef([]);
   const isVisibleRef = useRef(true);
   const resizeTimeoutRef = useRef(null);
-  const ctxRef = useRef(null);
-  const [imageLoaded, setImageLoaded] = useState(false);
-
-  // Preload background image so it doesn't appear in parts
-  useEffect(() => {
-    const img = new Image();
-    img.src = bgImage;
-    img.onload = () => setImageLoaded(true);
-  }, []);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
-    ctxRef.current = ctx;
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
     let snowflakes = [];
 
     const resizeCanvas = () => {
@@ -29,15 +22,16 @@ const SnowfallBackground = () => {
     };
 
     const createSnowflakes = () => {
-      const numberOfSnowflakes = 600; // Increased from 200 to 600
+      const numberOfSnowflakes =
+        window.innerWidth < 640 ? 90 : window.innerWidth < 1024 ? 160 : 240;
       snowflakes = [];
       for (let i = 0; i < numberOfSnowflakes; i++) {
         snowflakes.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          radius: Math.random() * 2 + 0.8, // Slightly bigger snowflakes
-          density: Math.random() * 2.5, // Slightly faster falling speed
-          drift: Math.random() * 1.5 - 0.5, // More horizontal wind shift
+          radius: Math.random() * 1.4 + 0.5,
+          density: Math.random() * 1.8,
+          drift: Math.random() * 0.8 - 0.4,
         });
       }
       snowflakesRef.current = snowflakes;
@@ -45,9 +39,9 @@ const SnowfallBackground = () => {
 
     const drawSnowflakes = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = "white";
+      ctx.fillStyle = "rgba(255, 255, 255, 0.62)";
       ctx.beginPath();
-      for (let flake of snowflakesRef.current) {
+      for (const flake of snowflakesRef.current) {
         ctx.moveTo(flake.x, flake.y);
         ctx.arc(flake.x, flake.y, flake.radius, 0, Math.PI * 2, true);
       }
@@ -55,8 +49,8 @@ const SnowfallBackground = () => {
     };
 
     const moveSnowflakes = () => {
-      for (let flake of snowflakesRef.current) {
-        flake.y += Math.pow(flake.density, 2) * 0.5 + 1;
+      for (const flake of snowflakesRef.current) {
+        flake.y += Math.pow(flake.density, 2) * 0.35 + 0.5;
         flake.x += flake.drift;
 
         if (flake.y > canvas.height) {
@@ -93,15 +87,21 @@ const SnowfallBackground = () => {
       clearTimeout(resizeTimeoutRef.current);
       resizeTimeoutRef.current = setTimeout(() => {
         resizeCanvas();
-        createSnowflakes();
+        if (!prefersReducedMotion) {
+          createSnowflakes();
+        }
       }, 100);
     };
 
     resizeCanvas();
-    createSnowflakes();
-    animate();
+    if (!prefersReducedMotion) {
+      createSnowflakes();
+      animate();
+    }
 
-    document.addEventListener("visibilitychange", handleVisibilityChange);
+    if (!prefersReducedMotion) {
+      document.addEventListener("visibilitychange", handleVisibilityChange);
+    }
     window.addEventListener("resize", debouncedResize);
 
     return () => {
@@ -115,18 +115,22 @@ const SnowfallBackground = () => {
   }, []);
 
   return (
-    <canvas
-      ref={canvasRef}
-      className="fixed top-0 left-0 w-full h-full pointer-events-none -z-10 transition-opacity duration-700 ease-in-out"
+    <div
+      aria-hidden="true"
+      className="fixed inset-0 z-0 pointer-events-none bg-black"
       style={{
-        backgroundColor: "black",
-        backgroundImage: imageLoaded ? `url(${bgImage})` : "none",
+        backgroundImage: `url(${bgImage})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
-        backgroundAttachment: "fixed",
-        opacity: imageLoaded ? 1 : 0,
+        backgroundRepeat: "no-repeat",
       }}
-    />
+    >
+      <div className="absolute inset-0 bg-black/35" />
+      <canvas
+        ref={canvasRef}
+        className="absolute inset-0 h-full w-full opacity-80"
+      />
+    </div>
   );
 };
 
