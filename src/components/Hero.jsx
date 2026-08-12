@@ -8,13 +8,13 @@ const Hero = ({ profileLinks }) => {
           <img
             src={myphoto}
             alt="Nishant Raj"
-            width={64}
-            height={64}
-            className="h-16 w-16 object-cover"
+            width={96}
+            height={96}
+            className="h-24 w-24 object-cover"
           />
           <div>
             <p className="text-xs font-bold uppercase tracking-widest">
-              Hi there <span aria-hidden="true">👋</span>, I&apos;m
+              Hi there <span aria-hidden="true">✌️</span>, I&apos;m
             </p>
             <h1 className="text-2xl font-black uppercase leading-none tracking-tight sm:text-3xl md:text-4xl">
               Nishant Raj
@@ -38,21 +38,31 @@ const Hero = ({ profileLinks }) => {
 
       <div className="space-y-4">
         <p>
-          I&apos;m a <strong className="font-black">Full Stack and Backend Engineer</strong>,{" "}
-          open-source contributor, and independent thinker who builds practical
-          products with AI.
+          I&apos;m a software engineer. I work on AI, backend, and a little bit
+          of UI, and I take responsibility for every feature I build. Right
+          now I work at Figmenta, a design and advertising company, building
+          digital products for them, the full MCP end to end for their content
+          automation platform, AI integrations, database optimization, API
+          optimization, and creative UI/UX needs.
         </p>
         <p>
-          I&apos;ve worked with startups, freelanced, and shipped projects
-          around problems I find meaningful. My work spans AI integration,
-          backend optimization, cloud deployments, and Linux—my daily
-          environment for the past three years.
+          Other than that, I contribute to open source often, I love open
+          source software and I&apos;m a big advocate for Linux (ifykyk).
+          Right now I&apos;m deeply studying AI, mostly how to make agents
+          drivable by setting up observability and evals around them. I&apos;m
+          a language-agnostic engineer, I care about the problem more than the
+          stack, and I keep growing.
         </p>
         <p>
-          I enjoy making systems faster, simpler, and more useful. I contribute
-          actively to open source, communicate openly, and share honest
-          opinions. I learn quickly, think independently, and care most about
-          solving real problems with people who value good engineering.
+          Big fan of CLIs too. I&apos;ve won a few hackathons, still
+          participating, will continue, curiosity should not die. I also do
+          some cloud/devops, and honestly I&apos;m really open to any
+          technology. Never attached to a tech stack, especially in these AI
+          times.
+        </p>
+        <p className="text-xs font-semibold opacity-80">
+          coding setup: Cursor sometimes, but I mostly swap between that and
+          opencode + VS Code (with Codex). Terminal: WezTerm. Distro: Ubuntu.
         </p>
       </div>
 

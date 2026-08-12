@@ -25,7 +25,7 @@ function Experience() {
                   {experience.role.match(/\(.*\)$/)?.[0]?.replace(/[()]/g, "")}
                 </p>
                 <p className="text-xs font-bold uppercase tracking-wide">
-                  {experience.company} — {experience.location}
+                  {experience.company}, {experience.location}
                 </p>
               </div>
               <p className="shrink-0 text-xs font-semibold opacity-80">

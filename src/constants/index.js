@@ -3,7 +3,7 @@ export const EXPERIENCES = [
     "year": "Feb 2026 - Present",
     "role": "Software Engineer - AI and backend system (Internship)",
     "company": "Figmenta",
-    "location": "Milan, Italy (Remote)",
+    "location": "Milan, Italy",
     "description": "Developing multiple agentic features and participating in product development decisions, designing features while working with tradeoffs across the full development cycle end to end spanning database, API, UI, and agentic systems. Currently building Cadence, a content automation platform controllable via Claude and ChatGPT, architected with an MCP layer.",
     "technologies": [
       "JavaScript",
