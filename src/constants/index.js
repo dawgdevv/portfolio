@@ -1,17 +1,10 @@
-import DTIX from "../assets/DTIX.png";
-import ReditAnalysis from "../assets/reddit.png";
-import BACIP from "../assets/bacip.png";
-import PROBE from "../assets/probe.png";
-import Fourows from "../assets/4rows.png";
-
-
 export const EXPERIENCES = [
   {
     "year": "Feb 2026 - Present",
-    "role": "Full Stack Engineer - (Internship)",
+    "role": "Software Engineer - AI and backend system (Internship)",
     "company": "Figmenta",
     "location": "Milan, Italy (Remote)",
-    "description": "Designed and implemented a secure Role-Based Access Control (RBAC) system and Admin Workspace to manage moderation, signals, and analytics workflows across a fashion intelligence platform covering 200+ brands. Built scalable REST APIs, database schemas, and end-to-end features enabling brand analytics, cross-brand comparison, and fashion trend signaling for a production platform.",
+    "description": "Developing multiple agentic features and participating in product development decisions, designing features while working with tradeoffs across the full development cycle end to end spanning database, API, UI, and agentic systems. Currently building Cadence, a content automation platform controllable via Claude and ChatGPT, architected with an MCP layer.",
     "technologies": [
       "JavaScript",
       "TypeScript",
@@ -24,8 +17,19 @@ export const EXPERIENCES = [
     ]
   },
   {
+    "year": "Apr 2026 - Present",
+    "role": "Open Source Developer (SOC 2026)",
+    "company": "AOSSIE",
+    "location": "Canberra, Australian Capital Territory (Remote)",
+    "description": "Contributing to open-source projects under AOSSIE during Spring of Code 2026.",
+    "technologies": [
+      "JavaScript",
+      "TypeScript",
+    ]
+  },
+  {
     year: "July 2025 - Present",
-    role: "Full Stack Developer - (Internship)",
+    role: "Full Stack Developer (Internship)",
     company: "Bitwrap Technologies",
     location: "Ambala Haryana, India",
     description: `Developing and integrating end-to-end features for business use cases, driving both frontend and backend development and Ensuring system performance and security through adherence to best practices and robust architectural design.`,
@@ -39,53 +43,59 @@ export const EXPERIENCES = [
       "PostgreSQL",
     ],
   },
-  {
-    year: "March 2025 - May 2025",
-    role: "Full Stack Developer - (Intership)",
-    company: "Frantiger Business Consulting",
-    location: "Bangalore, Karnataka, India",
-    description: `I worked in team of three on revamping a core website for them using the MERN stack. My responsibilities included developing a user-friendly interface, implementing secure authentication, and ensuring seamless data flow between the front-end and back-end. I also integrated third-party APIs for enhanced functionality and optimized the application for performance and scalability.`,
-    technologies: [
-      "JavaScript",
-      "Node.js",
-      "Express.js",
-      "React.js",
-      "MongoDB",
-      "tailwind CSS",
-      "PostgreSQL",
-    ],
-  },
-];
+  ];
 
 export const PROJECTS = [
   {
-    name: "Probe - (Open Source API Testing Tool)",
+    name: "Cadence",
     description:
-      "A fast, lightweight API test runner for the command line and web, allowing users to define tests in YAML and track results over time.",
+      "Content automation platform for social publishing, scheduling, analytics, inbox, and AI agent workflows.",
     longDescription:
-      "Probe is a comprehensive tool for API testing that bridges the gap between CLI automation and visual management. It features a high-performance Go-based runner that executes declarative YAML test suites, coupled with an embedded React 19 web dashboard for organizing projects, viewing run history, and analyzing detailed assertion results. It ships as a single binary with zero external dependencies.",
-    technologies: [
-      "Go (Golang)",
-      "React 19",
-      "TypeScript",
-      "Vite",
-      "Tailwind CSS 4",
-      "SQLite",
-      "Cobra",
-      "Gin",
-      "TanStack Query",
-    ],
+      "A content automation platform with optimized media upload and publishing for social assets, bringing average image and short-form video readiness to under 20 seconds while reducing Cloudflare R2 storage costs by 25%. Built a reliable FFmpeg and Inngest worker with Cloudflare R2 multipart uploads, retries, leases, heartbeats, and per-workspace concurrency controls for large media processing. Owns platform integrations end to end across Instagram Graph API, YouTube, TikTok, Google Calendar, OAuth, scoped permissions, workspace-aware tools, and media import.",
+    technologies: ["FFmpeg", "Inngest", "Cloudflare R2", "TypeScript", "Node.js", "Instagram Graph API", "YouTube API", "TikTok API", "OAuth"],
     features: [
-      "Dual interface: CLI for CI/CD & Web Dashboard for analysis",
-      "Declarative YAML test syntax with environment substitution",
-      "Advanced JSON path assertions & validation",
-      "Embedded single-binary architecture (Client + Server)",
-      "Persistent run history and project organization",
+      "Sub-20s media readiness for images and short-form video",
+      "Resilient FFmpeg + Inngest worker with retries and leases",
+      "27% Cloudflare R2 storage cost reduction",
+      "End-to-end integrations: Instagram, YouTube, TikTok, Calendar",
     ],
-    liveLink: "", // Run locally via `probe serve`
-    githubLink: "https://github.com/dawgdevv/probe",
+    liveLink: "https://app.cadence.figmenta.site",
+    githubLink: "",
     videoLink: "",
-    image: PROBE, // Refers to 'docs/screenshots/dashboard.png' or 'web/public/probe.svg'
+  },
+  {
+    name: "VoxCtrl",
+    description:
+      "On-device voice command daemon in Go with local audio capture and speech-to-text — all client-side for zero cloud dependency.",
+    longDescription:
+      "An on-device voice-command daemon in Go with local audio capture and speech-to-text, keeping command processing fully client-side with zero cloud dependency. Leverages Goroutines and Channels for concurrent audio processing, achieving sub-1.5s response latency for real-time voice interaction. Packaged as a systemd daemon with SQLite session logging for always-on background execution across Linux devices.",
+    technologies: ["Go (Golang)", "SQLite", "Linux", "systemd", "Speech-to-Text"],
+    features: [
+      "Zero-cloud on-device processing",
+      "Sub-1.5s response latency with concurrent Goroutine processing",
+      "systemd daemon packaging for always-on Linux execution",
+      "SQLite session logging",
+    ],
+    liveLink: "",
+    githubLink: "https://github.com/dawgdevv/voxctrl",
+    videoLink: "",
+  },
+  {
+    name: "Agentic Industrial IoT Anomaly Control",
+    description:
+      "Agentic industrial anomaly-diagnosis platform combining real-time IoT telemetry, statistical fault detection, incident correlation, and historical retrieval.",
+    longDescription:
+      "An agentic industrial anomaly-diagnosis platform that combines real-time IoT telemetry, statistical fault detection, incident correlation, and historical retrieval to transform raw sensor data into traceable maintenance decisions. A decision engine evaluates anomaly strength, detector agreement, retrieval similarity, and data quality to recommend actions or escalate uncertain cases for human review. Built with an LLM explanation and observability pipeline where OpenTelemetry and SigNoz trace retrieval, inference latency, abstention reasons, operator actions, and outcomes.",
+    technologies: ["IoT", "Go (Golang)", "OpenTelemetry", "SigNoz", "LLM", "LangGraph"],
+    features: [
+      "Real-time telemetry-driven anomaly diagnosis",
+      "Decision engine with escalation for uncertain cases",
+      "LLM explanation pipeline with policy-bound answers",
+      "Observability via OpenTelemetry and SigNoz",
+    ],
+    liveLink: "",
+    githubLink: "https://github.com/dawgdevv/AI-Powered-Industrial-Anomaly-Detection",
+    videoLink: "",
   },
   {
     name: "Four-in-a-Row",
@@ -109,97 +119,36 @@ export const PROJECTS = [
       "Client-server architecture",
       "Scalable Go backend structure",
     ],
-    liveLink: "https://4-rows-game.vercel.app/", // No public live link found in the provided files
+    liveLink: "https://4-rows-game.vercel.app/",
     githubLink: "https://github.com/dawgdevv/4_rows_game",
     videoLink: "",
-    image: Fourows, // Refers to 'client_side/image.png' in the repo
   },
   {
     name: "DTIX",
     description:
-      "A user-friendly platform for booking tickets to various events, featuring authentication, seat selection, and secure payments.",
+      "Full Stack ticketing & NFT marketplace platform on Node.js, MongoDB, and Redis with a real-time auction engine and Stripe payments.",
     longDescription:
-      "A user-friendly platform for booking tickets to various events. Features include user authentication, event browsing, seat selection, secure payments, and booking history.",
+      "A ticketing platform with backend on Node.js, MongoDB, and Redis solving concurrent seat selection and race conditions during high-demand sales. Features a real-time auction engine over WebSockets (Socket.io) with sub-100ms bid propagation across distributed bidders. Integrated Stripe payments and a production NFT ticketing system on Vercel with payment flow and digital ownership verification.",
     technologies: [
-      "React.js",
       "Node.js",
-      "Express.js",
       "MongoDB",
+      "Redis",
+      "Socket.io",
       "Stripe API",
-      "JWT",
+      "WebSockets",
+      "Vercel",
+      "NFT",
     ],
     features: [
-      "User authentication and profile management",
-      "Event browsing and filtering",
-      "Interactive seat selection",
-      "Secure payment processing",
-      "Booking history and ticket management",
+      "Concurrent seat selection handling under high-demand sales",
+      "Real-time auction engine with sub-100ms bid propagation",
+      "Stripe payment integration",
+      "NFT ticketing with digital ownership verification",
     ],
-    liveLink: "https://ticket-booking-app-c64o.vercel.app/",
-    githubLink: "https://github.com/dawgdevv/Ticket_Booking_app",
-    videoLink: "https://youtu.be/sD0PZ-AFGTo",
-    image: DTIX,
-  },
-
-  {
-    name: "Real time Reddit analysis",
-    description:
-      "Engineered an end-to-end, real-time big data pipeline to analyze Reddit subreddit activity using Apache Kafka, Spark, and MongoDB.",
-    longDescription:
-      "Engineered an end-to-end, real-time big data pipeline to analyze Reddit subreddit activity. The system ingests live post data using Python (PRAW) and streams it via a fault-tolerant 3-broker Apache Kafka cluster. Apache Spark Structured Streaming consumes these topics, performing sentiment analysis on post descriptions and comments using NLTK (VADER). Spark aggregates key metrics like average votes, average comments, post counts, and average sentiment per subreddit. Processed data and aggregations are persisted into MongoDB Atlas collections for dashboard consumption and simultaneously written to Parquet files for archival. A dynamic Dash/Plotly dashboard visualizes these real-time analytics, showcasing live trends and subreddit comparisons.",
-    technologies: [
-      "Python",
-      "Apache Kafka",
-      "Apache Spark",
-      "MongoDB Atlas",
-      "NLTK",
-      "Dash/Plotly",
-      "Parquet",
-    ],
-    features: [
-      "Real-time data ingestion from Reddit API",
-      "Fault-tolerant Kafka streaming architecture",
-      "Sentiment analysis of posts and comments",
-      "Live metrics aggregation with Spark Streaming",
-      "Interactive dashboard for trend visualization",
-    ],
-    liveLink: "https://rabda.onrender.com/",
-    githubLink: "https://github.com/dawgdevv/Real_time_reddit_analysis",
+    liveLink: "https://dtix.vercel.app/",
+    githubLink: "https://github.com/dawgdevv/dtix",
     videoLink: "",
-    image: ReditAnalysis,
   },
-
-  {
-    name: "Blockchain Academic Credential Interoperability Protocol",
-    description:
-      "Blockchain Academic Credential Interoperability Protocol - A full-stack application for issuing, verifying, and managing academic credentials on the blockchain.",
-    longDescription:
-      "Blockchain Academic Credential Interoperability Protocol - A full-stack application for issuing, verifying, and managing academic credentials on the blockchain. Features include degree issuance by institutions, instant verification by employers, credential management by students, and tamper-proof record keeping on Polygon blockchain.",
-    technologies: [
-      "React.js",
-      "Node.js",
-      "Polygon",
-      "Solidity",
-      "IPFS",
-      "Express.js",
-      "MongoDB",
-    ],
-    features: [
-      "Secure credential issuance by verified institutions",
-      "Instant verification by employers and third parties",
-      "Student credential management portal",
-      "Tamper-proof blockchain storage",
-      "Interoperability between educational systems",
-    ],
-    liveLink: "",
-    githubLink: "https://github.com/dawgdevv/BACIP",
-    videoLink: "",
-    image: BACIP,
-  },
-
-
-
-
 ];
 
 export const OPENSOURCE = [
