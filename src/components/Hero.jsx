@@ -28,7 +28,7 @@ const Hero = ({ profileLinks }) => {
             <p className="mt-3 text-sm font-bold lowercase text-black/70">
               software engineer · AI · backend · UI · linux · hackathons · deployment
             </p>
-            <p className="mt-4 flex flex-wrap gap-x-3 gap-y-1 text-xs font-bold lowercase">
+            <p className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm font-black lowercase">
               {profileLinks?.map((item) => (
                 <a
                   key={item.label}

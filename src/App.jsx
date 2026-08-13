@@ -49,18 +49,18 @@ function App() {
           />
         </section>
 
-        <section id="skills" className="portfolio-section">
+        <section id="skills" className="portfolio-section border-t-2 border-black pt-10">
           <Skills />
         </section>
 
-        <section id="experience" className="portfolio-section">
+        <section id="experience" className="portfolio-section border-t-2 border-black pt-10">
           <Experience />
         </section>
-        <section id="projects" className="portfolio-section">
+        <section id="projects" className="portfolio-section border-t-2 border-black pt-10">
           <Project />
         </section>
 
-        <footer className="portfolio-section flex items-center justify-between gap-4 text-xs font-bold uppercase tracking-wide">
+        <footer className="portfolio-section flex items-center justify-between gap-4 border-t-2 border-black pt-10 text-xs font-bold uppercase tracking-wide">
           <span>Designed &amp; built by Nishant Raj</span>
           <span>© {new Date().getFullYear()}</span>
         </footer>
