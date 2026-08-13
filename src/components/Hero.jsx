@@ -19,14 +19,14 @@ const Hero = ({ profileLinks }) => {
             />
           </div>
           <div>
-            <p className="text-xs font-black uppercase tracking-[0.2em]">
-              Hi there <span aria-hidden="true">✌️</span>, I&apos;m
+            <p className="text-lg font-black uppercase tracking-[0.2em]">
+              Hey, I&apos;m <span aria-hidden="true">👋</span>
             </p>
-            <h1 className="font-script mt-3 text-5xl font-bold leading-none tracking-tight text-black sm:text-6xl md:text-7xl">
+            <h1 className="font-display mt-3 text-5xl font-bold leading-none text-black sm:text-6xl md:text-7xl">
               Nishant Raj
             </h1>
             <p className="mt-3 text-sm font-bold lowercase text-black/70">
-              software engineer · AI · backend · UI · linux · hackathons · deployment
+              software engineer · open source developer · AI · backend · UI · linux · hackathons · deployment
             </p>
             <p className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm font-black lowercase">
               {profileLinks?.map((item) => (

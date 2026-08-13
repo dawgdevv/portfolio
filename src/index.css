@@ -1,8 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap");
 @import "tailwindcss";
+
+@theme {
+  --font-display: "Roboto", sans-serif;
+}
 
 :root {
   font-family: "Inter", system-ui, sans-serif;
@@ -25,7 +29,7 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background: #d8d2c4;
+  background: #e5e2da;
   color: #000;
 }
 
