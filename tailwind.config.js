@@ -6,6 +6,8 @@ export default {
       fontFamily: {
         sans: ["Inter", "sans-serif"],
         mono: ["JetBrains Mono", "monospace"],
+        display: ["Anton", "sans-serif"],
+        script: ["Dancing Script", "cursive"],
       },
       colors: {
         primary: "#63e",

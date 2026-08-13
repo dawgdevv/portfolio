@@ -3,23 +3,32 @@ import myphoto from "../assets/myphoto.webp";
 const Hero = ({ profileLinks }) => {
   return (
     <div className="w-full space-y-8">
-      <header className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-        <div className="flex items-center gap-4">
-          <img
-            src={myphoto}
-            alt="Nishant Raj"
-            width={96}
-            height={96}
-            className="h-24 w-24 object-cover"
-          />
+      <header className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
+        <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center">
+          <div className="relative">
+            <div
+              className="absolute inset-0 translate-x-2 translate-y-2 rounded-2xl bg-black/90"
+              aria-hidden="true"
+            />
+            <img
+              src={myphoto}
+              alt="Nishant Raj"
+              width={240}
+              height={240}
+              className="relative h-32 w-32 shrink-0 rounded-2xl border-2 border-black object-cover sm:h-36 sm:w-36"
+            />
+          </div>
           <div>
-            <p className="text-xs font-bold uppercase tracking-widest">
+            <p className="text-xs font-black uppercase tracking-[0.2em]">
               Hi there <span aria-hidden="true">✌️</span>, I&apos;m
             </p>
-            <h1 className="text-2xl font-black uppercase leading-none tracking-tight sm:text-3xl md:text-4xl">
+            <h1 className="font-script mt-3 text-5xl font-bold leading-none tracking-tight text-black sm:text-6xl md:text-7xl">
               Nishant Raj
             </h1>
-            <p className="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-xs font-bold lowercase">
+            <p className="mt-3 text-sm font-bold lowercase text-black/70">
+              software engineer · AI · backend · UI · linux · hackathons · deployment
+            </p>
+            <p className="mt-4 flex flex-wrap gap-x-3 gap-y-1 text-xs font-bold lowercase">
               {profileLinks?.map((item) => (
                 <a
                   key={item.label}
