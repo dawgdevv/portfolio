@@ -7,7 +7,7 @@ const Hero = ({ profileLinks }) => {
         <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center">
           <div className="relative">
             <div
-              className="absolute inset-0 translate-x-2 translate-y-2 rounded-2xl bg-black/90"
+              className="absolute inset-0 translate-x-2 translate-y-2 rounded-2xl bg-paper/85"
               aria-hidden="true"
             />
             <img
@@ -15,17 +15,14 @@ const Hero = ({ profileLinks }) => {
               alt="Nishant Raj"
               width={240}
               height={240}
-              className="relative h-32 w-32 shrink-0 rounded-2xl border-2 border-black object-cover sm:h-36 sm:w-36"
+              className="relative h-32 w-32 shrink-0 rounded-2xl border-2 border-paper object-cover sm:h-36 sm:w-36"
             />
           </div>
           <div>
-            <p className="text-lg font-black uppercase tracking-[0.2em]">
-              Hey, I&apos;m <span aria-hidden="true">👋</span>
-            </p>
-            <h1 className="font-display mt-3 text-5xl font-bold leading-none text-black sm:text-6xl md:text-7xl">
-              Nishant Raj
+            <h1 className="font-signature text-5xl font-normal italic leading-[0.95] tracking-[-0.03em] text-paper sm:text-6xl md:text-7xl">
+              hey <span aria-hidden="true">👋</span> i&apos;m nishant raj
             </h1>
-            <p className="mt-3 text-sm font-bold lowercase text-black/70">
+            <p className="mt-3 text-sm font-bold lowercase text-paper/70">
               software engineer · open source developer · AI · backend · UI · linux · hackathons · deployment
             </p>
             <p className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm font-black lowercase">
@@ -75,7 +72,7 @@ const Hero = ({ profileLinks }) => {
         </p>
       </div>
 
-      <div>
+      <div id="contact" className="scroll-mt-16">
         <p className="mt-1">
           Building something? I help turn ideas into full systems with AI
           integrations, backends, apps, and deployments. If you need a partner

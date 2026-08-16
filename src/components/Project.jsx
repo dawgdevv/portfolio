@@ -100,7 +100,7 @@ export default function Project() {
         })}
       </div>
 
-      <div className="space-y-6 border-t-2 border-black pt-6">
+      <div className="space-y-6 border-t-2 border-line pt-6">
         <div>
           <h3 className="text-xl font-black uppercase leading-none tracking-tight sm:text-2xl">
             Open Source

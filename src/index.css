@@ -1,15 +1,17 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700;900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap");
 @import "tailwindcss";
 
 @theme {
-  --font-display: "Roboto", sans-serif;
+  --font-signature: "Instrument Serif", serif;
+  --color-ink: #000;
+  --color-paper: oklch(96% 0.008 255);
+  --color-line: oklch(78% 0.012 255);
 }
 
 :root {
-  font-family: "Inter", system-ui, sans-serif;
+  font-family: "Figtree", system-ui, sans-serif;
   line-height: 1.7;
   font-weight: 500;
   font-synthesis: none;
@@ -29,8 +31,8 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background: #e5e2da;
-  color: #000;
+  background-color: var(--color-ink);
+  color: var(--color-paper);
 }
 
 #root {
@@ -38,7 +40,7 @@ body {
 }
 
 a {
-  color: #000;
+  color: inherit;
 }
 
 .portfolio-section {
@@ -50,7 +52,7 @@ a {
 
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
   * {
-    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M5 3l14 9-7 2-3 7z' fill='%23fff' stroke='%23000' stroke-width='1.5' stroke-linejoin='round'/%3E%3C/svg%3E") 4 3, auto !important;
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M5 3l14 9-7 2-3 7z' fill='%2310151d' stroke='%23f3f5f7' stroke-width='1.5' stroke-linejoin='round'/%3E%3C/svg%3E") 4 3, auto !important;
   }
 }
 
