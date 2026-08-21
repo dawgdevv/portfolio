@@ -40,6 +40,9 @@ const Hero = ({ profileLinks }) => {
               alt="Nishant Raj"
               width={240}
               height={240}
+              fetchPriority="high"
+              loading="eager"
+              decoding="async"
               className="relative h-32 w-32 shrink-0 rounded-2xl border-2 border-paper object-cover sm:h-36 sm:w-36"
             />
           </div>

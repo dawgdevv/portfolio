@@ -1,9 +1,9 @@
-import { useEffect } from "react";
+import { useEffect, lazy, Suspense } from "react";
 import Hero from "./components/Hero";
-import GitHubContributions from "./components/GitHubContributions";
-import Skills from "./components/Skills";
-import Experience from "./components/Experience";
-import Project from "./components/Project";
+const GitHubContributions = lazy(() => import("./components/GitHubContributions"));
+const Skills = lazy(() => import("./components/Skills"));
+const Experience = lazy(() => import("./components/Experience"));
+const Project = lazy(() => import("./components/Project"));
 
 function App() {
   useEffect(() => {
@@ -139,20 +139,20 @@ function App() {
           />
         </section>
 
-        <section id="contributions" className="portfolio-section border-t-2 border-line pt-10">
-          <GitHubContributions />
-        </section>
-
-        <section id="skills" className="portfolio-section border-t-2 border-line pt-10">
-          <Skills />
-        </section>
-
-        <section id="experience" className="portfolio-section border-t-2 border-line pt-10">
-          <Experience />
-        </section>
-        <section id="projects" className="portfolio-section border-t-2 border-line pt-10">
-          <Project />
-        </section>
+        <Suspense fallback={<div className="portfolio-section h-32 animate-pulse rounded-xl bg-paper/5" aria-hidden="true" />}>
+          <section id="contributions" className="portfolio-section border-t-2 border-line pt-10">
+            <GitHubContributions />
+          </section>
+          <section id="skills" className="portfolio-section border-t-2 border-line pt-10">
+            <Skills />
+          </section>
+          <section id="experience" className="portfolio-section border-t-2 border-line pt-10">
+            <Experience />
+          </section>
+          <section id="projects" className="portfolio-section border-t-2 border-line pt-10">
+            <Project />
+          </section>
+        </Suspense>
 
         <footer className="portfolio-section flex items-center justify-between gap-4 border-t-2 border-line pt-10 text-xs font-bold uppercase tracking-wide">
           <span>Designed &amp; built by Nishant Raj</span>

@@ -50,6 +50,14 @@ a {
   scroll-margin-top: 2rem;
 }
 
+#contributions,
+#skills,
+#experience,
+#projects {
+  content-visibility: auto;
+  contain-intrinsic-size: 600px;
+}
+
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
   * {
     cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M5 3l14 9-7 2-3 7z' fill='%2310151d' stroke='%23f3f5f7' stroke-width='1.5' stroke-linejoin='round'/%3E%3C/svg%3E") 4 3, auto !important;
