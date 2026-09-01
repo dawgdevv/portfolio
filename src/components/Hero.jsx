@@ -90,30 +90,21 @@ const Hero = ({ profileLinks }) => {
 
       <div className="space-y-4">
         <p>
-          Software engineer building AI, backend and UI. I take full ownership
-          of what I ship. Currently at Figmenta, a design and advertising
-          studio that helps brands scale content, where I built{" "}
+          i like building stuff that actually ships. AI, backend, UI, whatever
+          solves it really. right now at Figmenta hacking on{" "}
           <a href="#projects" className="underline decoration-1 underline-offset-4">
             Cadence
           </a>
-          , handling MCP support, media pipeline, ingestion pipeline,
-          publishing, scheduling, FFmpeg and many other features for their
-          content automation platform. Also built an agentic support bot that
-          triages by prompt and sentiment, replies when normal and routes to a
-          human when out of bounds or team needed. I handle the platform, AI
-          integrations, database and API
-          optimization and craft the UI/UX that ships to production.
+          , their content automation platform. media pipelines, scheduling,
+          FFmpeg, MCP stuff, kinda the whole messy middle. also built a
+          little support bot that knows when to reply and when to just hand
+          off to a human.
         </p>
         <p>
-          Active open source contributor and Linux advocate (ifykyk). Right now
-          focused on making AI agents reliable and drivable through
-          observability and evals. Language agnostic. The problem matters more
-          than the stack.
-        </p>
-        <p>
-          CLI enthusiast. Hackathon winner, still competing. Curiosity never
-          fades. I also handle cloud and DevOps. Open to any technology, no
-          attachment to a single stack, especially in the AI era.
+          linux guy, open source, terminal brain. currently obsessed with
+          making agents less flaky. observability, evals, that sort of thing.
+          no favourite stack. cli, hackathons, weird side projects. curiosity
+          kinda drives everything.
         </p>
         <p className="inline-flex items-center gap-1.5 rounded-full border border-line/30 bg-paper/5 px-3 py-1 text-xs font-bold tracking-wide">
           <MapPin className="h-3 w-3 shrink-0 text-red-500" aria-hidden="true" />
