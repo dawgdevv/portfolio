@@ -1,5 +1,6 @@
 import { useEffect, lazy, Suspense } from "react";
 import Hero from "./components/Hero";
+import CursorEyes from "./components/CursorEyes";
 const GitHubContributions = lazy(() => import("./components/GitHubContributions"));
 const Skills = lazy(() => import("./components/Skills"));
 const Experience = lazy(() => import("./components/Experience"));
@@ -87,6 +88,9 @@ function App() {
           aria-label="Portfolio sections"
           className="portfolio-section sticky top-0 z-50 flex flex-wrap justify-center gap-x-6 gap-y-2 bg-ink px-2 py-5 text-sm font-black lowercase sm:gap-x-8 sm:text-[15px]"
         >
+          <span className="nav-eyes">
+            <CursorEyes />
+          </span>
           <a className="px-1 py-1 underline decoration-1 underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-paper" href="#hero">
             intro
           </a>
