@@ -47,18 +47,21 @@ const Hero = ({ profileLinks }) => {
             />
           </div>
           <div>
-            <h1 className="font-signature text-5xl font-normal italic leading-[0.95] tracking-[-0.03em] text-paper sm:text-6xl md:text-7xl">
-              hey{" "}
+            <h1 className="font-signature text-5xl font-normal italic leading-[0.95] tracking-[-0.03em] sm:text-6xl md:text-7xl">
+              <span className="bg-gradient-to-r from-[oklch(88%_0.055_62)] via-[oklch(86%_0.06_55)] to-[oklch(84%_0.065_48)] bg-clip-text text-transparent">hey</span>{" "}
               <motion.span
                 aria-hidden="true"
                 initial={{ rotate: 0 }}
                 animate={{ rotate: [0, 18, -10, 18, -6, 12, 0] }}
                 transition={{ duration: 1.3, ease: "easeInOut", delay: 0.5 }}
                 style={{ display: "inline-block", transformOrigin: "70% 70%" }}
+                className="inline-block bg-gradient-to-r from-[oklch(88%_0.055_62)] via-[oklch(86%_0.06_55)] to-[oklch(84%_0.065_48)] bg-clip-text text-[0.62em] leading-none text-transparent [-webkit-text-fill-color:transparent] align-middle"
               >
-                👋
+                👋🏻
               </motion.span>{" "}
-              i&apos;m nishant raj
+              <span className="bg-gradient-to-r from-[oklch(88%_0.055_62)] via-[oklch(86%_0.06_55)] to-[oklch(84%_0.065_48)] bg-clip-text text-transparent">
+                i&apos;m nishant raj
+              </span>
             </h1>
             <p className="mt-3 text-sm font-bold lowercase text-paper/70">
               software engineer · open source developer · AI · backend · UI · linux · hackathons · deployment

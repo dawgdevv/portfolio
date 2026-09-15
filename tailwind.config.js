@@ -13,11 +13,17 @@ export default {
         primary: "#63e",
         secondary: "#ff6347",
         'neo-yellow': '#FFDE00',
-        'neo-green': '#00F0FF', // Actually a cyan/blue, let's stick to standard naming or specific hexes
+        'neo-green': '#00F0FF',
         'neo-blue': '#3355FF',
         'neo-pink': '#FF00FF',
         'neo-orange': '#FF5500',
         'neo-mint': '#00FF9D',
+        // restrained neutral accents
+        accent: "oklch(76% 0.095 62)",
+        "accent-soft": "oklch(88% 0.045 62)",
+        sage: "oklch(62% 0.06 155)",
+        clay: "oklch(64% 0.11 32)",
+        slate: "oklch(70% 0.05 235)",
       },
       boxShadow: {
         'neo': '4px 4px 0px 0px rgba(0,0,0,1)',

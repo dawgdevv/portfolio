@@ -5,9 +5,14 @@
 
 @theme {
   --font-signature: "Instrument Serif", serif;
-  --color-ink: #000;
-  --color-paper: oklch(96% 0.008 255);
-  --color-line: oklch(78% 0.012 255);
+  --color-ink: #0a0a0a;
+  --color-paper: oklch(97% 0.012 78);
+  --color-line: oklch(82% 0.015 78);
+  --color-accent: oklch(76% 0.095 62);
+  --color-accent-soft: oklch(88% 0.045 62);
+  --color-sage: oklch(62% 0.06 155);
+  --color-clay: oklch(64% 0.11 32);
+  --color-slate: oklch(70% 0.05 235);
 }
 
 :root {
@@ -43,11 +48,24 @@ a {
   color: inherit;
 }
 
+::selection {
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline-color: var(--color-paper);
+}
+
 .portfolio-section {
   width: 100%;
   max-width: 52rem;
   margin-inline: auto;
   scroll-margin-top: 2rem;
+}
+
+.section-rule {
+  border-color: var(--color-line);
 }
 
 .cursor-eyes {

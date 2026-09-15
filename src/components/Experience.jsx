@@ -16,7 +16,7 @@ function Experience() {
             className="group relative"
           >
             <div className="absolute inset-0 translate-x-1.5 translate-y-1.5 rounded-2xl bg-paper/10 transition-transform group-hover:translate-x-1 group-hover:translate-y-1" aria-hidden="true" />
-            <div className="relative rounded-2xl border-2 border-paper bg-ink p-5 sm:p-6">
+              <div className="relative rounded-2xl border-2 border-paper bg-ink p-5 sm:p-6">
               <div className="flex flex-wrap items-start justify-between gap-3">
                 <div>
                   <h3 className="text-base font-black uppercase leading-tight tracking-tight sm:text-lg">

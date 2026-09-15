@@ -45,7 +45,7 @@ export default function Project() {
                       Source <ExternalLink className="h-3 w-3" />
                     </a>
                   )}
-                  <motion.button
+                    <motion.button
                     type="button"
                     aria-expanded={isExpanded}
                     onClick={() => toggleProject(p.name)}
